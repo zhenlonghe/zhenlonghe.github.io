@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "one day power outage"
+title: "停电的一天"
 description: ""
 category:
-tags:[余暇]
+tags:[]
 ---
 {% include JB/setup %}
 
