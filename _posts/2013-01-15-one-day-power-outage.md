@@ -3,7 +3,7 @@ layout: post
 title: "停电的一天"
 description: ""
 category:
-tags:[]
+tags: []
 ---
 {% include JB/setup %}
 
