@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 振龍
+title:
 tagline: '(我们在世的日子好似影子.)'
 ---
 <ul class="posts">
