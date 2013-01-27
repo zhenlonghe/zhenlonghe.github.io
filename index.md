@@ -9,6 +9,11 @@ tagline: '(我们在世的日子好似影子.)'
     <h1 class="entry-title">
       <a href="{{ post.url }}" title="{{ post.title }}" rel="bookmark">{{ post.title }}</a>
     </h1>
+    <p class="by-line">
+      <span class="date full-date">
+        <abbr class="published" title="{{ post.date }}">{{ post.date | date_to_string }}</abbr>
+      </span>
+    </p>
     <div class="entry-content full-content">
       {{ post.content }}
       <div class="clear"></div>
@@ -21,11 +26,6 @@ tagline: '(我们在世的日子好似影子.)'
     </p>
     <p class="comments-link">
       <a href='{{post.url}}#disqus_thread'>Comments</a>
-    </p>
-    <p class="by-line">
-      <span class="date full-date">
-        <abbr class="published" title="{{ post.date }}">{{ post.date | date_to_string }}</abbr>
-      </span>
     </p>
     <div class="clear"></div>
   </div>
