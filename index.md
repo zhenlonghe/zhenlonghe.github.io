@@ -10,6 +10,7 @@ tagline: '(我们在世的日子好似影子.)'
       <a href="{{ post.url }}" title="{{ post.title }}" rel="bookmark">{{ post.title }}</a>
     </h1>
     <p class="by-line">
+      Posted in&nbsp;
       <span class="date full-date">
         <abbr class="published" title="{{ post.date }}">{{ post.date | date_to_string }}</abbr>
       </span>
@@ -19,7 +20,6 @@ tagline: '(我们在世的日子好似影子.)'
       <div class="clear"></div>
     </div>
     <p class="alt-font tight">
-      Posted in&nbsp;
       {% for category in post.categories %}
       <a href="/categories/{{ category }}" title="{{ category }}" rel="category tag">{{ category }}</a>
       {% endfor %}
