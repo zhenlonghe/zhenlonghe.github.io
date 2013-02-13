@@ -7,7 +7,7 @@ tags: []
 ---
 {% include JB/setup %}
 
-记录下每天要做的事儿
+## 记录下每天要做的事儿
 
--   阅读书籍，reader
--   
+* 阅读，reader, books, news
+* 自省  
