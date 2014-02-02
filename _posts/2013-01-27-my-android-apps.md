@@ -5,7 +5,6 @@ description: ""
 category:
 tags: [玩机]
 ---
-{% include JB/setup %}
 
 在俺的强烈推介下，帮赵氏妇又买了两台三太子，用了机器一年多，确实不错。
 折腾之余，顺便把常用的Apps列出来，以分享之。

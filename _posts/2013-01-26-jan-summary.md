@@ -5,7 +5,6 @@ description: ""
 category:
 tags: [记事]
 ---
-{% include JB/setup %}
 
 ## github
 -   提交质和量要提高。

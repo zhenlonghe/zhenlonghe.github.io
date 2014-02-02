@@ -5,7 +5,6 @@ description: ""
 category:
 tags: []
 ---
-{% include JB/setup %}
 
 停电的一天，在辽大的咖啡店里。
 点了一堆鸡肉制品。

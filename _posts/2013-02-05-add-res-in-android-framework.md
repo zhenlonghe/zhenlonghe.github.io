@@ -5,7 +5,6 @@ description: ""
 category: 
 tags: [android framework]
 ---
-{% include JB/setup %}
 
 好久不在framework里添加资源, 昨天添加之后居然无法编译过去, 删了好多jar文件后, 再次make update-api竟然还是无法成功.
 无奈只好手动去修改core/res/res/values/public.xml.

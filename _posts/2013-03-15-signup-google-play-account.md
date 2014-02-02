@@ -5,7 +5,6 @@ description: ""
 category: 
 tags: []
 ---
-{% include JB/setup %}
 
 做了快三年Android系统级开发, 一直没有申请过Google Play的官方账号, 为了
 督促自己多写东西, 打算开一个户, 也希望多点银子 =).
