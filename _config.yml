@@ -1,10 +1,10 @@
 markdown: rdiscount
 pygments: true
 permalink: /:year/:month/:day/:title.html
-name: "Leon's World"
+name: "Zhenlong's Blog"
 markdown: rdiscount
 
-author: "Leon"
+author: "Zhenlong"
 atom-baseurl: "http://zhenlonghe.github.io/"
 disqus: "zhenlonghe"
 
