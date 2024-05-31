@@ -2,7 +2,7 @@ markdown: rdiscount
 pygments: true
 permalink: /:year/:month/:day/:title.html
 name: "Zhenlong's Blog"
-markdown: rdiscount
+markdown: kramdown
 
 author: "Zhenlong"
 atom-baseurl: "http://zhenlonghe.github.io/"
