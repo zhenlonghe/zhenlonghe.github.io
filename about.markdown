@@ -1,17 +1,14 @@
 ---
-title: about
+title: About me
 layout: page
 ---
 
-a
+A minimalist \| artist \| coder \| writer \| dreamer who lived in mainland China.
 
-> Unixer | Coder
-
-who involved in 
-
-> [github](https://github.com/zhenlonghe)
-
-mail 
-
-> zhenlonghe {at} gmail.com 
-
+Timeline for context:  
+1987: born in Shenyang, China  
+2006: NEU  
+2010: SIM  
+2014: SJ Bank   
+2021: BMW Brillaince  
+2024: Freelancher. 

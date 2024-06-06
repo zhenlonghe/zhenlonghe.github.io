@@ -37,7 +37,7 @@ layout: default
     <!-- END this would not work on any other domain -->
     </section>
     <section class="post">
-    {{ post.content }}
+    {{ post.content | auto_spacing }}
     </section>
     </article>
   {% endfor %}
