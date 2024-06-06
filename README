@@ -3,7 +3,8 @@ And just please keep the link in the bottom.
 Start.
 
 Command
-```
+
+```shell
 bundle exec jekyll serve
 bundle exec jekyll post "title"
 ```
