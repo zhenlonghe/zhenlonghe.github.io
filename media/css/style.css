@@ -38,7 +38,15 @@ hr {
 
 ::selection {
   color: #fff;
-  background-color: #333; }
+  background-color: #333;
+  text-shadow: none;
+}
+
+::-moz-selection {
+  color: #fff;
+  background-color: #333;
+  text-shadow: none;
+}
 
 a, header #header h1 a, article .title a, article .meta .tags a, article .divider a {
   text-decoration: none;
@@ -123,12 +131,22 @@ ul.listing {
         content: "⭠ ";
         color: #ccc; }
 
-article {
-  margin: 2em 0; }
-  article p {
-    padding: .7em 0; }
-  article .title {
-    font-family: "Titillium Web", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+article, .post {
+  position: relative;
+  background: transparent;  /* 确保背景透明 */
+  display: block;          /* 改为块级显示 */
+  width: auto;            /* 自动宽度 */
+}
+
+article p, .post p {
+  display: inline-block;  /* 让段落内容自适应宽度 */
+  width: auto;
+  max-width: 100%;
+  padding: .4em 0;
+}
+
+article .title {
+  font-family: "Titillium Web", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
     article .title header #header h1 a, header #header h1 article .title a, article .title a, article .title .meta .tags a, article .meta .tags .title a {
       color: #777; }
   article .meta {
@@ -227,4 +245,14 @@ footer {
     white-space: pre-wrap;
     word-wrap: break-word;
   }
+}
+
+/* 调整列表样式 */
+.post ul li {
+  margin-bottom: 0.3em;  /* 减小列表项之间的间距 */
+  line-height: 1.4;      /* 调整行高 */
+}
+
+.post ul li p {
+  margin: 0;            /* 移除段落的默认边距 */
 }
