@@ -198,3 +198,33 @@ footer {
 .gist {
   font-size: 13px;
   line-height: 1.6; }
+
+@media screen and (max-width: 680px) {
+  header {
+    width: 100%;
+    margin: 1em auto;
+    padding: 0 1em;
+    box-sizing: border-box;
+  }
+
+  #content {
+    width: 100%;
+    padding: 0 1em;
+    box-sizing: border-box;
+  }
+
+  article .post img {
+    max-width: 100%;
+  }
+
+  footer {
+    width: 100%;
+    padding: 0 1em;
+    box-sizing: border-box;
+  }
+
+  pre code {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+}
