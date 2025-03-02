@@ -15,6 +15,12 @@ navigations:
   - title: Tags
     class: fa fa-tags
     href: /tags.html
+  - title: RSS
+    class: fa fa-rss
+    href: /atom.xml
+  - title: Theme
+    class: fa fa-moon-o
+    href: javascript:toggleTheme();
   - title: About
     class: fa fa-user
     href: /about.html
@@ -24,6 +30,3 @@ navigations:
   # - title: Blogroll
   #   class: fa fa-link
   #   href: /links.html
-  # - title: Subscribe
-  #   class: fa fa-rss
-  #   href: /atom.xml

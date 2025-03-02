@@ -12,35 +12,87 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link href="/atom.xml" rel="alternate" title="{{ site.name }}" type="application/atom+xml" />
     <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/dark-mode.css">
     <link rel="stylesheet" href="/media/css/github.css">
     <link rel="stylesheet" href="/media/css/fontawesome.css">
     <script src="/media/js/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script> 
     <script type="text/javascript" src="/media/js/highlight.pack.js"></script>
     <script type="text/javascript">
       hljs.initHighlightingOnLoad();
+      
+      // 检查并设置主题
+      function setTheme(theme) {
+        if (theme === 'auto') {
+          document.body.classList.remove('dark-theme');
+          document.body.classList.add('auto-theme');
+          localStorage.setItem('theme', 'auto');
+        } else if (theme === 'dark') {
+          document.body.classList.remove('auto-theme');
+          document.body.classList.add('dark-theme');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          document.body.classList.remove('auto-theme', 'dark-theme');
+          localStorage.setItem('theme', 'light');
+        }
+        updateThemeIcon();
+      }
+
+      // 切换主题
+      function toggleTheme() {
+        const currentTheme = localStorage.getItem('theme') || 'auto';
+        if (currentTheme === 'auto') {
+          setTheme('light');
+        } else if (currentTheme === 'light') {
+          setTheme('dark');
+        } else {
+          setTheme('auto');
+        }
+      }
+
+      // 更新主题图标
+      function updateThemeIcon() {
+        const themeIcon = document.querySelector('.fa-moon-o');
+        if (themeIcon) {
+          const currentTheme = localStorage.getItem('theme') || 'auto';
+          themeIcon.classList.remove('fa-moon-o', 'fa-sun-o', 'fa-adjust');
+          if (currentTheme === 'auto') {
+            themeIcon.classList.add('fa-adjust');
+          } else if (currentTheme === 'dark') {
+            themeIcon.classList.add('fa-moon-o');
+          } else {
+            themeIcon.classList.add('fa-sun-o');
+          }
+        }
+      }
+
+      // 初始化主题
+      document.addEventListener('DOMContentLoaded', function() {
+        const savedTheme = localStorage.getItem('theme') || 'auto';
+        setTheme(savedTheme);
+      });
     </script>
   </head>
-  <body>
-      <div id="main" role="main">
-        <header>
-          <div id="header">
-            <h1><a title="{{ site.name }}" class="" href="/">{{ site.name }}</a></h1>
-          </div>
-          <nav>
-            {% for nav in site.navigations %}
-            <span><a title="{{ nav.title }}" href="{{ nav.href }}"><i class="{{ nav.class }}"></i></a></span>
-            {% endfor %}
-          </nav>
-        </header>
-        <div id="content">
-        {{ content | auto_spacing }}
+  <body class="auto-theme">
+    <div id="main" role="main">
+      <header>
+        <div id="header">
+          <h1><a title="{{ site.name }}" class="" href="/">{{ site.name }}</a></h1>
         </div>
-        <footer>
-          <div>
-            {% assign first_post = site.posts | last %}
-            &copy; {{ first_post.date | date: "%Y" }} ~ {{ site.time | date: "%Y" }} {{ site.author }}
-          </div>
-        </footer>
-      </div> <!-- main -->
+        <nav>
+          {% for nav in site.navigations %}
+          <span><a title="{{ nav.title }}" href="{{ nav.href }}"><i class="{{ nav.class }}"></i></a></span>
+          {% endfor %}
+        </nav>
+      </header>
+      <div id="content">
+        {{ content }}
+      </div>
+      <footer>
+        <div>
+          {% assign first_post = site.posts | last %}
+          &copy; {{ first_post.date | date: "%Y" }} ~ {{ site.time | date: "%Y" }} {{ site.author }}
+        </div>
+      </footer>
+    </div>
   </body>
 </html>

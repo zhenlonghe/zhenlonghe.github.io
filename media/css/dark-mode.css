@@ -1,0 +1,95 @@
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  body.auto-theme {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+  }
+
+  body.auto-theme a,
+  body.auto-theme header #header h1 a,
+  body.auto-theme article .title a {
+    color: #ff4444;
+  }
+
+  body.auto-theme a:hover,
+  body.auto-theme header #header h1 a:hover,
+  body.auto-theme article .title a:hover {
+    color: #ff6666;
+  }
+
+  body.auto-theme header #header h1 a {
+    color: #e0e0e0;
+    background-color: #333;
+  }
+
+  body.auto-theme header nav a {
+    color: #888;
+  }
+
+  body.auto-theme blockquote,
+  body.auto-theme pre code {
+    background-color: #2a2a2a;
+    border-color: #444 !important;
+  }
+
+  body.auto-theme code {
+    background-color: #2a2a2a;
+    border-color: #444;
+  }
+
+  body.auto-theme article .divider:before,
+  body.auto-theme article .divider:after {
+    background-color: #333;
+  }
+
+  body.auto-theme ul.listing li.listing-item:hover {
+    background-color: #222;
+  }
+}
+
+/* Force dark mode */
+body.dark-theme {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+body.dark-theme a,
+body.dark-theme header #header h1 a,
+body.dark-theme article .title a {
+  color: #ff4444;
+}
+
+body.dark-theme a:hover,
+body.dark-theme header #header h1 a:hover,
+body.dark-theme article .title a:hover {
+  color: #ff6666;
+}
+
+body.dark-theme header #header h1 a {
+  color: #e0e0e0;
+  background-color: #333;
+}
+
+body.dark-theme header nav a {
+  color: #888;
+}
+
+body.dark-theme blockquote,
+body.dark-theme pre code {
+  background-color: #2a2a2a;
+  border-color: #444 !important;
+}
+
+body.dark-theme code {
+  background-color: #2a2a2a;
+  border-color: #444;
+}
+
+body.dark-theme article .divider:before,
+body.dark-theme article .divider:after {
+  background-color: #333;
+}
+
+body.dark-theme ul.listing li.listing-item:hover {
+  background-color: #222;
+} 
