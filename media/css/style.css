@@ -256,3 +256,29 @@ footer {
 .post ul li p {
   margin: 0;            /* 移除段落的默认边距 */
 }
+
+/* Social Links */
+.social-links {
+  margin: 20px 0;
+  text-align: left;
+}
+
+.social-links a {
+  display: inline-block;
+  margin-right: 15px;
+  color: #666;
+  font-size: 24px;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #000;
+}
+
+.dark-theme .social-links a {
+  color: #999;
+}
+
+.dark-theme .social-links a:hover {
+  color: #fff;
+}
