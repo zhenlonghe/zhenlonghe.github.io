@@ -4,3 +4,5 @@ This zhenlong's blog.
 bundle exec jekyll serve
 bundle exec jekyll post "title"
 ```
+
+open -a Typora "file"
