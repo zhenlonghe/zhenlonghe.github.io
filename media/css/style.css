@@ -154,6 +154,8 @@ article .title {
     overflow: auto;
     margin-top: -.5em;
     font-size: .9em; }
+    article .meta .time {
+      color: #999; }
     article .meta .tags header #header h1 a, header #header h1 article .meta .tags a, article .meta .tags a {
       color: #999999;
       padding: .25em; }
