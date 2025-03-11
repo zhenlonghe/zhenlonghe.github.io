@@ -2,39 +2,41 @@
 @media (prefers-color-scheme: dark) {
   body.auto-theme {
     background-color: #1a1a1a;
-    color: #e0e0e0;
+    color: #e4e4e4;
   }
 
   body.auto-theme a,
   body.auto-theme header #header h1 a,
   body.auto-theme article .title a {
-    color: #ff4444;
+    color: #ff6b6b;
   }
 
   body.auto-theme a:hover,
   body.auto-theme header #header h1 a:hover,
   body.auto-theme article .title a:hover {
-    color: #ff6666;
+    color: #ff8787;
   }
 
   body.auto-theme header #header h1 a {
-    color: #e0e0e0;
-    background-color: #333;
+    color: #ffffff;
+    background-color: #2d2d2d;
   }
 
   body.auto-theme header nav a {
-    color: #888;
+    color: #a0a0a0;
   }
 
   body.auto-theme blockquote,
   body.auto-theme pre code {
-    background-color: #2a2a2a;
-    border-color: #444 !important;
+    background-color: #252525;
+    border-color: #404040 !important;
+    color: #e4e4e4;
   }
 
   body.auto-theme code {
-    background-color: #2a2a2a;
-    border-color: #444;
+    background-color: #252525;
+    border-color: #404040;
+    color: #e4e4e4;
   }
 
   body.auto-theme article .divider:before,
@@ -45,44 +47,54 @@
   body.auto-theme ul.listing li.listing-item:hover {
     background-color: #222;
   }
+
+  /* Syntax highlighting in dark mode */
+  body.auto-theme pre .comment { color: #6a9955; }
+  body.auto-theme pre .keyword { color: #569cd6; }
+  body.auto-theme pre .string { color: #ce9178; }
+  body.auto-theme pre .number { color: #b5cea8; }
+  body.auto-theme pre .class { color: #4ec9b0; }
+  body.auto-theme pre .function { color: #dcdcaa; }
 }
 
 /* Force dark mode */
 body.dark-theme {
   background-color: #1a1a1a;
-  color: #e0e0e0;
+  color: #e4e4e4;
 }
 
 body.dark-theme a,
 body.dark-theme header #header h1 a,
 body.dark-theme article .title a {
-  color: #ff4444;
+  color: #ff6b6b;
 }
 
 body.dark-theme a:hover,
 body.dark-theme header #header h1 a:hover,
 body.dark-theme article .title a:hover {
-  color: #ff6666;
+  color: #ff8787;
 }
 
 body.dark-theme header #header h1 a {
-  color: #e0e0e0;
-  background-color: #333;
+  color: #ffffff;
+  background-color: #2d2d2d;
 }
 
 body.dark-theme header nav a {
-  color: #888;
+  color: #a0a0a0;
 }
 
 body.dark-theme blockquote,
 body.dark-theme pre code {
-  background-color: #2a2a2a;
-  border-color: #444 !important;
+  background-color: #252525;
+  border-color: #404040 !important;
+  color: #e4e4e4;
 }
 
 body.dark-theme code {
-  background-color: #2a2a2a;
-  border-color: #444;
+  background-color: #252525;
+  border-color: #404040;
+  color: #e4e4e4;
 }
 
 body.dark-theme article .divider:before,
@@ -92,4 +104,23 @@ body.dark-theme article .divider:after {
 
 body.dark-theme ul.listing li.listing-item:hover {
   background-color: #222;
+}
+
+/* Syntax highlighting in dark mode */
+body.dark-theme pre .comment { color: #6a9955; }
+body.dark-theme pre .keyword { color: #569cd6; }
+body.dark-theme pre .string { color: #ce9178; }
+body.dark-theme pre .number { color: #b5cea8; }
+body.dark-theme pre .class { color: #4ec9b0; }
+body.dark-theme pre .function { color: #dcdcaa; }
+
+/* Selection color in dark mode */
+body.dark-theme ::selection {
+  background-color: #264f78;
+  color: #ffffff;
+}
+
+body.auto-theme ::selection {
+  background-color: #264f78;
+  color: #ffffff;
 } 

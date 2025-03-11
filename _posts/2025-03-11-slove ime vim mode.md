@@ -5,7 +5,8 @@ date: 2025-03-11 19:14 +0800
 tags: 
 ---
 
-这两天使用 Hammerspoon 解决了困扰以久的输入法切换问题，特别的应用在切换时或在vim mode esc 退出时，fallback to abc 英文输入。
+这两天使用 Hammerspoon 解决了困扰以久的输入法切换问题，特别的应用在切换时或在vim mode esc 退出时，fallback to abc 英文输入。 舒服了。
+
 
 相关代码如下：
 
@@ -81,5 +82,3 @@ end)
 
 eventTap:start() -- 启动监听
 ```
-
-舒服了。
