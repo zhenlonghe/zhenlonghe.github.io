@@ -27,7 +27,7 @@
 :lang(zh-CN),
 body {
     font-family: "jinkaiFont", "Hiragino Sans GB", "Noto Sans", sans-serif;
-    font-size: 16px; /* Increase base font size */
+    font-size: 14px; /* 恢复至上个版本的字体大小 */
 }
 
 /* Article title font fix */
@@ -147,4 +147,25 @@ footer a {
 /* GitHub icon style for About page */
 .github-link {
     margin-top: 0;
+}
+
+/* Mobile specific font adjustments */
+@media screen and (max-width: 680px) {
+    :lang(zh), 
+    :lang(zh-CN),
+    body {
+        font-size: 14px;
+    }
+    
+    h1 { font-size: 1.4em !important; }
+    h2 { font-size: 1.3em !important; }
+    h3 { font-size: 1.1em !important; }
+    h4 { font-size: 1em !important; }
+    
+    article .title, 
+    article .title header #header h1 a, 
+    header #header h1 article .title a, 
+    article .title a {
+        font-size: 1.3em !important;
+    }
 } 

@@ -167,7 +167,7 @@ article p, .post p {
   width: 100%;
   max-width: 100%;
   padding: .4em 0;
-  font-size: 16px;
+  font-size: 14px;  /* 恢复至14px */
   line-height: 1.6;
 }
 
@@ -262,6 +262,10 @@ footer {
     box-sizing: border-box;
   }
 
+  article p, .post p {
+    font-size: 14px;  /* 为移动端明确设置字体大小 */
+  }
+
   article .post img {
     max-width: 100%;
   }
@@ -280,14 +284,14 @@ footer {
 
 /* 调整列表样式 */
 .post ul li {
-  margin-bottom: 0.4em;  /* 减小列表项之间的间距 */
-  line-height: 1.6;      /* 调整行高 */
-  font-size: 16px;       /* 匹配正文字号 */
+  margin-bottom: 0.3em;  /* 恢复至上个版本的间距 */
+  line-height: 1.4;      /* 恢复至上个版本的行高 */
+  font-size: 14px;       /* 恢复至上个版本的字体大小 */
 }
 
 .post ul li p {
   margin: 0;            /* 移除段落的默认边距 */
-  font-size: 16px;      /* 匹配正文字号 */
+  font-size: 14px;      /* 恢复至上个版本的字体大小 */
 }
 
 /* Social Links */
