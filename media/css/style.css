@@ -263,7 +263,17 @@ footer {
   }
 
   article p, .post p {
-    font-size: 14px;  /* 为移动端明确设置字体大小 */
+    font-size: 13px;  /* 从14px减小到13px */
+    line-height: 1.5;  /* 略微减小行高 */
+  }
+  
+  article .title {
+    font-size: 1.4em;  /* 略微减小标题大小 */
+  }
+  
+  .post ul li, .post ul li p {
+    font-size: 13px;  /* 从14px减小到13px */
+    line-height: 1.4;
   }
 
   article .post img {

@@ -61,7 +61,7 @@ h4 { font-size: 1.1em !important; }
 /* Set code blocks to use IBM Plex Mono */
 pre code, code, pre, .hljs {
     font-family: 'IBM Plex Mono', 'Monaspace Argon', 'JetBrains Mono', monospace !important;
-    font-size: 12px !important;
+    font-size: 11px !important;  /* 从12px减小至11px */
     margin-left: 0 !important; /* 移除左侧边距，因为不再显示行号 */
     padding-left: 1em !important; /* 添加适当的内边距 */
 }
@@ -154,7 +154,7 @@ footer a {
     :lang(zh), 
     :lang(zh-CN),
     body {
-        font-size: 14px;
+        font-size: 13px;  /* 从14px减小到13px */
     }
     
     h1 { font-size: 1.4em !important; }
@@ -167,5 +167,11 @@ footer a {
     header #header h1 article .title a, 
     article .title a {
         font-size: 1.3em !important;
+    }
+    
+    /* 移动端代码区域字体大小调整 */
+    pre code, code, pre, .hljs {
+        font-size: 10px !important;  /* 移动设备代码字体更小 */
+        line-height: 1.4 !important;  /* 减小行高 */
     }
 } 
