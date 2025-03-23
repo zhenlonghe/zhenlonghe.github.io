@@ -175,7 +175,7 @@ article p, .post p {
   width: 100%;
   max-width: 100%;
   padding: .4em 0;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.5;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -353,8 +353,8 @@ footer {
 /* 调整列表样式 */
 .post ul li {
   margin-bottom: 0.3em;  /* 减小列表项之间的间距 */
-  line-height: 1.4;      /* 调整行高 */
-  font-size: 13px;       /* 与正文保持一致 */
+  line-height: 1.5;      /* 调整行高 */
+  font-size: 14px;       /* archive list item font size*/
 }
 
 .post ul li p {
@@ -388,55 +388,6 @@ footer {
   color: #fff;
 }
 
-/* 侧边栏样式 */
-/* 侧边栏已移除
-.sidebar {
-  position: sticky;
-  top: 2em;
-  padding: 1em;
-  background-color: rgba(40, 44, 52, 0.3);
-  border-radius: 0.5em;
-  margin-bottom: 2em;
-}
-
-.sidebar section {
-  margin-bottom: 2em;
-}
-
-.sidebar h1 {
-  font-size: 1.2em;
-  margin-top: 0;
-  margin-bottom: 0.5em;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.3);
-  padding-bottom: 0.3em;
-}
-
-.sidebar ul.recent-posts {
-  list-style-type: none;
-  padding-left: 0;
-  margin-top: 0.5em;
-}
-
-.sidebar ul.recent-posts li {
-  margin-bottom: 0.5em;
-  font-size: 0.9em;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.sidebar ul.recent-posts li a {
-  text-decoration: none;
-  color: #4183c4;
-}
-
-.sidebar ul.recent-posts li a:hover {
-  text-decoration: underline;
-  color: #ff5e5e;
-}
-*/
-
-/* 复制按钮样式 */
 .copy-button {
   position: absolute;
   top: 5px;
