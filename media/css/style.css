@@ -69,6 +69,7 @@ blockquote, pre code {
   overflow: auto;
   max-width: 100%;
   box-sizing: border-box;
+  position: relative;
 }
 
 code {
@@ -81,10 +82,14 @@ h1, h2 {
   font-size: 1.4em; }
 
 header {
-  width: 680px;
+  width: 100%;
+  max-width: 680px;
   margin: 0 auto;
   text-align: justify;
-  margin: 3em auto; }
+  margin: 3em auto;
+  padding: 0 1em;
+  box-sizing: border-box;
+}
   header:after {
     content: '';
     width: 100%;
@@ -115,20 +120,20 @@ header {
       color: #ccc; }
 
 #content {
-  width: 680px;
+  width: 100%;
   max-width: 680px;
   margin: 0 auto;
   line-height: 2em;
-  display: block; /* 恢复为块级布局，移除网格布局 */
-  /* grid-template-columns: 3fr 1fr; */
-  /* gap: 2em; */
+  display: block;
+  box-sizing: border-box;
+  padding: 0 1em;
 }
 
 /* 文章页面使用同样宽度 */
 .page-post #content {
   display: block;
   max-width: 680px;
-  width: 680px;
+  width: 100%;
 }
 
 .content-main {
@@ -157,10 +162,12 @@ ul.listing {
 
 article, .post {
   position: relative;
-  background: transparent;  /* 确保背景透明 */
-  display: block;          /* 改为块级显示 */
-  width: 100%;            /* 使用100%宽度，但被父容器限制 */
-  box-sizing: border-box;  /* 确保padding不会增加宽度 */
+  background: transparent;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 article p, .post p {
@@ -169,6 +176,8 @@ article p, .post p {
   padding: .4em 0;
   font-size: 13px;  /* 全局减小字体大小以保持一致性 */
   line-height: 1.5;  /* 调整行高 */
+  word-wrap: break-word;   /* 确保长文本折行 */
+  overflow-wrap: break-word; /* 现代浏览器支持 */
 }
 
 article .title {
@@ -188,6 +197,7 @@ article .title {
       padding: .25em; }
   article .post img {
     max-width: 100%;
+    height: auto;
     display: block;
     margin: .5em auto;
     box-sizing: border-box;
@@ -228,14 +238,18 @@ article .title {
     margin-left: 1%; }
 
 footer {
-  width: 680px;
+  width: 100%;
+  max-width: 680px;
   margin: 0 auto;
   display: block;
   color: #909090;
   font-family: "Titillium Web", "Hiragino Sans GB", "Noto Sans", sans-serif;
   font-size: .9em;
   text-align: center;
-  margin: 1em auto; }
+  margin: 1em auto;
+  padding: 0 1em;
+  box-sizing: border-box;
+}
   footer a, footer header #header h1 a, header #header h1 footer a, footer article .title a, article .title footer a, footer article .meta .tags a, article .meta .tags footer a, footer article .divider a, article .divider footer a {
     color: #cccccc; }
     footer a:hover, footer header #header h1 a:hover, header #header h1 footer a:hover, footer article .meta .tags a:hover, article .meta .tags footer a:hover {
@@ -250,45 +264,71 @@ footer {
 
 @media screen and (max-width: 680px) {
   header {
-    width: 100%;
     margin: 1em auto;
-    padding: 0 1em;
-    box-sizing: border-box;
   }
 
   #content {
     width: 100%;
-    padding: 0 1em;
-    box-sizing: border-box;
   }
 
   article p, .post p {
-    font-size: 13px;  /* 从14px减小到13px */
-    line-height: 1.5;  /* 略微减小行高 */
+    font-size: 13px;
+    line-height: 1.5;
   }
   
   article .title {
-    font-size: 1.4em;  /* 略微减小标题大小 */
+    font-size: 1.4em;
   }
   
   .post ul li, .post ul li p {
-    font-size: 13px;  /* 从14px减小到13px */
+    font-size: 13px;
     line-height: 1.4;
   }
+}
 
-  article .post img {
-    max-width: 100%;
-  }
-
-  footer {
+/* 合并冗余媒体查询 */
+@media (max-width: 1100px), (max-width: 900px), (max-width: 768px) {
+  #content {
+    display: block;
     width: 100%;
-    padding: 0 1em;
-    box-sizing: border-box;
   }
+  
+  .content-main {
+    width: 100%;
+  }
+}
 
+/* 确保移动端文本折行 */
+@media screen and (max-width: 680px) {
   pre code {
     white-space: pre-wrap;
     word-wrap: break-word;
+    padding: 0.5em;
+    font-size: 12px;
+  }
+  
+  .copy-button {
+    padding: 2px 5px;
+    font-size: 10px;
+    top: 2px;
+    right: 2px;
+  }
+  
+  body, article, .post, p, h1, h2, h3, h4, h5, h6, li, code, pre, blockquote {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word; /* 允许非英文单词的断行 */
+    hyphens: auto; /* 自动连字符 */
+  }
+  
+  article .post pre {
+    white-space: pre-wrap; /* 确保预格式化文本折行 */
+  }
+  
+  article .post code {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 }
 
@@ -378,45 +418,33 @@ footer {
 }
 */
 
-@media (max-width: 768px) {
-  /*
-  .sidebar {
-    position: static;
-    margin-top: 2em;
-  }
-  */
-  
-  #content {
-    display: block;
-  }
-  
-  .content-main {
-    width: 100%;
-  }
+/* 复制按钮样式 */
+.copy-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 3px;
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  z-index: 10;
 }
 
-@media (max-width: 1100px) {
-  #content {
-    /* grid-template-columns: 2fr 1fr; */
-    display: block;
-  }
+.copy-button:hover {
+  opacity: 1;
 }
 
-@media (max-width: 900px) {
-  #content {
-    display: block;
-    padding: 0 1em;
-  }
-  
-  .content-main {
-    width: 100%;
-  }
-  
-  /*
-  .sidebar {
-    position: static;
-    margin-top: 2em;
-    width: 100%;
-  }
-  */
+.dark-theme .copy-button {
+  background: rgba(30, 30, 30, 0.7);
+  color: #ddd;
+}
+
+pre {
+  position: relative;
+  max-width: 100%;
+  overflow: auto;
 }

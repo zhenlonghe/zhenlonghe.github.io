@@ -123,4 +123,24 @@ body.dark-theme ::selection {
 body.auto-theme ::selection {
   background-color: #264f78;
   color: #ffffff;
+}
+
+/* 暗色模式下的移动端优化 */
+@media screen and (max-width: 680px) {
+  body.dark-theme pre,
+  body.dark-theme code,
+  body.auto-theme pre,
+  body.auto-theme code {
+    font-size: 12px;
+  }
+  
+  body.dark-theme .copy-button {
+    background: rgba(40, 40, 40, 0.7);
+    color: #ccc;
+  }
+  
+  body.dark-theme blockquote,
+  body.dark-theme pre code {
+    border-color: #333 !important;
+  }
 } 

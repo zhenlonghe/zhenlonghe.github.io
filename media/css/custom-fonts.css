@@ -64,11 +64,16 @@ pre code, code, pre, .hljs {
     font-size: 11px !important;  /* 从12px减小至11px */
     margin-left: 0 !important; /* 移除左侧边距，因为不再显示行号 */
     padding-left: 1em !important; /* 添加适当的内边距 */
+    white-space: pre-wrap !important; /* 确保代码折行 */
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
 }
 
 /* 移除pre元素的相对定位，因为不再需要用于定位行号 */
 pre {
     position: static !important;
+    word-wrap: break-word !important;
+    white-space: pre-wrap !important;
 }
 
 /* 确保没有行号div显示 */
@@ -173,5 +178,17 @@ footer a {
     pre code, code, pre, .hljs {
         font-size: 10px !important;  /* 移动设备代码字体更小 */
         line-height: 1.4 !important;  /* 减小行高 */
+        white-space: pre-wrap !important; /* 确保代码折行 */
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* 确保代码块容器也支持折行 */
+    .highlight, .highlight pre, .highlight code {
+        word-wrap: break-word !important;
+        white-space: pre-wrap !important;
+        overflow-wrap: break-word !important;
     }
 } 
