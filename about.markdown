@@ -23,4 +23,7 @@ Timeline for context:
   <a href="https://instagram.com/zhenlong911" target="_blank" rel="noopener noreferrer" title="Instagram">
     <i class="fab fa-instagram"></i>
   </a>
+  <a href="https://github.com/zhenlonghe" target="_blank" rel="noopener noreferrer" title="GitHub">
+    <i class="fab fa-github"></i>
+  </a>
 </div>

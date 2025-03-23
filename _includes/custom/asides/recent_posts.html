@@ -1,0 +1,12 @@
+{% if site.posts.first.previous %}
+<section>
+  <h1>最近文章</h1>
+  <ul class="recent-posts">
+    {% for post in site.posts limit: 10 %}
+    <li>
+      <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %} 

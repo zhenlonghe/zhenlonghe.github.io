@@ -18,9 +18,9 @@ navigations:
   - title: RSS
     class: fa fa-rss
     href: /atom.xml
-  - title: Theme
-    class: fa-regular theme-icon fa-moon
-    href: javascript:toggleTheme();
+  # - title: Theme
+  #   class: theme-icon fa-solid fa-brightness
+  #   href: javascript:toggleTheme();
   - title: About
     class: fa fa-user
     href: /about.html

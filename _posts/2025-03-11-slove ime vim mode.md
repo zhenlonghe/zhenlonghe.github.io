@@ -1,6 +1,6 @@
 ---
 layout: post
-title: slove ime vim mode
+title: 解决输入法切换问题
 date: 2025-03-11 19:14 +0800
 tags: 
 ---
@@ -82,3 +82,4 @@ end)
 
 eventTap:start() -- 启动监听
 ```
+2025-03-23 10:07:21：后记：还是换回了rime的vim-mode.

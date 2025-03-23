@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Thought in July, 2024
+title: 七月随想
 date: 2024-07-24 13:03 +0800
 ---
 

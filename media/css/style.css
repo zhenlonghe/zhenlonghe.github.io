@@ -14,13 +14,15 @@
  * --------------------------------- */
 * {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 body {
   font-size: 14px;
   font-family: "Lekton", "Hiragino Sans GB", "Noto Sans", sans-serif;
   color: #555;
-  background-color: #f9f9f9; }
+  background-color: #f9f9f9;
+}
 
 ol, ul {
   list-style-position: inside; }
@@ -64,12 +66,16 @@ blockquote, pre code {
   font-family: "Lekton", monospace;
   line-height: 1.6;
   display: block;
-  overflow: auto; }
+  overflow: auto;
+  max-width: 100%;
+  box-sizing: border-box;
+}
 
 code {
   background-color: #f8f8f8;
   padding: 2px 5px;
-  border: 1px dashed #e0e0e0; }
+  border: 1px dashed #e0e0e0;
+}
 
 h1, h2 {
   font-size: 1.4em; }
@@ -110,10 +116,27 @@ header {
 
 #content {
   width: 680px;
+  max-width: 680px;
   margin: 0 auto;
-  line-height: 2em; }
-  #content .main-listing {
-    margin-bottom: 2em; }
+  line-height: 2em;
+  display: block; /* 恢复为块级布局，移除网格布局 */
+  /* grid-template-columns: 3fr 1fr; */
+  /* gap: 2em; */
+}
+
+/* 文章页面使用同样宽度 */
+.page-post #content {
+  display: block;
+  max-width: 680px;
+  width: 680px;
+}
+
+.content-main {
+  width: 100%; /* 确保内容区域占据全宽 */
+}
+
+#content .main-listing {
+  margin-bottom: 2em; }
 
 ul.listing {
   margin-top: 1em; }
@@ -136,18 +159,21 @@ article, .post {
   position: relative;
   background: transparent;  /* 确保背景透明 */
   display: block;          /* 改为块级显示 */
-  width: auto;            /* 自动宽度 */
+  width: 100%;            /* 使用100%宽度，但被父容器限制 */
+  box-sizing: border-box;  /* 确保padding不会增加宽度 */
 }
 
 article p, .post p {
-  display: inline-block;  /* 让段落内容自适应宽度 */
-  width: auto;
+  width: 100%;
   max-width: 100%;
   padding: .4em 0;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 article .title {
-  font-family: "Titillium Web", "Hiragino Sans GB", "Noto Sans", sans-serif; }
+  font-family: "Titillium Web", "Hiragino Sans GB", "Noto Sans", sans-serif; 
+  font-size: 1.5em; }
     article .title header #header h1 a, header #header h1 article .title a, article .title a, article .title .meta .tags a, article .meta .tags .title a {
       color: #777; }
   article .meta {
@@ -161,9 +187,11 @@ article .title {
       color: #999999;
       padding: .25em; }
   article .post img {
-    max-width: 680px;
+    max-width: 100%;
     display: block;
-    margin: .5em auto; }
+    margin: .5em auto;
+    box-sizing: border-box;
+  }
   article .comment {
     margin: 3em 0; }
   article .divider {
@@ -252,12 +280,14 @@ footer {
 
 /* 调整列表样式 */
 .post ul li {
-  margin-bottom: 0.3em;  /* 减小列表项之间的间距 */
-  line-height: 1.4;      /* 调整行高 */
+  margin-bottom: 0.4em;  /* 减小列表项之间的间距 */
+  line-height: 1.6;      /* 调整行高 */
+  font-size: 16px;       /* 匹配正文字号 */
 }
 
 .post ul li p {
   margin: 0;            /* 移除段落的默认边距 */
+  font-size: 16px;      /* 匹配正文字号 */
 }
 
 /* Social Links */
@@ -284,4 +314,95 @@ footer {
 
 .dark-theme .social-links a:hover {
   color: #fff;
+}
+
+/* 侧边栏样式 */
+/* 侧边栏已移除
+.sidebar {
+  position: sticky;
+  top: 2em;
+  padding: 1em;
+  background-color: rgba(40, 44, 52, 0.3);
+  border-radius: 0.5em;
+  margin-bottom: 2em;
+}
+
+.sidebar section {
+  margin-bottom: 2em;
+}
+
+.sidebar h1 {
+  font-size: 1.2em;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+  padding-bottom: 0.3em;
+}
+
+.sidebar ul.recent-posts {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 0.5em;
+}
+
+.sidebar ul.recent-posts li {
+  margin-bottom: 0.5em;
+  font-size: 0.9em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sidebar ul.recent-posts li a {
+  text-decoration: none;
+  color: #4183c4;
+}
+
+.sidebar ul.recent-posts li a:hover {
+  text-decoration: underline;
+  color: #ff5e5e;
+}
+*/
+
+@media (max-width: 768px) {
+  /*
+  .sidebar {
+    position: static;
+    margin-top: 2em;
+  }
+  */
+  
+  #content {
+    display: block;
+  }
+  
+  .content-main {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1100px) {
+  #content {
+    /* grid-template-columns: 2fr 1fr; */
+    display: block;
+  }
+}
+
+@media (max-width: 900px) {
+  #content {
+    display: block;
+    padding: 0 1em;
+  }
+  
+  .content-main {
+    width: 100%;
+  }
+  
+  /*
+  .sidebar {
+    position: static;
+    margin-top: 2em;
+    width: 100%;
+  }
+  */
 }

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>多线程 Emacs 构想</title>
+
+
+        <link rel="stylesheet" href="//manateelazycat.github.io/styles/font.css">
+        <link rel="stylesheet" media="screen and (min-width: 600px)" href="//manateelazycat.github.io/styles/post.css">
+        <link rel="stylesheet" media="screen and (max-width: 600px)" href="//manateelazycat.github.io/styles/post_mobile.css">
+        <link rel="stylesheet" media="screen and (min-width: 600px)" href="//manateelazycat.github.io/styles/navigatebar.css">
+        <link rel="stylesheet" media="screen and (max-width: 600px)" href="//manateelazycat.github.io/styles/navigatebar_mobile.css">
+        <link rel="stylesheet" href="//manateelazycat.github.io/theme/highlight.css">
+    </head>
+    <body>
+        <div class="navigatebar">
+    <div class="navigatebar-button navigatebar-mine">
+        <a href="//manateelazycat.github.io/index.html">ManateeLazyCat</a>
+    </div>
+    <div class="navigatebar-button">
+        <a href="//manateelazycat.github.io/tags.html">Tags</a>
+    </div>
+    <div class="navigatebar-button">
+        <a href="//manateelazycat.github.io/projects.html">Projects</a>
+    </div>
+    <div class="navigatebar-button">
+        <a href="//manateelazycat.github.io/feed.xml">Feeds</a>
+    </div>
+    <div class="navigatebar-button navigatebar-about">
+        <a href="//manateelazycat.github.io/about.html">About</a>
+    </div>
+</div>
+
+        <div class="content-area">
+            <div class="title">
+                多线程 Emacs 构想
+            </div>
+            <div class="category-area">
+                「
+                <a href="//manateelazycat.github.io/tags.html#Emacs">
+                    <div class="category">
+                        Emacs
+                    </div>
+                </a>
+                」
+            </div>
+            <div class="char-counter">
+              2025-02-23 249字
+            </div>
+            <div class="content">
+                <ol>
+  <li>用 PyQt 开发一个 Emacs Client， 这样可以利用 Qt 的绘制能力实现多线程刷新， 渲染效率比 VSCode 还高， 同时可以在所有平台实现 WebEngine 嵌入</li>
+  <li>Emacs 作为 Daemon 进程只执行 Elisp 代码， 并和 PyQt 做 IPC 通讯， 这样大部分 Emacs Elisp 插件代码都不用改</li>
+  <li>Python 具备多线程和解释运行能力， 可以在运行时和 Elisp 做动态脚本交互， 并利用 Python 生态来扩展 Emacs 的能力</li>
+</ol>
+
+<p>这种架构的优势：</p>
+<ol>
+  <li>实现多线程图形库</li>
+  <li>不用修改 Elisp 生态代码</li>
+  <li>通过 Python 生态快速扩展 Emacs</li>
+</ol>
+
+            </div>
+        </div>
+    </body>
+</html>

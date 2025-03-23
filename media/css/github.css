@@ -1,14 +1,14 @@
 /*
-github.com style (c) Vasily Polovnyov <vast@whiteants.net>
-Modified for dark mode support
+GitHub Dark style overrides
 */
 
 /* Import Google Fonts for code */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Source+Code+Pro:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
 
 pre {
   position: relative;
   margin: 1em 0;
+  counter-reset: line;
 }
 
 pre .copy-button {
@@ -16,13 +16,14 @@ pre .copy-button {
   top: 5px;
   right: 5px;
   padding: 8px;
-  color: #6e7681;
+  color: #8b949e;
   background-color: transparent;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
+  z-index: 10;
 }
 
 pre:hover .copy-button {
@@ -41,196 +42,30 @@ pre code {
   display: block;
   padding: 1em 1.2em;
   overflow-x: auto;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.45;
-  font-family: 'JetBrains Mono', 'Source Code Pro', 'Fira Code', monospace;
+  font-family: 'Monaspace Argon', 'JetBrains Mono', monospace;
   border-radius: 6px;
   tab-size: 2;
+  position: relative;
 }
 
-/* Common styles for both light and dark modes */
-pre code {
-  color: #24292e;
-  background: #f6f8fa;
-  border: 1px solid #eaecef;
+/* Line styling */
+pre code .line {
+  display: inline-block;
+  width: 100%;
 }
 
-/* VS Code Light Theme Colors */
-body:not(.dark-theme):not(.auto-theme) .hljs-comment,
-body:not(.dark-theme):not(.auto-theme) .hljs-quote {
-  color: #008000;
-  font-style: italic;
+/* Code block theme overrides - basic settings only */
+body.dark-theme pre code {
+  background: #0d1117;
+  border: 1px solid #30363d;
 }
 
-body:not(.dark-theme):not(.auto-theme) .hljs-keyword,
-body:not(.dark-theme):not(.auto-theme) .hljs-selector-tag,
-body:not(.dark-theme):not(.auto-theme) .hljs-subst {
-  color: #0000ff;
-  font-weight: normal;
+body.dark-theme .copy-button {
+  color: #8b949e;
 }
 
-body:not(.dark-theme):not(.auto-theme) .hljs-number,
-body:not(.dark-theme):not(.auto-theme) .hljs-literal,
-body:not(.dark-theme):not(.auto-theme) .hljs-variable,
-body:not(.dark-theme):not(.auto-theme) .hljs-template-variable,
-body:not(.dark-theme):not(.auto-theme) .hljs-tag .hljs-attr {
-  color: #098658;
-}
-
-body:not(.dark-theme):not(.auto-theme) .hljs-string,
-body:not(.dark-theme):not(.auto-theme) .hljs-doctag {
-  color: #a31515;
-}
-
-body:not(.dark-theme):not(.auto-theme) .hljs-title,
-body:not(.dark-theme):not(.auto-theme) .hljs-section,
-body:not(.dark-theme):not(.auto-theme) .hljs-selector-id {
-  color: #800000;
-  font-weight: bold;
-}
-
-body:not(.dark-theme):not(.auto-theme) .hljs-type,
-body:not(.dark-theme):not(.auto-theme) .hljs-class .hljs-title {
-  color: #267f99;
-  font-weight: normal;
-}
-
-body:not(.dark-theme):not(.auto-theme) .hljs-tag,
-body:not(.dark-theme):not(.auto-theme) .hljs-name,
-body:not(.dark-theme):not(.auto-theme) .hljs-attribute {
-  color: #800000;
-}
-
-body:not(.dark-theme):not(.auto-theme) .hljs-regexp,
-body:not(.dark-theme):not(.auto-theme) .hljs-link {
-  color: #116b00;
-}
-
-body:not(.dark-theme):not(.auto-theme) .hljs-symbol,
-body:not(.dark-theme):not(.auto-theme) .hljs-bullet {
-  color: #000080;
-}
-
-body:not(.dark-theme):not(.auto-theme) .hljs-built_in,
-body:not(.dark-theme):not(.auto-theme) .hljs-builtin-name {
-  color: #267f99;
-}
-
-body:not(.dark-theme):not(.auto-theme) .hljs-meta {
-  color: #6c6c6c;
-}
-
-/* Dark mode overrides */
-body.dark-theme pre code,
-body.auto-theme pre code {
-  color: #e4e4e4;
-  background: #252525;
-  border: 1px solid #404040;
-}
-
-body.dark-theme .copy-button,
-body.auto-theme .copy-button {
-  color: #848d97;
-}
-
-body.dark-theme .copy-button:hover,
-body.auto-theme .copy-button:hover {
+body.dark-theme .copy-button:hover {
   color: #58a6ff;
-}
-
-body.dark-theme .hljs-comment,
-body.auto-theme .hljs-comment,
-body.dark-theme .hljs-quote,
-body.auto-theme .hljs-quote {
-  color: #6a9955;
-}
-
-body.dark-theme .hljs-keyword,
-body.auto-theme .hljs-keyword,
-body.dark-theme .hljs-selector-tag,
-body.auto-theme .hljs-selector-tag,
-body.dark-theme .hljs-subst,
-body.auto-theme .hljs-subst {
-  color: #569cd6;
-}
-
-body.dark-theme .hljs-number,
-body.auto-theme .hljs-number,
-body.dark-theme .hljs-literal,
-body.auto-theme .hljs-literal,
-body.dark-theme .hljs-variable,
-body.auto-theme .hljs-variable,
-body.dark-theme .hljs-template-variable,
-body.auto-theme .hljs-template-variable,
-body.dark-theme .hljs-tag .hljs-attr,
-body.auto-theme .hljs-tag .hljs-attr {
-  color: #b5cea8;
-}
-
-body.dark-theme .hljs-string,
-body.auto-theme .hljs-string,
-body.dark-theme .hljs-doctag,
-body.auto-theme .hljs-doctag {
-  color: #ce9178;
-}
-
-body.dark-theme .hljs-title,
-body.auto-theme .hljs-title,
-body.dark-theme .hljs-section,
-body.auto-theme .hljs-section,
-body.dark-theme .hljs-selector-id,
-body.auto-theme .hljs-selector-id {
-  color: #dcdcaa;
-}
-
-body.dark-theme .hljs-type,
-body.auto-theme .hljs-type,
-body.dark-theme .hljs-class .hljs-title,
-body.auto-theme .hljs-class .hljs-title {
-  color: #4ec9b0;
-}
-
-body.dark-theme .hljs-tag,
-body.auto-theme .hljs-tag,
-body.dark-theme .hljs-name,
-body.auto-theme .hljs-name,
-body.dark-theme .hljs-attribute,
-body.auto-theme .hljs-attribute {
-  color: #9cdcfe;
-}
-
-body.dark-theme .hljs-regexp,
-body.auto-theme .hljs-regexp,
-body.dark-theme .hljs-link,
-body.auto-theme .hljs-link {
-  color: #d16969;
-}
-
-body.dark-theme .hljs-symbol,
-body.auto-theme .hljs-symbol,
-body.dark-theme .hljs-bullet,
-body.auto-theme .hljs-bullet {
-  color: #d7ba7d;
-}
-
-body.dark-theme .hljs-built_in,
-body.auto-theme .hljs-built_in,
-body.dark-theme .hljs-builtin-name,
-body.auto-theme .hljs-builtin-name {
-  color: #4ec9b0;
-}
-
-body.dark-theme .hljs-meta,
-body.auto-theme .hljs-meta {
-  color: #9cdcfe;
-}
-
-body.dark-theme .hljs-deletion,
-body.auto-theme .hljs-deletion {
-  background: #5a1919;
-}
-
-body.dark-theme .hljs-addition,
-body.auto-theme .hljs-addition {
-  background: #1a5a1a;
 }

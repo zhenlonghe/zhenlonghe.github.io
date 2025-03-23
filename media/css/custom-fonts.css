@@ -1,0 +1,150 @@
+/* Custom Chinese font from manateelazycat.github.io */
+@font-face {
+    font-family: jinkaiFont;
+    src: url("../fonts/jinkai.ttf") format("TrueType");
+}
+
+/* Import IBM Plex Mono code font */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap');
+
+/* 保留Monaspace Argon字体作为备选 */
+@font-face {
+    font-family: 'Monaspace Argon';
+    src: url('https://cdn.jsdelivr.net/gh/githubnext/monaspace@1.000/fonts/webfonts/MonaspaceArgon-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Monaspace Argon';
+    src: url('https://cdn.jsdelivr.net/gh/githubnext/monaspace@1.000/fonts/webfonts/MonaspaceArgon-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* Apply Chinese font to Chinese characters */
+:lang(zh), 
+:lang(zh-CN),
+body {
+    font-family: "jinkaiFont", "Hiragino Sans GB", "Noto Sans", sans-serif;
+    font-size: 16px; /* Increase base font size */
+}
+
+/* Article title font fix */
+article .title, 
+article .title header #header h1 a, 
+header #header h1 article .title a, 
+article .title a {
+    font-family: "jinkaiFont", "Hiragino Sans GB", "Noto Sans", sans-serif !important;
+    font-size: 1.4em !important;
+}
+
+/* Heading styling */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "jinkaiFont", "Hiragino Sans GB", "Noto Sans", sans-serif !important;
+}
+
+h1 { font-size: 1.6em !important; }
+h2 { font-size: 1.4em !important; }
+h3 { font-size: 1.2em !important; }
+h4 { font-size: 1.1em !important; }
+
+/* Homepage title fix - ensure consistent sizing with article titles */
+.listing .content .title h2 {
+    font-size: 1.4em !important;
+}
+
+.listing .content .title h2 a {
+    font-size: 1em !important; /* 1em to inherit from parent */
+}
+
+/* Set code blocks to use IBM Plex Mono */
+pre code, code, pre, .hljs {
+    font-family: 'IBM Plex Mono', 'Monaspace Argon', 'JetBrains Mono', monospace !important;
+    font-size: 12px !important;
+    margin-left: 0 !important; /* 移除左侧边距，因为不再显示行号 */
+    padding-left: 1em !important; /* 添加适当的内边距 */
+}
+
+/* 移除pre元素的相对定位，因为不再需要用于定位行号 */
+pre {
+    position: static !important;
+}
+
+/* 确保没有行号div显示 */
+.line-numbers-col {
+    display: none !important;
+}
+
+/* Ensure all code elements use IBM Plex Mono */
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-title,
+.hljs-section,
+.hljs-doctag,
+.hljs-name,
+.hljs-strong,
+.hljs-comment,
+.hljs-string,
+.hljs-built_in,
+.hljs-literal,
+.hljs-type,
+.hljs-addition,
+.hljs-tag,
+.hljs-quote,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-meta,
+.hljs-subst,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-deletion,
+.hljs-bullet,
+.hljs-function,
+.hljs-title.function_,
+.hljs-function .hljs-title,
+.hljs-title.class_,
+.hljs-class .hljs-title {
+    font-family: 'IBM Plex Mono', 'Monaspace Argon', monospace !important;
+}
+
+/* Make function names (like switchToABC) bold */
+.hljs-function,
+.hljs-title.function_,
+.hljs-function .hljs-title,
+.hljs-title {
+    font-weight: bold !important;
+}
+
+/* Smaller copyright footer text */
+footer {
+    font-size: 0.75em !important;
+    color: #808080 !important;
+    opacity: 0.7;
+}
+
+footer a {
+    opacity: 0.7;
+}
+
+/* Social links styling */
+.social-links a {
+    font-size: 1.5em;
+    margin: 0 0.5em;
+    display: inline-block;
+}
+
+.social-links a i {
+    color: #808080;
+}
+
+.social-links a:hover i {
+    color: #bb2222;
+}
+
+/* GitHub icon style for About page */
+.github-link {
+    margin-top: 0;
+} 
