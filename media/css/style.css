@@ -168,16 +168,17 @@ article, .post {
   box-sizing: border-box;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  padding: 0 1em;
 }
 
 article p, .post p {
   width: 100%;
   max-width: 100%;
   padding: .4em 0;
-  font-size: 13px;  /* 全局减小字体大小以保持一致性 */
-  line-height: 1.5;  /* 调整行高 */
-  word-wrap: break-word;   /* 确保长文本折行 */
-  overflow-wrap: break-word; /* 现代浏览器支持 */
+  font-size: 13px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 article .title {
@@ -270,6 +271,10 @@ footer {
   #content {
     width: 100%;
   }
+  
+  article, .post {
+    padding: 0;
+  }
 
   article p, .post p {
     font-size: 13px;
@@ -296,10 +301,23 @@ footer {
   .content-main {
     width: 100%;
   }
+
+  article, .post {
+    width: 100%;
+    box-sizing: border-box;
+  }
 }
 
 /* 确保移动端文本折行 */
 @media screen and (max-width: 680px) {
+  header, #content, article, .post, footer {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 1em;
+    padding-right: 1em;
+    box-sizing: border-box;
+  }
+
   pre code {
     white-space: pre-wrap;
     word-wrap: break-word;
