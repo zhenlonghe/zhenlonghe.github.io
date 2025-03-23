@@ -27,7 +27,7 @@
 :lang(zh-CN),
 body {
     font-family: "jinkaiFont", "Hiragino Sans GB", "Noto Sans", sans-serif;
-    font-size: 14px; /* 恢复至上个版本的字体大小 */
+    font-size: 12px; /* 全局减小字体大小以保持一致性 */
 }
 
 /* Article title font fix */
@@ -36,7 +36,7 @@ article .title header #header h1 a,
 header #header h1 article .title a, 
 article .title a {
     font-family: "jinkaiFont", "Hiragino Sans GB", "Noto Sans", sans-serif !important;
-    font-size: 1.4em !important;
+    font-size: 1.2em !important; /* 略微减小标题大小 */
 }
 
 /* Heading styling */
