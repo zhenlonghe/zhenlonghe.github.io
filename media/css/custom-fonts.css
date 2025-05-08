@@ -1,33 +1,25 @@
-/* Custom Chinese font from manateelazycat.github.io */
 @font-face {
-    font-family: jinkaiFont;
+    font-family: "FZJuZXFJF";
     src: url("../fonts/FZJuZXFJF.TTF") format("TrueType");
 }
 
 /* Import IBM Plex Mono code font */
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap');
 
-/* 保留Monaspace Argon字体作为备选 */
-@font-face {
-    font-family: 'Monaspace Argon';
-    src: url('https://cdn.jsdelivr.net/gh/githubnext/monaspace@1.000/fonts/webfonts/MonaspaceArgon-Regular.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Monaspace Argon';
-    src: url('https://cdn.jsdelivr.net/gh/githubnext/monaspace@1.000/fonts/webfonts/MonaspaceArgon-Bold.woff2') format('woff2');
-    font-weight: bold;
-    font-style: normal;
-}
-
 /* Apply Chinese font to Chinese characters */
 :lang(zh), 
 :lang(zh-CN),
 body {
-    font-family: "jinkaiFont", "Hiragino Sans GB", "Noto Sans", sans-serif;
+    font-family: "FZJuZXFJF", "Hiragino Sans GB", "Noto Sans", sans-serif;
     font-size: 14px; /* 全局减小字体大小以保持一致性 */
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+}
+
+/* 为网站标题中的英文部分使用 IBM Plex Mono 字体 */
+header #header h1 a {
+    font-family: 'IBM Plex Mono', "FZJuZXFJF", "Hiragino Sans GB", "Noto Sans", sans-serif !important;
+    letter-spacing: -0.5px; /* 略微调整字母间距以改善可读性 */
 }
 
 /* Article title font fix */
@@ -35,13 +27,13 @@ article .title,
 article .title header #header h1 a, 
 header #header h1 article .title a, 
 article .title a {
-    font-family: "jinkaiFont", "Hiragino Sans GB", "Noto Sans", sans-serif !important;
+    font-family: "FZJuZXFJF", "Hiragino Sans GB", "Noto Sans", sans-serif !important;
     font-size: 1.2em !important; /* 略微减小标题大小 */
 }
 
 /* Heading styling */
 h1, h2, h3, h4, h5, h6 {
-    font-family: "jinkaiFont", "Hiragino Sans GB", "Noto Sans", sans-serif !important;
+    font-family: "FZJuZXFJF", "Hiragino Sans GB", "Noto Sans", sans-serif !important;
 }
 
 h1 { font-size: 1.6em !important; }
@@ -60,7 +52,7 @@ h4 { font-size: 1.1em !important; }
 
 /* Set code blocks to use IBM Plex Mono */
 pre code, code, pre, .hljs {
-    font-family: 'IBM Plex Mono', 'Monaspace Argon', 'JetBrains Mono', monospace !important;
+    font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace !important;
     font-size: 11px !important;  /* 从12px减小至11px */
     margin-left: 0 !important; /* 移除左侧边距，因为不再显示行号 */
     padding-left: 1em !important; /* 添加适当的内边距 */
@@ -112,7 +104,7 @@ pre {
 .hljs-function .hljs-title,
 .hljs-title.class_,
 .hljs-class .hljs-title {
-    font-family: 'IBM Plex Mono', 'Monaspace Argon', monospace !important;
+    font-family: 'IBM Plex Mono', monospace !important;
 }
 
 /* Make function names (like switchToABC) bold */
@@ -191,4 +183,27 @@ footer a {
         white-space: pre-wrap !important;
         overflow-wrap: break-word !important;
     }
+}
+
+/* 为数字应用 IBM Plex Mono 字体 */
+.post-content time,
+.post-content p:not(pre) > code,
+.post-content li:not(pre) > code,
+.post-content td:not(pre) > code,
+.post-content span:not(pre) > code,
+.post-content div:not(pre) > code,
+.archive-list .date,
+.listing .date,
+li.listing-item time,
+.listing-item time,
+time[datetime],
+.listing time {
+    font-family: 'IBM Plex Mono', monospace !important;
+}
+
+/* 确保所有数字都使用等宽字体显示 */
+.content time,
+time {
+    font-variant-numeric: tabular-nums;
+    font-family: 'IBM Plex Mono', monospace !important;
 } 
