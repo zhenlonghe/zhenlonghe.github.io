@@ -1,5 +1,5 @@
 @font-face {
-    font-family: "FZJuZXFJF";
+    font-family: "zh-font";
     src: url("../fonts/FZJuZXFJF.TTF") format("TrueType");
 }
 
@@ -10,7 +10,7 @@
 :lang(zh), 
 :lang(zh-CN),
 body {
-    font-family: "FZJuZXFJF", "Hiragino Sans GB", "Noto Sans", sans-serif;
+    font-family: "zh-font", "Hiragino Sans GB", "Noto Sans", sans-serif;
     font-size: 14px; /* 全局减小字体大小以保持一致性 */
     font-variant-numeric: tabular-nums;
     font-feature-settings: "tnum";
@@ -18,7 +18,7 @@ body {
 
 /* 为网站标题中的英文部分使用 IBM Plex Mono 字体 */
 header #header h1 a {
-    font-family: 'IBM Plex Mono', "FZJuZXFJF", "Hiragino Sans GB", "Noto Sans", sans-serif !important;
+    font-family: 'IBM Plex Mono', "zh-font", "Hiragino Sans GB", "Noto Sans", sans-serif !important;
     letter-spacing: -0.5px; /* 略微调整字母间距以改善可读性 */
 }
 
@@ -27,13 +27,13 @@ article .title,
 article .title header #header h1 a, 
 header #header h1 article .title a, 
 article .title a {
-    font-family: "FZJuZXFJF", "Hiragino Sans GB", "Noto Sans", sans-serif !important;
+    font-family: "zh-font", "Hiragino Sans GB", "Noto Sans", sans-serif !important;
     font-size: 1.2em !important; /* 略微减小标题大小 */
 }
 
 /* Heading styling */
 h1, h2, h3, h4, h5, h6 {
-    font-family: "FZJuZXFJF", "Hiragino Sans GB", "Noto Sans", sans-serif !important;
+    font-family: "zh-font", "Hiragino Sans GB", "Noto Sans", sans-serif !important;
 }
 
 h1 { font-size: 1.6em !important; }
