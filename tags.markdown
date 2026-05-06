@@ -18,7 +18,7 @@ layout: page
 
 <ul class="listing">
 {% for post in site.posts %}
-  <li class="listing-item">
+  <li class="listing-item" data-tags="{{ post.tags | join: ',' }}">
     <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
     <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
     <span class="post-tags">
@@ -36,7 +36,7 @@ $(function() {
   // 初始化标签云
   $.fn.tagcloud.defaults = {
     size: {start: 12, end: 18, unit: 'px'},
-    color: {start: '#777', end: '#333'}
+    color: {start: '#938c97', end: '#f0e8e9'}
   };
   $('#tag_cloud a').tagcloud();
 
@@ -72,72 +72,3 @@ $(function() {
   });
 });
 </script>
-
-<style>
-#tag_cloud {
-  margin-bottom: 20px;
-  padding: 15px;
-  background: #f8f9fa;
-  border-radius: 4px;
-  line-height: 2em;
-}
-
-#tag_cloud a {
-  margin: 0 5px;
-  padding: 2px 7px;
-  background: #fff;
-  border-radius: 3px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-#tag_cloud a:hover {
-  background: #e9ecef;
-}
-
-#tag_cloud a.active {
-  background: #007bff;
-  color: #fff;
-}
-
-.tag-count {
-  font-size: 0.8em;
-  color: #666;
-}
-
-.clear-filter {
-  font-size: 18px;
-  color: #666;
-  margin-left: 10px;
-  text-decoration: none;
-}
-
-.clear-filter:hover {
-  color: #333;
-}
-
-.listing {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.listing-item {
-  margin: 5px 0;
-}
-
-.listing-item time {
-  color: #999;
-  margin-right: 15px;
-}
-
-.post-tags {
-  margin-left: 10px;
-  font-size: 0.9em;
-}
-
-.post-tag {
-  color: #666;
-  margin-right: 5px;
-}
-</style>

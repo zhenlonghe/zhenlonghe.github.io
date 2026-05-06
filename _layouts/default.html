@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="author" content="{{ site.author }}" />
@@ -13,10 +13,8 @@
     <link rel="alternate icon" type="image/png" href="/media/favicon.png">
     <link href="/atom.xml" rel="alternate" title="{{ site.name }}" type="application/atom+xml" />
     <link rel="stylesheet" href="/media/css/style.css">
-    <link rel="stylesheet" href="/media/css/dark-mode.css">
     <link rel="stylesheet" href="/media/css/github.css">
     <link rel="stylesheet" href="/media/css/fontawesome.css">
-    <link rel="stylesheet" href="/media/css/custom-fonts.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
     <script src="/media/js/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script> 
@@ -37,15 +35,13 @@
         
         hljs.highlightAll();
         
-        document.body.classList.remove('auto-theme', 'light-theme');
-        document.body.classList.add('dark-theme');
-
         document.querySelectorAll('pre code').forEach(function(codeBlock) {
           const pre = codeBlock.parentNode;
           const copyButton = document.createElement('button');
           copyButton.className = 'copy-button';
           copyButton.innerHTML = '<i class="fa-regular fa-copy"></i>';
           copyButton.title = '复制代码';
+          copyButton.setAttribute('aria-label', '复制代码');
           
           copyButton.addEventListener('click', function() {
             const code = codeBlock.textContent;
@@ -54,8 +50,7 @@
               setTimeout(function() {
                 copyButton.innerHTML = '<i class="fa-regular fa-copy"></i>';
               }, 2000);
-            }).catch(function(err) {
-              console.error('无法复制代码:', err);
+            }).catch(function() {
               copyButton.innerHTML = '<i class="fa-solid fa-xmark"></i>';
               setTimeout(function() {
                 copyButton.innerHTML = '<i class="fa-regular fa-copy"></i>';
@@ -76,7 +71,7 @@
         </div>
         <nav>
           {% for nav in site.navigations %}
-          <span><a title="{{ nav.title }}" href="{{ nav.href }}"><i class="{{ nav.class }}"></i></a></span>
+          <span><a title="{{ nav.title }}" aria-label="{{ nav.title }}" href="{{ nav.href }}"><i class="{{ nav.class }}"></i></a></span>
           {% endfor %}
         </nav>
       </header>

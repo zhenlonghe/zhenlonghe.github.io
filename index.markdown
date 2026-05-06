@@ -2,14 +2,12 @@
 layout: default
 ---
 
-<div>
-  <ul class="listing">
-  {% for post in site.posts limit: 1 %}
-  <article class="content">
-    <section class="title">
-      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-    </section>
-    <section class="meta">
+{% for post in site.posts limit: 1 %}
+<article class="content featured-post">
+  <section class="title">
+    <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+  </section>
+  <section class="meta">
     <span class="time">
       <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
     </span>
@@ -20,13 +18,13 @@ layout: default
       {% endfor %}
     </span>
     {% endif %}
-    <!-- BEGIN this would not work on any other domain -->
+    {% if post.guid %}
     <span
       class           = 'like-wrapper'
       like-shortname  = '{{ site.disqus }}'
       like-identifier = '{{ post.guid }}'
       like-name       = '{{ post.title }}'
-      like-link       = '{{ site.atom-baseurl }}{{ page.url }}'
+      like-link       = '{{ site.atom-baseurl }}{{ post.url }}'
       like-btn        = '&#xf164;'
     ></span>
     <script type="text/javascript">
@@ -34,17 +32,17 @@ layout: default
       l.src = 'https://like.lhzhang.com/javascript/widget.js';
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(l);
     </script>
-    <!-- END this would not work on any other domain -->
-    </section>
-    <section class="post">
+    {% endif %}
+  </section>
+  <section class="post">
     {{ post.content | auto_spacing }}
-    </section>
-    </article>
-  {% endfor %}
-  </ul>
+  </section>
+</article>
+{% endfor %}
+
   <div class="divider"></div>
   <ul class="listing main-listing">
-    <li class="listing-seperator">Happend earlier this year</li>
+    <li class="listing-seperator">Earlier this year</li>
   {% capture year %}{{ site.time | date:"%Y"}}{% endcapture %}
   {% for post in site.posts offset:1 %}
     {% capture y %}{{ post.date | date:"%Y"}}{% endcapture %}
@@ -58,4 +56,3 @@ layout: default
   {% endfor %}
     <li class="listing-seperator"><a href="/archive.html">Long long ago</a></li>
   </ul>
-</div>
