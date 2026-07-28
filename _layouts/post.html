@@ -3,67 +3,53 @@ layout: default
 ---
 
 <article>
-  <section class="title">
-    <h2>{{ page.title }} </h2>
-  </section>
-  <section class="meta">
-  <span class="time">
-    <time datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date:"%Y-%m-%d" }}</time>
-  </span>
-  {% if page.tags %}
-  <span class="tags">
-    {% for tag in page.tags %}
-    <a href="/tags.html#{{ tag }}" title="{{ tag }}">#{{ tag }}</a>
-    {% endfor %}
-  </span>
-  {% endif %}
-  </section>
-  <section class="post">
-  {{ content | auto_spacing }}
-  </section>
-  {% if page.guid %}
-  <script type="text/javascript">
-      var disqus_shortname = '{{ site.disqus }}';
-      var disqus_identifier = '{{ page.guid }}';
+  <header>
+    <h1 class="entry-title">{{ page.title }}</h1>
+    <div class="entry-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
+      {%- if page.tags and page.tags != empty %}
+      <span class="tag-list">
+        {%- for tag in page.tags %}
+        <a class="tag" href="/tags.html#{{ tag | uri_escape }}">{{ tag }}</a>
+        {%- endfor %}
+      </span>
+      {%- endif %}
+    </div>
+  </header>
 
-      function leave_comment() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          $("#leave_comment_link").css("display", "none");
-          $("#collapse_comment_link").css("display", "");
-      };
-      function collapse_comment() {
-          // document.getElementById("disqus_thread").innerHTML = '';
-          $("#disqus_thread").slideUp(400, function() {
-              $("#disqus_thread").empty();
-              $("#leave_comment_link").css("display", "");
-              $("#collapse_comment_link").css("display", "none");
-              $("#disqus_thread").css("display", "");
-          });
-      };
-  </script>
-  <div class="divider">
-    <span>
-    {% if page.previous %}
-    <a href="{{ page.previous.url }}"><i class="fa fa-chevron-left"></i></a>
-    {% else %}
-    <i class="fa fa-circle"></i>
-    {% endif %}
-    </span>
-    <span><a href="javascript:leave_comment();" id="leave_comment_link"><i class="fa fa-comment-o"></i></a></span>
-    <span><a href="javascript:collapse_comment();" id="collapse_comment_link" style="display:none;"><i class="fa fa-chevron-up"></i></a></span>
-    <span>
-    {% if page.next %}
-    <a href="{{ page.next.url }}"><i class="fa fa-chevron-right"></i></a>
-    {% else %}
-    <i class="fa fa-circle"></i>
-    {% endif %}
-    </span>
+  <div class="prose">
+    {{ content | auto_spacing }}
   </div>
-  <section class="comment">
-  <div id="disqus_thread"></div>
-  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  {%- comment -%}
+    上下篇导航过去挂在 page.guid 上，而现存文章一篇都没有 guid，等于每篇文章
+    都是死路。导航跟评论解绑，评论才继续看 guid。
+  {%- endcomment -%}
+  {%- if page.previous or page.next %}
+  <nav class="post-nav" aria-label="文章导航">
+    {%- if page.previous %}
+    <a class="post-nav-link is-previous" href="{{ page.previous.url }}" rel="prev">
+      <span class="direction">{% include icon.html name="arrow-left" %}上一篇</span>
+      <span class="headline">{{ page.previous.title }}</span>
+    </a>
+    {%- endif %}
+    {%- if page.next %}
+    <a class="post-nav-link is-next" href="{{ page.next.url }}" rel="next">
+      <span class="direction">下一篇{% include icon.html name="arrow-right" %}</span>
+      <span class="headline">{{ page.next.title }}</span>
+    </a>
+    {%- endif %}
+  </nav>
+  {%- endif %}
+
+  {%- if page.guid %}
+  <section class="comments">
+    <button type="button" class="comment-toggle" data-comment-toggle
+            data-shortname="{{ site.disqus }}" data-identifier="{{ page.guid }}">
+      {% include icon.html name="comment" %}留言
+    </button>
+    <div class="comment-thread" id="disqus_thread"></div>
+    <noscript><p>需要开启 JavaScript 才能看到 <a href="https://disqus.com/?ref_noscript">Disqus</a> 评论。</p></noscript>
   </section>
-  {% endif %}
+  {%- endif %}
 </article>

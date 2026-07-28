@@ -1,74 +1,39 @@
 ---
-title: tags
+title: 标签
 layout: page
+raw: true
 ---
 
-<div id='tag_cloud'>
-{% for tag in site.tags %}
-<a href="#" 
-   class="tag-filter" 
-   data-tag="{{ tag[0] }}" 
-   title="{{ tag[0] }} ({{ tag[1].size }}篇文章)">
-   {{ tag[0] }}
-   <span class="tag-count">({{ tag[1].size }})</span>
-</a>
-{% endfor %}
-<a href="#" id="clearFilter" class="clear-filter" title="清除过滤" style="display: none;">×</a>
+{%- comment -%}
+  筛选逻辑搬到 media/js/site.js，不再需要 jQuery 和 jquery.tagcloud。
+  另外文章里的标签链接是 /tags.html#标签，过去带 hash 进来并不会自动筛选，
+  现在会。
+{%- endcomment -%}
+
+<div class="tag-cloud" role="group" aria-label="按标签筛选">
+{%- for tag in site.tags %}
+  <button type="button" class="tag" data-tag="{{ tag[0] }}" aria-pressed="false">
+    {{ tag[0] }}<span class="count">{{ tag[1].size }}</span>
+  </button>
+{%- endfor %}
 </div>
 
 <ul class="listing">
-{% for post in site.posts %}
+{%- for post in site.posts %}
   <li class="listing-item" data-tags="{{ post.tags | join: ',' }}">
-    <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-    <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-    <span class="post-tags">
-      {% for tag in post.tags %}
-        <span class="post-tag">{{ tag }}</span>
-      {% endfor %}
-    </span>
+    <a href="{{ post.url }}">
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+      <span class="listing-title">{{ post.title }}</span>
+      {%- if post.tags and post.tags != empty %}
+      <span class="tag-list">
+        {%- for tag in post.tags %}
+        <span class="tag">{{ tag }}</span>
+        {%- endfor %}
+      </span>
+      {%- endif %}
+    </a>
   </li>
-{% endfor %}
+{%- endfor %}
 </ul>
 
-<script src="/media/js/jquery.tagcloud.js"></script>
-<script>
-$(function() {
-  // 初始化标签云
-  $.fn.tagcloud.defaults = {
-    size: {start: 12, end: 18, unit: 'px'},
-    color: {start: '#938c97', end: '#f0e8e9'}
-  };
-  $('#tag_cloud a').tagcloud();
-
-  // 标签过滤功能
-  $('.tag-filter').click(function(e) {
-    e.preventDefault();
-    const selectedTag = $(this).data('tag');
-    
-    // 高亮选中的标签
-    $('.tag-filter').removeClass('active');
-    $(this).addClass('active');
-    
-    // 显示清除按钮
-    $('#clearFilter').show();
-    
-    // 过滤文章
-    $('.listing-item').each(function() {
-      const tags = $(this).data('tags').split(',');
-      if (tags.includes(selectedTag)) {
-        $(this).show();
-      } else {
-        $(this).hide();
-      }
-    });
-  });
-
-  // 清除过滤
-  $('#clearFilter').click(function(e) {
-    e.preventDefault();
-    $(this).hide();
-    $('.tag-filter').removeClass('active');
-    $('.listing-item').show();
-  });
-});
-</script>
+<p class="listing-empty" hidden>这个标签下暂时没有文章。</p>

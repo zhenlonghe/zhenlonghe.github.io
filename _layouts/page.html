@@ -2,13 +2,25 @@
 layout: default
 ---
 
-<article>
-  {% if page.title %}
-  <section class="title">
-    <h2>{{ page.title }} </h2>
-  </section>
-  {% endif %}
-  <section class="post">
-  {{ content | auto_spacing }}
-  </section>
+<article{% if page.body_class %} class="{{ page.body_class }}"{% endif %}>
+  {%- if page.title %}
+  <header>
+    <h1 class="entry-title">{{ page.heading | default: page.title }}</h1>
+    {%- if page.subtitle %}
+    <p class="entry-meta"><span class="stamp">{{ page.subtitle }}</span></p>
+    {%- endif %}
+  </header>
+  {%- endif %}
+
+  {%- comment -%}
+    归档、标签这类页面的主体是列表而不是散文：走 raw 时不套 .prose，
+    否则会吃到正文的列表缩进，右边缘跟页眉那条线对不齐。
+  {%- endcomment -%}
+  {%- if page.raw %}
+  {{ content }}
+  {%- else %}
+  <div class="prose">
+    {{ content | auto_spacing }}
+  </div>
+  {%- endif %}
 </article>

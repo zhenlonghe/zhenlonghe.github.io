@@ -2,57 +2,64 @@
 layout: default
 ---
 
-{% for post in site.posts limit: 1 %}
-<article class="content featured-post">
-  <section class="title">
-    <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-  </section>
-  <section class="meta">
-    <span class="time">
-      <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-    </span>
-    {% if post.tags %}
-    <span class="tags">
-      {% for tag in post.tags %}
-      <a href="/tags.html#{{ tag }}" title="{{ tag }}">#{{ tag }}</a>
-      {% endfor %}
-    </span>
-    {% endif %}
-    {% if post.guid %}
-    <span
-      class           = 'like-wrapper'
-      like-shortname  = '{{ site.disqus }}'
-      like-identifier = '{{ post.guid }}'
-      like-name       = '{{ post.title }}'
-      like-link       = '{{ site.atom-baseurl }}{{ post.url }}'
-      like-btn        = '&#xf164;'
-    ></span>
-    <script type="text/javascript">
-      var l = document.createElement('script'); l.type = 'text/javascript'; l.async = true;
-      l.src = 'https://like.lhzhang.com/javascript/widget.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(l);
-    </script>
-    {% endif %}
-  </section>
-  <section class="post">
-    {{ post.content | auto_spacing }}
-  </section>
-</article>
-{% endfor %}
+{%- comment -%}
+  最新一篇全文照登，后面接近期列表。
 
-  <div class="divider"></div>
-  <ul class="listing main-listing">
-    <li class="listing-seperator">Earlier this year</li>
-  {% capture year %}{{ site.time | date:"%Y"}}{% endcapture %}
-  {% for post in site.posts offset:1 %}
-    {% capture y %}{{ post.date | date:"%Y"}}{% endcapture %}
-    {% if year != y %}
-    {% break %}
-    {% endif %}
+  原先列表用 `site.time` 的年份跟文章年份比对，一不同就 break。最新文章是
+  2026 年、第二篇是 2025 年，于是循环在第一轮就断掉，"Earlier this year"
+  下面一篇都不剩。这里改成直接取最近 12 篇按年分组，跟当前年份无关。
+{%- endcomment -%}
+
+{%- assign latest = site.posts.first -%}
+
+{%- if latest %}
+<article class="latest">
+  <header>
+    <h2 class="entry-title"><a href="{{ latest.url }}">{{ latest.title }}</a></h2>
+    <div class="entry-meta">
+      <time datetime="{{ latest.date | date_to_xmlschema }}">{{ latest.date | date: "%Y-%m-%d" }}</time>
+      {%- if latest.tags and latest.tags != empty %}
+      <span class="tag-list">
+        {%- for tag in latest.tags %}
+        <a class="tag" href="/tags.html#{{ tag | uri_escape }}">{{ tag }}</a>
+        {%- endfor %}
+      </span>
+      {%- endif %}
+      {%- if latest.guid %}
+      <span class="like-wrapper"
+            like-shortname="{{ site.disqus }}"
+            like-identifier="{{ latest.guid }}"
+            like-name="{{ latest.title }}"
+            like-link="{{ site.atom-baseurl }}{{ latest.url }}"
+            like-btn="&#x2661;"></span>
+      <script src="https://like.lhzhang.com/javascript/widget.js" async></script>
+      {%- endif %}
+    </div>
+  </header>
+  <div class="prose">
+    {{ latest.content | auto_spacing }}
+  </div>
+</article>
+{%- endif %}
+
+<section class="recent" aria-labelledby="recent-heading">
+  <h2 class="listing-label" id="recent-heading">
+    近期
+  </h2>
+
+  <ul class="listing">
+  {%- assign recent = site.posts | slice: 1, 12 -%}
+  {%- for post in recent %}
     <li class="listing-item">
-      <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-      <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+      <a href="{{ post.url }}">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+        <span class="listing-title">{{ post.title }}</span>
+      </a>
     </li>
-  {% endfor %}
-    <li class="listing-seperator"><a href="/archive.html">Long long ago</a></li>
+  {%- else %}
+    <li class="listing-empty">还只有这一篇。</li>
+  {%- endfor %}
   </ul>
+
+  <a class="more-link" href="/archive.html">全部归档，共 <span class="stamp">{{ site.posts.size }}</span> 篇{% include icon.html name="arrow-right" %}</a>
+</section>

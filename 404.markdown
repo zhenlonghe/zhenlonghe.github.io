@@ -5,4 +5,6 @@ layout: page
 
 Nothing found :(
 
-But you still can have a [look around](/index.html)
+也许它换了地址，也许它从来没存在过。
+
+不妨去 [归档](/archive.html) 里翻翻，或者[回首页](/)。

@@ -1,32 +1,35 @@
-markdown: rdiscount
-pygments: true
-permalink: /:year/:month/:day/:title.html
-name: "Zhenlong"
 markdown: kramdown
+permalink: /:year/:month/:day/:title.html
 
+name: "Zhenlong"
 author: "Zhenlong"
-atom-baseurl: "http://zhenlonghe.github.io/"
+description: "Zhenlong 的个人博客：近况、技术记录、年度回顾与个人表达。"
+atom-baseurl: "http://zhenlonghe.github.io"
 disqus: "zhenlonghe"
 
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - Rakefile
+  - README.md
+  - PRODUCT.md
+  - todo
+  - tools
+  - vendor
+  - reference_site.html
+
+# icon 对应 _includes/icon.html 里的名字。原先这里写的是 FA4 类名，
+# 站上加载的却是 FA6，像 fa-comment-o 这种早就不存在，只会渲染成空白。
 navigations:
-  - title: Archive
-    class: fa fa-list-ul
+  - title: 归档
+    icon: archive
     href: /archive.html
-  # - title: Tags
-  #   class: fa fa-tags
-  #   href: /tags.html
+  - title: 标签
+    icon: tags
+    href: /tags.html
   - title: RSS
-    class: fa fa-rss
+    icon: rss
     href: /atom.xml
-  # - title: Theme
-  #   class: theme-icon fa-solid fa-brightness
-  #   href: javascript:toggleTheme();
-  - title: About
-    class: fa fa-user
+  - title: 关于
+    icon: user
     href: /about.html
-  # - title: Gallery
-  #   class: fa fa-film
-  #   href: https://www.flickr.com/photos/127518998@N02/
-  # - title: Blogroll
-  #   class: fa fa-link
-  #   href: /links.html
