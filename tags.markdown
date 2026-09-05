@@ -20,7 +20,7 @@ raw: true
 
 <ul class="listing">
 {%- for post in site.posts %}
-  <li class="listing-item" data-tags="{{ post.tags | join: ',' }}">
+  <li class="listing-item" data-tags="{{ post.tags | join: ',' }}" style="--i: {{ forloop.index0 }}">
     <a href="{{ post.url }}">
       <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
       <span class="listing-title">{{ post.title }}</span>

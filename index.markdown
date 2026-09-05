@@ -50,7 +50,7 @@ layout: default
   <ul class="listing">
   {%- assign recent = site.posts | slice: 1, 12 -%}
   {%- for post in recent %}
-    <li class="listing-item">
+    <li class="listing-item" style="--i: {{ forloop.index0 }}">
       <a href="{{ post.url }}">
         <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
         <span class="listing-title">{{ post.title }}</span>

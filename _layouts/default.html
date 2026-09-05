@@ -21,7 +21,7 @@
     <title>{{ page_title }}</title>
     <meta name="author" content="{{ site.author }}">
     <meta name="description" content="{{ page_description | strip_newlines | escape }}">
-    <meta name="theme-color" content="#101117">
+    <meta name="theme-color" content="#101016">
     <link rel="canonical" href="{{ canonical }}">
 
     <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
@@ -39,17 +39,19 @@
     <link rel="alternate icon" type="image/png" href="/media/favicon.png">
     <link rel="alternate" type="application/atom+xml" title="{{ site.name }}" href="/atom.xml">
 
-    <!-- 正文字体是首屏就要用的，先取，别等 CSS 解析完再发请求 -->
-    <link rel="preload" href="/media/fonts/zh-core.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- 拉丁字体首屏就要用，先取；中文走系统字体，没有文件要下 -->
+    <link rel="preload" href="/media/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/media/css/style.css">
-    <!-- 生僻字的兜底字库声明，展开二十多 KB，不该挡首屏；等宽字体同理 -->
-    <link rel="stylesheet" href="/media/css/fonts-fallback.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
-    <noscript>
-      <link rel="stylesheet" href="/media/css/fonts-fallback.css">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap">
-    </noscript>
+    <!-- 两件事必须内联在 head、赶在首帧之前：
+         1. Apple 平台打上 .apple，代码字体走 ui-monospace 拿 SF Mono（见 style.css 的 --mono）
+         2. 跨文档 view transition 进来的页面打上 .vt，CSS 里的进站动效就不再重复跑；
+            pagereveal 在首帧之前触发，defer 脚本赶不上 -->
+    <script>
+      (function (h) {
+        if (/Mac|iPhone|iPad|iPod/.test(navigator.platform)) h.classList.add('apple');
+        addEventListener('pagereveal', function (e) { if (e.viewTransition) h.classList.add('vt'); });
+      })(document.documentElement);
+    </script>
   </head>
 
   <body>
@@ -80,7 +82,7 @@
 
       <footer class="colophon">
         {%- assign first_post = site.posts | last -%}
-        <p>&copy; {{ first_post.date | date: "%Y" }} – {{ site.time | date: "%Y" }} {{ site.author }} · <a href="/atom.xml">RSS</a></p>
+        <p>&copy; {{ first_post.date | date: "%Y" }} – {{ site.time | date: "%Y" }} {{ site.author }}</p>
       </footer>
     </div>
 

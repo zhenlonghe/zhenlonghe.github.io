@@ -21,11 +21,11 @@ task :server do
   sh 'bundle exec jekyll serve'
 end
 
-# 正文字体原档 6.6 MB，切成子集后常规访问只取 232 KB 的 zh-core。
-# 新文章若用到 core 之外的字，页面照样显示（走兜底档），重跑一次就并回 core。
-desc 'Rebuild the webfont subsets after publishing new posts'
+# 中文走系统字体，不发文件；只有拉丁（Archivo、Commit Mono）切子集自托管。
+# 换字体版本时把新原档放进 tools/fonts-src 再跑一次。
+desc 'Rebuild the self-hosted Latin webfonts from tools/fonts-src'
 task :fonts do
-  sh 'python3 tools/subset_font.py'
+  sh "uvx --from 'fonttools==4.64.0' --with brotli python3 tools/build_fonts.py"
 end
 
 desc 'Deploy with rake "deploy[comment]"'

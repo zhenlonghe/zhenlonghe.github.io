@@ -93,7 +93,8 @@
     var items = Array.prototype.slice.call(document.querySelectorAll('.listing-item[data-tags]'));
     var empty = document.querySelector('.listing-empty');
 
-    function apply(tag) {
+    // animate=true 时留下的行按新顺序错落进入；进页时的初始筛选不用，页面本身在入场
+    function apply(tag, animate) {
       var shown = 0;
 
       buttons.forEach(function (button) {
@@ -103,8 +104,26 @@
       items.forEach(function (item) {
         var match = !tag || item.dataset.tags.split(',').indexOf(tag) !== -1;
         item.hidden = !match;
-        if (match) shown += 1;
+        item.classList.remove('is-entering');
+        if (match) {
+          if (animate) item.style.setProperty('--i', shown);
+          shown += 1;
+        }
       });
+
+      if (animate) {
+        // 只换 class 不会重启一个已经播完的 CSS 动画（animation-name 没变）。
+        // 先把 animation 清成 none 强制回流，再放开，浏览器才会当成新动画重新播
+        items.forEach(function (item) {
+          if (!item.hidden) item.style.animation = 'none';
+        });
+        void document.body.offsetWidth;
+        items.forEach(function (item) {
+          if (item.hidden) return;
+          item.style.animation = '';
+          item.classList.add('is-entering');
+        });
+      }
 
       if (empty) empty.hidden = shown !== 0;
 
@@ -116,7 +135,7 @@
     buttons.forEach(function (button) {
       button.addEventListener('click', function () {
         // 再点一次同一个标签就是取消筛选
-        apply(button.getAttribute('aria-pressed') === 'true' ? '' : button.dataset.tag);
+        apply(button.getAttribute('aria-pressed') === 'true' ? '' : button.dataset.tag, true);
       });
     });
 

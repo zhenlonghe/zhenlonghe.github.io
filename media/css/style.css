@@ -2,24 +2,34 @@
 
 /* ==========================================================================
    字体
-   FZJuZXFJF.TTF（方正聚珍新仿简繁）原档 6.6 MB，切成子集后按需加载。
-   站内现有文字一律由这份 zh-core（248 KB）覆盖；两档兜底在
-   media/css/fonts-fallback.css 里异步加载，只有页面上出现 core 之外的字
-   才会被请求。三档码位互不相交，所以谁先加载都不影响结果。
+   中文不发字体文件：Mac/iOS 苹方、Windows 雅黑、Android/Linux 思源黑体，
+   全在读者系统里，见 --sans。只有拉丁部分自托管，由 tools/build_fonts.py 生成：
 
-   下面 FONT-SUBSETS 标记之间的内容由 tools/subset_font.py 生成，别手改。
-   发新文章后跑一次 `rake fonts`，新字并入 core。
+   Archivo      标题和正文里的英文、数字。宽体低对比的怪诞体，字重轴 400–700
+   Commit Mono  代码块的兜底。Apple 设备走 ui-monospace 直接拿到 SF Mono，
+                SF Mono 不允许网页嵌入，所以其他平台给一个最像它的开源字体
    ========================================================================== */
 
-/* FONT-SUBSETS:START */
 @font-face {
-  font-family: "zh-font";
-  src: url("../fonts/zh-core.woff2") format("woff2");
+  font-family: "Archivo";
+  src: url("../fonts/archivo.woff2") format("woff2");
+  font-weight: 400 700;
   font-display: swap;
-  /* 1161 字 */
-  unicode-range: U+20-7E,U+A2-A5,U+A7-A8,U+B0-B1,U+B7,U+D7,U+E0-E1,U+E8-EA,U+EC-ED,U+F2-F3,U+F7,U+F9-FA,U+FC,U+2010,U+2013-2016,U+2018-2019,U+201C-201D,U+2022,U+2025-2026,U+2030,U+2032-2033,U+2035,U+203B,U+203E,U+2190,U+2192,U+25CF,U+3000-3003,U+3005-3017,U+301D-301E,U+3021-3029,U+4E00,U+4E03,U+4E09-4E0B,U+4E0D-4E0E,U+4E14,U+4E16,U+4E1A,U+4E1C,U+4E24,U+4E2A,U+4E2D,U+4E34,U+4E3A-4E3B,U+4E45,U+4E48-4E49,U+4E4B,U+4E4D,U+4E50,U+4E5F-4E60,U+4E66,U+4E70,U+4E86,U+4E8B-4E8C,U+4E8E,U+4E94,U+4E9B,U+4EA4,U+4EA7,U+4EAB-4EAC,U+4EAE,U+4EBA,U+4EBF-4EC0,U+4EC5,U+4ECA-4ECB,U+4ECD-4ECE,U+4ED4,U+4ED6-4ED7,U+4EE3,U+4EE5,U+4EEC,U+4EF6-4EF7,U+4EFD,U+4F01,U+4F0F,U+4F11,U+4F17,U+4F1A,U+4F1F-4F20,U+4F30,U+4F46,U+4F4F,U+4F53,U+4F55,U+4F59,U+4F5C,U+4F60,U+4F7F,U+4FBF,U+4FC3,U+4FD7,U+4FDD,U+4FEE,U+4FFA,U+500D,U+500F,U+5019,U+5026,U+503C,U+5047,U+505A,U+505C,U+5065,U+50A8,U+50CF,U+50FB,U+513F,U+5141,U+5145,U+5148-5149,U+515C,U+5165,U+5168,U+516C,U+5171,U+5173,U+5176-5178,U+5185,U+518D,U+5199,U+51A5,U+51AC,U+51B3,U+51B5,U+51B7,U+51C6,U+51E0,U+51FA,U+5206-5207,U+5212,U+5217,U+5219-521B,U+521D,U+5220,U+5229,U+522B,U+5230,U+5236-5237,U+523B,U+524D,U+5267,U+5269-526A,U+526F,U+529B,U+529F-52A1,U+52A8-52AA,U+52C7,U+52E4,U+5316-5317,U+533A,U+5341,U+5347-5348,U+534E-534F,U+5353,U+5355,U+535A,U+5360,U+5370,U+5374,U+5377,U+5386,U+538C,U+539F,U+53BB,U+53C2,U+53C8,U+53CA-53CD,U+53D1,U+53D6-53D8,U+53E4,U+53E6,U+53EA,U+53EF-53F0,U+53F3,U+53F7-53F8,U+5403-5404,U+5408-5409,U+540C-540E,U+5411,U+5426-5427,U+542C,U+542F,U+544A,U+5458,U+5462,U+5468,U+5473,U+547D,U+548C,U+5496,U+54C0-54C1,U+54CD,U+54EA,U+550F,U+552E,U+5546,U+554A,U+5561,U+5565,U+5584,U+559C-559D,U+5618,U+5668,U+56DA-56DB,U+56DE,U+56E0,U+56F0,U+56F4,U+56FD-56FE,U+5728,U+5730,U+573A,U+5740,U+5751,U+578B,U+5792,U+57FA,U+5806,U+585E,U+5883,U+5899,U+589E,U+58A8,U+58C1,U+58F0,U+5904,U+5907,U+590D,U+590F,U+5916,U+591A,U+591C,U+5927,U+5929-592B,U+592D,U+5931,U+5934,U+5947-5948,U+594F,U+5957,U+5979,U+597D,U+5982,U+5987-5988,U+59A8,U+59B9,U+59CB,U+59D1,U+5A18,U+5A46,U+5A5A,U+5B50,U+5B57-5B58,U+5B5F,U+5B66,U+5B69,U+5B83,U+5B89,U+5B8C,U+5B97-5B98,U+5B9A,U+5B9D-5B9E,U+5BA2,U+5BB6,U+5BB9,U+5BBD,U+5BCC,U+5BD2,U+5BF9,U+5BFB-5BFC,U+5BFF,U+5C0F,U+5C11,U+5C14,U+5C1D,U+5C31,U+5C3E,U+5C45,U+5C4F,U+5C55,U+5C81,U+5DE5-5DE6,U+5DEE,U+5DF1-5DF2,U+5E01-5E02,U+5E08,U+5E0C,U+5E26,U+5E2E,U+5E38,U+5E72-5E74,U+5E76,U+5E78,U+5E7B,U+5E8F,U+5E93-5E95,U+5E97,U+5E9C,U+5E9F,U+5EA6,U+5EB7,U+5EFA,U+5F00,U+5F02,U+5F04,U+5F0F,U+5F3A,U+5F52-5F53,U+5F55,U+5F62,U+5F69,U+5F71,U+5F84-5F85,U+5F88,U+5F92,U+5F97,U+5FAA,U+5FAE,U+5FC3,U+5FC5,U+5FD8-5FD9,U+5FEB,U+6001,U+600E,U+601D,U+6021,U+6025,U+6027,U+603B,U+607C,U+6096,U+60B2,U+60C5,U+60D1,U+60E8,U+60EB,U+60ED,U+60EF,U+60F3,U+60F9,U+610F,U+611F,U+6127,U+6162,U+61D2,U+620F-6212,U+6216,U+6237,U+6240,U+624B,U+624D,U+6251,U+6253,U+626A,U+6270,U+627E,U+6280,U+628A,U+6293,U+6295,U+6297-6298,U+62A2,U+62B1,U+62C9,U+62D6,U+62E5,U+62E9,U+62FC,U+62FE,U+6301-6302,U+6307,U+6309,U+6321,U+633A,U+6362,U+6377,U+6389,U+63A2,U+63A5,U+63A8,U+63D0,U+63D2,U+642C,U+6444,U+64AD,U+652F,U+6536,U+6539,U+653E-653F,U+6548,U+6559,U+6562-6563,U+6570,U+6574,U+6587,U+6599,U+659F,U+65AD,U+65AF-65B0,U+65B9,U+65C1,U+65C5,U+65E0,U+65E5-65E7,U+65E9,U+65F6,U+660E,U+6613,U+6625,U+6628,U+662F,U+663E,U+665A,U+6668,U+666E,U+667A,U+6682,U+6696,U+66AE,U+66F4,U+66FF-6700,U+6708-6709,U+670D,U+671B,U+671F,U+672A-672C,U+672F,U+673A,U+674E,U+675F,U+6761,U+6765,U+677E-677F,U+6781,U+6784,U+6789,U+6790,U+679C,U+67B6,U+67CF,U+67D3,U+67E5,U+6807,U+680F,U+6821,U+6837,U+683C,U+6848,U+6863,U+68A6,U+68C0,U+68CB,U+699C,U+6A21,U+6A2A,U+6B21-6B22,U+6B32,U+6B3E,U+6B63-6B65,U+6B7B,U+6B8A,U+6BB5,U+6BCD,U+6BCF,U+6BD4-6BD5,U+6C0F,U+6C14,U+6C34,U+6C42,U+6C57,U+6C70,U+6CA1,U+6CD5,U+6CE8,U+6CF3,U+6D17,U+6D1E,U+6D32,U+6D3B,U+6D41,U+6D88,U+6DAF,U+6DD8,U+6DE1,U+6DF1,U+6DFB,U+6E05,U+6E24,U+6E29,U+6E32,U+6E38,U+6E90,U+6ECB,U+6ED1,U+6EDA,U+6EE1,U+6F5C,U+6FA1,U+6FB3,U+706B,U+706D,U+70B9,U+70C8,U+70E6,U+70ED,U+70F9,U+7126,U+7136,U+7167,U+7236-7237,U+7269,U+7279,U+72B6,U+72B9,U+72C2,U+72EC,U+731C,U+7387,U+73A9,U+73AF-73B0,U+73ED,U+7403,U+7406,U+74E6,U+751F,U+7528,U+7531,U+7533,U+7535,U+7537,U+754C,U+7559,U+7565,U+7591,U+75AF,U+75B2,U+75BC,U+767B,U+767D-767E,U+7684,U+76D1,U+76D8,U+76DB,U+76EE,U+76F4,U+76F8,U+7701,U+7709,U+770B,U+771F,U+773C,U+7740,U+7761,U+7763,U+77E5,U+77E9,U+77ED,U+77F3,U+7801,U+7814,U+7834,U+7855,U+786E,U+793A,U+793C,U+793E,U+795E,U+7968,U+7978,U+7981,U+798F,U+79BB,U+79CD,U+79D1,U+79E9,U+79EF,U+7A0B,U+7A33,U+7A3F,U+7A74,U+7A76,U+7A7A,U+7A81,U+7AA0,U+7ACB,U+7AD9,U+7ADF-7AE0,U+7AEF,U+7B11,U+7B14,U+7B2C,U+7B49,U+7B5B,U+7B7E,U+7B80,U+7B97,U+7BA1,U+7BAD,U+7BC7,U+7C7B,U+7CBE,U+7CFB,U+7D22,U+7D2F,U+7E41,U+7EA7,U+7EB3,U+7EBF,U+7EC4,U+7EC6,U+7EC8,U+7ECD,U+7ECF,U+7ED1,U+7ED3,U+7ED9,U+7EDD,U+7EDF,U+7EE7,U+7EE9,U+7EED,U+7EF4,U+7F13,U+7F16,U+7F18,U+7F1A,U+7F29,U+7F51,U+7F57,U+7F6E,U+7F8E,U+7FFB,U+8001,U+8003,U+8005,U+800C-800D,U+8010,U+804A,U+804C,U+8054,U+805A,U+8089,U+808C,U+809A,U+80A9,U+80B2,U+80CC,U+80FD,U+811A,U+817E,U+81EA,U+81F3-81F4,U+81FC,U+8212,U+822A,U+822C,U+8247,U+827A,U+8282,U+82E5,U+82F1,U+82F9,U+832B,U+8350,U+83AB,U+83B7,U+8425,U+843D,U+845B,U+85FB,U+8651,U+867D,U+86C7,U+884C,U+8857,U+8865,U+8868,U+88AB,U+88C5,U+88F8,U+897F,U+8981,U+89C1,U+89C4,U+89C6,U+89C9,U+89E3,U+8A00,U+8BA1,U+8BA4,U+8BA9,U+8BAD-8BB0,U+8BB2,U+8BB8,U+8BBA,U+8BBE-8BBF,U+8BC1,U+8BC4,U+8BC6,U+8BCD,U+8BD1,U+8BDD,U+8BE5-8BE6,U+8BED,U+8BF4,U+8BF7-8BF8,U+8BFB,U+8C08,U+8C13,U+8C22,U+8C61,U+8D22,U+8D25-8D28,U+8D34,U+8D44,U+8D4B,U+8D5A,U+8D70,U+8D75,U+8D77,U+8D85,U+8D8A,U+8DB3,U+8DDF,U+8DEF,U+8DF3,U+8DF5,U+8E48,U+8EAB,U+8F66,U+8F6E,U+8F7B,U+8F7D,U+8F83,U+8F88,U+8F91,U+8F93,U+8F9E,U+8FB9,U+8FBD-8FBE,U+8FC1,U+8FC7,U+8FCE,U+8FD0-8FD1,U+8FD8-8FD9,U+8FDB,U+8FDE,U+8FF7,U+8FFD,U+9000,U+9002,U+9009,U+9012,U+9014,U+901A,U+901D,U+901F-9020,U+903B,U+9053,U+90A3,U+90E8,U+90FD,U+914C-914D,U+9152,U+9177-9178,U+9192,U+91CC-91CD,U+91CF,U+91D1,U+94AE,U+94B1,U+94F6,U+94FE,U+9500,U+9519,U+952E,U+957F,U+95E8,U+95EE,U+95F2,U+95F4,U+95F7,U+9605,U+9636,U+9645,U+9650,U+9664,U+9669,U+968F,U+96C7,U+96E8,U+96EA,U+96F6,U+9700,U+9759,U+975E,U+9760,U+9762,U+9769,U+97F3,U+9875-9876,U+987A,U+987E,U+9888,U+9891,U+9893,U+9898,U+989C,U+996A,U+9996,U+9A6C,U+9A8C,U+9AD8,U+9B54,U+9C7C,U+9E21,U+9EBB,U+9EC4,U+9ED8,U+9F50,U+FF01-FF5E;
 }
-/* FONT-SUBSETS:END */
+
+@font-face {
+  font-family: "Commit Mono";
+  src: url("../fonts/commit-mono.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Commit Mono";
+  src: url("../fonts/commit-mono-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
 
 /* ==========================================================================
    令牌
@@ -46,19 +56,30 @@
 
   --measure: 46rem;
   --gutter: clamp(1.15rem, 4vw, 1.75rem);
+  /* 页面标题区到主体的距离。散文和列表页共用，否则归档页的年份会贴着标题 */
+  --content-gap: clamp(1.5rem, 3vw, 2rem);
   --radius: 0.75rem;
   --radius-lg: 1rem;
 
-  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", "Cascadia Mono", Consolas, monospace;
-  /* 回退字体走宋/仿宋一路。字库未到位的那一瞬间不会从仿宋跳成黑体 */
-  --serif: "zh-font", "Songti SC", "STSong", "Noto Serif SC", "SimSun", "Hiragino Mincho ProN", serif;
+  /* 默认给自托管的 Commit Mono；Apple 平台由 head 里的脚本打上 html.apple，
+     换成 ui-monospace 直接拿 SF Mono。不能只靠字体栈顺序：ui-monospace 在
+     非 Apple 平台也可能解析成系统等宽字体，把后面的 Commit Mono 挡掉 */
+  --mono: "Commit Mono", "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+  /* 拉丁走 Archivo，汉字按平台落到各自的系统黑体。都是人文黑体，气质一致 */
+  --sans: "Archivo", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", system-ui, sans-serif;
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  /* 到达用：起势快、收尾长，东西"落定"而不是"滑到" */
+  --ease-arrive: cubic-bezier(0.16, 1, 0.3, 1);
   --fast: 160ms var(--ease);
   --base: 240ms var(--ease);
 
   --z-sticky: 10;
   --z-overlay: 40;
+}
+
+html.apple {
+  --mono: ui-monospace, "SF Mono", Menlo, "Commit Mono", monospace;
 }
 
 /* ==========================================================================
@@ -75,6 +96,7 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-color: var(--line-strong) transparent;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -86,9 +108,9 @@ body {
     var(--bg);
   background-attachment: fixed;
   color: var(--ink);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 16px;
-  line-height: 1.8;
+  line-height: 1.75;
   font-variant-numeric: tabular-nums;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -205,19 +227,30 @@ button {
 }
 
 .masthead {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
   padding-block: clamp(1.75rem, 5vw, 3rem) clamp(1.5rem, 4vw, 2.25rem);
-  border-bottom: 1px solid var(--line);
+  /* 边框只占位；那条线由 ::after 画，进站时才能从左往右展开 */
+  border-bottom: 1px solid transparent;
+}
+
+.masthead::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: -1px;
+  height: 1px;
+  background: var(--line);
+  transform-origin: left center;
 }
 
 .wordmark {
-  font-family: var(--mono);
   font-size: 0.95rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -278,16 +311,6 @@ button {
   text-transform: uppercase;
 }
 
-.colophon a {
-  color: inherit;
-  border-bottom: 1px solid transparent;
-}
-
-.colophon a:hover {
-  color: var(--ink-muted);
-  border-bottom-color: var(--line-strong);
-}
-
 /* ==========================================================================
    标题与元信息
    ========================================================================== */
@@ -295,7 +318,7 @@ button {
 .entry-title {
   font-size: clamp(1.8rem, 1.35rem + 1.9vw, 2.5rem);
   line-height: 1.24;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 .entry-title a {
@@ -365,7 +388,14 @@ a.tag:focus-visible {
    ========================================================================== */
 
 .prose {
-  margin-top: clamp(1.5rem, 3vw, 2rem);
+  margin-top: var(--content-gap);
+}
+
+/* 归档、标签这类 raw 页面没有 .prose 包裹，第一块内容自己补上同样的间距 */
+article > header + .listing-group,
+article > header + .tag-cloud,
+article > header + .listing {
+  margin-top: var(--content-gap);
 }
 
 .prose > * + * {
@@ -378,7 +408,7 @@ a.tag:focus-visible {
 .prose blockquote,
 .prose table {
   font-size: 1.05rem;
-  line-height: 1.95;
+  line-height: 1.85;
 }
 
 .prose p {
@@ -430,7 +460,7 @@ a.tag:focus-visible {
 }
 
 .prose strong {
-  font-weight: 700;
+  font-weight: 600;
   color: var(--ink);
 }
 
@@ -514,6 +544,14 @@ code {
   tab-size: 2;
 }
 
+/* 首行右侧用浮动占位，让文字绕开复制按钮；只影响首行，不像 padding 那样整块让位 */
+.prose pre code::before {
+  content: "";
+  float: right;
+  width: 5.25rem;
+  height: 1.6rem;
+}
+
 /* 复制按钮常驻可见。悬停才出现的按钮在触屏上等于不存在 */
 .copy-button {
   position: absolute;
@@ -557,6 +595,12 @@ pre .copy-button[data-state="done"] {
   color: var(--accent);
   border-color: color-mix(in oklab, var(--accent) 45%, var(--line));
   background: color-mix(in oklab, var(--accent) 12%, var(--surface-high));
+}
+
+pre .copy-button[data-state="done"] svg path {
+  stroke-dasharray: 22;
+  stroke-dashoffset: 22;
+  animation: draw-check 280ms var(--ease-arrive) 40ms forwards;
 }
 
 pre .copy-button[data-state="failed"] {
@@ -693,15 +737,23 @@ pre .copy-button[data-state="failed"] {
   border-radius: var(--radius);
   transition:
     color var(--fast),
-    background-color var(--fast),
-    padding-left var(--base);
+    background-color var(--fast);
+}
+
+/* 悬停时文字向右让一步：动 transform 而不是 padding，不触发重排 */
+.listing-item > a > * {
+  transition: translate var(--base);
 }
 
 .listing-item > a:hover,
 .listing-item > a:focus-visible {
   color: var(--ink);
   background: linear-gradient(90deg, color-mix(in oklab, var(--accent) 9%, transparent), transparent 72%);
-  padding-left: 0.75rem;
+}
+
+.listing-item > a:hover > *,
+.listing-item > a:focus-visible > * {
+  translate: 0.5rem 0;
 }
 
 .listing-item time {
@@ -732,8 +784,8 @@ pre .copy-button[data-state="failed"] {
   position: sticky;
   top: 0;
   z-index: var(--z-sticky);
-  background: linear-gradient(var(--bg) 72%, transparent);
-  backdrop-filter: blur(6px);
+  background: color-mix(in oklab, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
   padding-top: 0.9rem;
 }
 
@@ -833,6 +885,15 @@ pre .copy-button[data-state="failed"] {
 .post-nav-link .direction svg {
   width: 0.8rem;
   height: 0.8rem;
+  transition: translate var(--base);
+}
+
+.post-nav-link.is-previous:hover .direction svg {
+  translate: -0.2rem 0;
+}
+
+.post-nav-link.is-next:hover .direction svg {
+  translate: 0.2rem 0;
 }
 
 .post-nav-link .headline {
@@ -897,13 +958,17 @@ pre .copy-button[data-state="failed"] {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-block: 1.5rem 2.25rem;
+  margin-bottom: 2.25rem;
 }
 
 .tag-cloud .tag {
   padding: 0.3rem 0.8rem;
   font-size: 0.85rem;
   cursor: pointer;
+  transition:
+    color var(--fast),
+    background-color var(--fast),
+    border-color var(--fast);
 }
 
 .tag-cloud .tag .count {
@@ -991,13 +1056,15 @@ pre .copy-button[data-state="failed"] {
   .prose ol,
   .prose blockquote {
     font-size: 1rem;
-    line-height: 1.9;
+    line-height: 1.8;
   }
 
   .prose pre code,
   .prose pre .hljs {
     padding: 1rem;
     font-size: 0.78rem;
+    /* anywhere 会先在缩进空格后断行，留一行空白、下一行顶格；break-all 直接填满再断 */
+    word-break: break-all;
   }
 
   /* 日期换到标题上方，标题拿到整行宽度 */
@@ -1028,25 +1095,174 @@ pre .copy-button[data-state="failed"] {
 }
 
 /* ==========================================================================
-   动效只用来给反馈。关掉动效偏好时全部让路
+   动效
+   一处作者化的时刻：冷加载时页眉那条线从左往右画出来，标题和正文随后落定。
+   页面之间走跨文档 View Transitions，页眉页脚原地不动，只有正文区换。
+   其余全是反馈：悬停、筛选、复制。没有滚动触发的逐段入场。
    ========================================================================== */
 
+@keyframes rule-draw {
+  from { scale: 0 1; }
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    translate: 0 0.5rem;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+
+@keyframes draw-check {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes vt-leave {
+  to {
+    opacity: 0;
+    translate: 0 -0.35rem;
+  }
+}
+
+@keyframes vt-enter {
+  from {
+    opacity: 0;
+    translate: 0 0.5rem;
+  }
+}
+
+/* 进站：线先走，标题跟上，正文最后。总时长 < 800ms，文字在淡入过程中就已可读 */
+.masthead::after {
+  animation: rule-draw 640ms var(--ease-arrive) both;
+}
+
+.shell > * > header {
+  animation: settle 480ms var(--ease-arrive) 80ms both;
+}
+
+.shell > * > :not(header) {
+  animation: fade-in 420ms var(--ease-arrive) 200ms both;
+}
+
+/* 列表按行错落，--i 来自模板；封顶 6 行，后面的一起出现 */
+.listing-item {
+  animation: settle 360ms var(--ease-arrive) both;
+  animation-delay: calc(200ms + min(var(--i, 0), 6) * 30ms);
+}
+
+/* 标签筛选后重新排列：同一套错落，但从 0 起算 */
+.listing-item.is-entering {
+  animation-delay: calc(min(var(--i, 0), 6) * 30ms);
+}
+
+/* 跨文档导航进来的页面：由 view transition 负责入场，页内动效不再重复跑 */
+html.vt .masthead::after,
+html.vt .shell > * > *,
+html.vt .listing-item:not(.is-entering) {
+  animation: none;
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+.masthead {
+  view-transition-name: masthead;
+}
+
+.shell {
+  view-transition-name: content;
+}
+
+.colophon {
+  view-transition-name: colophon;
+}
+
+/* 页眉页脚是舞台，不参与换场 */
+::view-transition-group(masthead),
+::view-transition-group(colophon),
+::view-transition-old(masthead),
+::view-transition-new(masthead),
+::view-transition-old(colophon),
+::view-transition-new(colophon) {
+  animation-duration: 0s;
+}
+
+/* 正文区：尺寸直接跳到新页，旧内容快出、新内容慢进 */
+::view-transition-group(content) {
+  animation-duration: 0s;
+}
+
+::view-transition-image-pair(content) {
+  isolation: isolate;
+  overflow: clip;
+}
+
+::view-transition-old(content) {
+  animation: vt-leave 160ms var(--ease) both;
+}
+
+::view-transition-new(content) {
+  animation: vt-enter 320ms var(--ease-arrive) both;
+}
+
+/* 减弱动效：去掉一切位移，保留透明度和颜色反馈。
+   全局 0.01ms 会把"已复制"这种状态变化也抹平，那不是"减弱"，是"失明" */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  .masthead::after {
+    animation: none;
+  }
+
+  .shell > * > header,
+  .listing-item {
+    animation-name: fade-in;
+  }
+
+  .listing-item > a > *,
+  .post-nav-link .direction svg,
+  .more-link svg {
+    transition: none;
+    translate: none;
+  }
+
+  /* 上下篇的选择器带 .is-previous/.is-next，这里要写全，否则优先级压不过 */
+  .listing-item > a:hover > *,
+  .listing-item > a:focus-visible > *,
+  .post-nav-link.is-previous:hover .direction svg,
+  .post-nav-link.is-next:hover .direction svg,
+  .more-link:hover svg {
+    translate: none;
+  }
+
+  .skip-link {
+    transition: none;
+  }
+
+  pre .copy-button[data-state="done"] svg path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+
+  ::view-transition-old(content),
+  ::view-transition-new(content) {
+    animation-name: fade-in;
+    animation-duration: 200ms;
+  }
+
+  ::view-transition-old(content) {
+    animation-direction: reverse;
   }
 
   .archive .listing-label {
     backdrop-filter: none;
+    background: var(--bg);
   }
 }
 
