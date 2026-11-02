@@ -2,17 +2,13 @@
 
 /* ==========================================================================
    字体
-   中文不发字体文件：Mac/iOS 苹方、Windows 雅黑、Android/Linux 思源黑体，
-   全在读者系统里，见 --sans。只有拉丁部分自托管，由 tools/build_fonts.py 生成：
-
-   Archivo      标题和正文里的英文、数字。宽体低对比的怪诞体，字重轴 400–700
-   Commit Mono  代码块的兜底。Apple 设备走 ui-monospace 直接拿到 SF Mono，
-                SF Mono 不允许网页嵌入，所以其他平台给一个最像它的开源字体
+   正文（中文和英文）自托管 OPPO Sans 4.0，由 tools/build_fonts.py 按站点用字切子集。
+   缺字时落到系统黑体。代码仍走 Commit Mono；Apple 设备用 ui-monospace 拿 SF Mono。
    ========================================================================== */
 
 @font-face {
-  font-family: "Archivo";
-  src: url("../fonts/archivo.woff2") format("woff2");
+  font-family: "OPPO Sans";
+  src: url("../fonts/oppo-sans.woff2") format("woff2");
   font-weight: 400 700;
   font-display: swap;
 }
@@ -33,43 +29,56 @@
 
 /* ==========================================================================
    令牌
+   浅色纸面：略暖的近白，不是纯白，也不是奶油底配陶土红。
+   长时间阅读靠墨色、字号和空白，不靠装饰层。
    ========================================================================== */
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 
-  /* 底色偏紫的近黑，不是纯黑：长时间阅读时纯黑背景的边缘对比太硬 */
-  --bg: oklch(0.175 0.014 285);
-  --surface: oklch(0.215 0.016 285);
-  --surface-high: oklch(0.255 0.018 285);
+  /* 米纸，带一点暖，但偏灰，避免发黄的「默认奶油」 */
+  --bg: oklch(0.972 0.006 82);
+  --surface: oklch(0.945 0.008 82);
+  --surface-high: oklch(0.925 0.01 82);
 
-  --line: oklch(0.32 0.016 285);
-  --line-strong: oklch(0.44 0.02 285);
+  --line: oklch(0.88 0.01 82);
+  --line-strong: oklch(0.78 0.014 82);
 
-  /* 正文不用纯白。0.885 对底色约 13:1，远高于 AA，又不至于发光刺眼 */
-  --ink: oklch(0.885 0.012 80);
-  --ink-muted: oklch(0.755 0.014 80);
-  --ink-faint: oklch(0.635 0.013 80);
+  /* 近黑暖墨。对纸面约 12:1，正文不发青 */
+  --ink: oklch(0.26 0.02 50);
+  --ink-muted: oklch(0.4 0.016 50);
+  --ink-faint: oklch(0.46 0.014 50);
 
-  --accent: oklch(0.78 0.115 28);
-  --accent-hot: oklch(0.72 0.145 24);
+  /* 安静的墨蓝，只给链接和当前页。不是高饱和强调色 */
+  --accent: oklch(0.38 0.06 248);
+  --accent-hot: oklch(0.32 0.07 248);
 
-  --measure: 46rem;
+  --syn-comment: oklch(0.52 0.02 80);
+  --syn-keyword: oklch(0.4 0.08 248);
+  --syn-string: oklch(0.42 0.07 155);
+  --syn-number: oklch(0.42 0.06 50);
+  --syn-title: oklch(0.36 0.05 280);
+  --syn-class: oklch(0.4 0.05 70);
+  --syn-deletion: oklch(0.45 0.1 25);
+
+  --measure: 40rem;
   --gutter: clamp(1.15rem, 4vw, 1.75rem);
-  /* 页面标题区到主体的距离。散文和列表页共用，否则归档页的年份会贴着标题 */
-  --content-gap: clamp(1.5rem, 3vw, 2rem);
-  --radius: 0.75rem;
-  --radius-lg: 1rem;
+  --content-gap: 1.25rem;
 
-  /* 默认给自托管的 Commit Mono；Apple 平台由 head 里的脚本打上 html.apple，
-     换成 ui-monospace 直接拿 SF Mono。不能只靠字体栈顺序：ui-monospace 在
-     非 Apple 平台也可能解析成系统等宽字体，把后面的 Commit Mono 挡掉 */
+  /* 字号阶梯：正文 17px，往上约按 1.2 倍递进。页面标题只用 --text-title。 */
+  --text-body: 1.0625rem;
+  --leading-body: 1.8;
+  --text-h4: 1.0625rem;
+  --text-h3: 1.125rem;
+  --text-h2: 1.3125rem;
+  --text-title: 1.5rem;
+  --text-wordmark: 1.75rem;
+  --radius: 0.2rem;
+
   --mono: "Commit Mono", "Cascadia Mono", Consolas, "Liberation Mono", monospace;
-  /* 拉丁走 Archivo，汉字按平台落到各自的系统黑体。都是人文黑体，气质一致 */
-  --sans: "Archivo", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", system-ui, sans-serif;
+  --sans: "OPPO Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", system-ui, sans-serif;
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  /* 到达用：起势快、收尾长，东西"落定"而不是"滑到" */
   --ease-arrive: cubic-bezier(0.16, 1, 0.3, 1);
   --fast: 160ms var(--ease);
   --base: 240ms var(--ease);
@@ -80,6 +89,87 @@
 
 html.apple {
   --mono: ui-monospace, "SF Mono", Menlo, "Commit Mono", monospace;
+}
+
+/* 夜间：暖近黑，不是纯黑。无 JS 时跟系统；有 data-theme 时以它为准 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --bg: oklch(0.22 0.014 82);
+    --surface: oklch(0.28 0.014 82);
+    --surface-high: oklch(0.32 0.016 82);
+
+    --line: oklch(0.38 0.012 82);
+    --line-strong: oklch(0.5 0.014 82);
+
+    --ink: oklch(0.9 0.012 82);
+    --ink-muted: oklch(0.74 0.014 82);
+    --ink-faint: oklch(0.64 0.012 82);
+
+    --accent: oklch(0.78 0.055 248);
+    --accent-hot: oklch(0.84 0.05 248);
+
+    --syn-comment: oklch(0.68 0.02 82);
+    --syn-keyword: oklch(0.78 0.07 248);
+    --syn-string: oklch(0.76 0.07 155);
+    --syn-number: oklch(0.78 0.06 70);
+    --syn-title: oklch(0.8 0.05 280);
+    --syn-class: oklch(0.8 0.05 70);
+    --syn-deletion: oklch(0.72 0.1 25);
+  }
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: oklch(0.22 0.014 82);
+  --surface: oklch(0.28 0.014 82);
+  --surface-high: oklch(0.32 0.016 82);
+
+  --line: oklch(0.38 0.012 82);
+  --line-strong: oklch(0.5 0.014 82);
+
+  --ink: oklch(0.9 0.012 82);
+  --ink-muted: oklch(0.74 0.014 82);
+  --ink-faint: oklch(0.64 0.012 82);
+
+  --accent: oklch(0.78 0.055 248);
+  --accent-hot: oklch(0.84 0.05 248);
+
+  --syn-comment: oklch(0.68 0.02 82);
+  --syn-keyword: oklch(0.78 0.07 248);
+  --syn-string: oklch(0.76 0.07 155);
+  --syn-number: oklch(0.78 0.06 70);
+  --syn-title: oklch(0.8 0.05 280);
+  --syn-class: oklch(0.8 0.05 70);
+  --syn-deletion: oklch(0.72 0.1 25);
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: oklch(0.972 0.006 82);
+  --surface: oklch(0.945 0.008 82);
+  --surface-high: oklch(0.925 0.01 82);
+
+  --line: oklch(0.88 0.01 82);
+  --line-strong: oklch(0.78 0.014 82);
+
+  --ink: oklch(0.26 0.02 50);
+  --ink-muted: oklch(0.4 0.016 50);
+  --ink-faint: oklch(0.46 0.014 50);
+
+  --accent: oklch(0.38 0.06 248);
+  --accent-hot: oklch(0.32 0.07 248);
+
+  --syn-comment: oklch(0.52 0.02 80);
+  --syn-keyword: oklch(0.4 0.08 248);
+  --syn-string: oklch(0.42 0.07 155);
+  --syn-number: oklch(0.42 0.06 50);
+  --syn-title: oklch(0.36 0.05 280);
+  --syn-class: oklch(0.4 0.05 70);
+  --syn-deletion: oklch(0.45 0.1 25);
 }
 
 /* ==========================================================================
@@ -102,39 +192,30 @@ html {
 
 body {
   min-height: 100vh;
-  background:
-    radial-gradient(80rem 40rem at 50% -14rem, oklch(0.3 0.05 300 / 0.3), transparent 70%),
-    radial-gradient(50rem 26rem at 92% -6rem, oklch(0.32 0.06 26 / 0.16), transparent 70%),
-    var(--bg);
-  background-attachment: fixed;
+  background: var(--bg);
   color: var(--ink);
   font-family: var(--sans);
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.75;
   font-variant-numeric: tabular-nums;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* 中文排版：不在标点处断行，首尾标点收紧 */
   line-break: strict;
   text-spacing-trim: trim-start;
   hanging-punctuation: allow-end;
 }
 
 ::selection {
-  background: color-mix(in oklab, var(--accent-hot) 42%, transparent);
+  background: color-mix(in oklab, var(--accent) 22%, transparent);
   color: var(--ink);
-  text-shadow: none;
 }
 
 a {
   color: var(--accent);
   text-decoration: none;
-  transition:
-    color var(--base),
-    background-color var(--base),
-    border-color var(--base),
-    opacity var(--base);
+  text-underline-offset: 0.18em;
+  transition: color var(--base);
 }
 
 a:hover {
@@ -144,7 +225,6 @@ a:hover {
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 0.4rem;
 }
 
 h1,
@@ -179,8 +259,6 @@ button {
   cursor: pointer;
 }
 
-/* 键盘用户的第一站 */
-/* fixed 而不是 absolute：页面滚到一半时按 Tab，这个链接也得在视口顶上露出来 */
 .skip-link {
   position: fixed;
   top: 0;
@@ -189,23 +267,19 @@ button {
   translate: -50% -160%;
   padding: 0.55rem 1.1rem;
   border: 1px solid var(--line-strong);
-  border-radius: 0 0 var(--radius) var(--radius);
-  background: var(--surface-high);
+  background: var(--bg);
   color: var(--ink);
-  font-family: var(--mono);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   transition: translate var(--base);
 }
 
-/* 用 :focus 而不是 :focus-visible —— 这个链接只有键盘能到达，
-   而 focus-visible 的启发式在某些路径下不会命中，那样它就永远露不出来 */
 .skip-link:focus {
   translate: -50% 0;
 }
 
 /* ==========================================================================
    框架
-   页眉、正文、页脚共用同一条量度线，右边缘必须对齐
+   页眉、正文、页脚共用同一条量度线
    ========================================================================== */
 
 .page {
@@ -215,43 +289,31 @@ button {
 }
 
 .masthead,
-.shell,
-.colophon {
+.shell {
   width: min(100% - var(--gutter) * 2, var(--measure));
   margin-inline: auto;
 }
 
 .shell {
   flex: 1;
-  padding-top: clamp(2rem, 5vw, 2.75rem);
+  padding-block: clamp(2rem, 5vw, 2.75rem) clamp(3.5rem, 8vw, 5.5rem);
 }
 
 .masthead {
-  position: relative;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding-block: clamp(1.75rem, 5vw, 3rem) clamp(1.5rem, 4vw, 2.25rem);
-  /* 边框只占位；那条线由 ::after 画，进站时才能从左往右展开 */
-  border-bottom: 1px solid transparent;
-}
-
-.masthead::after {
-  content: "";
-  position: absolute;
-  inset-inline: 0;
-  bottom: -1px;
-  height: 1px;
-  background: var(--line);
-  transform-origin: left center;
+  gap: 0.25rem 1.25rem;
+  padding-block: clamp(1.75rem, 5vw, 2.75rem) clamp(1.15rem, 3vw, 1.5rem);
+  border-bottom: 1px solid var(--line);
 }
 
 .wordmark {
-  font-size: 0.95rem;
+  font-size: var(--text-wordmark);
   font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
 .wordmark a {
@@ -265,50 +327,62 @@ button {
 .nav {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1.1rem;
 }
 
-/* 圆形图标按钮：导航、社交共用一个形状 */
-.icon-button {
+/* 导航和主题切换是同一种图标按钮：同尺寸、同描边、同颜色层级 */
+.nav a,
+.theme-toggle {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: color-mix(in oklab, var(--surface) 70%, transparent);
-  color: var(--ink-faint);
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--ink-muted);
 }
 
-.icon-button svg {
-  width: 1.05rem;
-  height: 1.05rem;
+/* 块级 svg：主题按钮里图标包了一层 span，行内时底下会留出行高空隙把图标顶高 */
+.nav .icon {
+  display: block;
+  width: 1.15rem;
+  height: 1.15rem;
 }
 
-.icon-button:hover,
-.icon-button:focus-visible {
-  color: var(--accent);
-  border-color: color-mix(in oklab, var(--accent) 40%, var(--line));
-  background: color-mix(in oklab, var(--accent) 9%, var(--surface));
-}
-
-.icon-button[aria-current="page"] {
+.nav a:hover,
+.nav a:focus-visible,
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
   color: var(--ink);
-  border-color: var(--line-strong);
-  background: var(--surface-high);
 }
 
-.colophon {
-  margin-top: clamp(3.5rem, 8vw, 5.5rem);
-  padding-block: 2rem 2.5rem;
-  border-top: 1px solid var(--line);
-  color: var(--ink-faint);
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-align: center;
-  text-transform: uppercase;
+/* 当前页：沿用原先文字下划线的做法，图标下方一道 1px 短线 */
+.nav a[aria-current="page"] {
+  color: var(--ink);
+}
+
+.nav a[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  /* 相对图标定位，手机上按钮放大到 44px 时短线也贴着图标 */
+  top: calc(50% + 0.575rem + 0.3rem);
+  width: 0.9rem;
+  height: 1px;
+  background: currentColor;
+  translate: -50% 0;
+}
+
+/* 按钮只显示当前外观模式的图标；data-mode 由 head 内联脚本在首帧前写好 */
+.theme-toggle > span {
+  display: none;
+}
+
+html[data-mode="system"] .theme-toggle .icon-system,
+html[data-mode="light"] .theme-toggle .icon-light,
+html[data-mode="dark"] .theme-toggle .icon-dark,
+html:not([data-mode]) .theme-toggle .icon-system {
+  display: block;
 }
 
 /* ==========================================================================
@@ -316,9 +390,11 @@ button {
    ========================================================================== */
 
 .entry-title {
-  font-size: clamp(1.8rem, 1.35rem + 1.9vw, 2.5rem);
-  line-height: 1.24;
-  letter-spacing: -0.01em;
+  font-size: var(--text-title);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
 }
 
 .entry-title a {
@@ -332,55 +408,43 @@ button {
 .entry-meta {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem 0.85rem;
+  align-items: baseline;
+  gap: 0.4rem 0.85rem;
   margin-top: 0.75rem;
   color: var(--ink-faint);
-  font-size: 0.8rem;
+  font-size: 0.88rem;
 }
 
-/* 等宽 + 字距只给拉丁字母和数字用。
-   中文加字距会把字一个个撑开，"近 期""全部 归 档"这种间距是排版事故，
-   所以凡是可能出现中文的元素，一律不带 letter-spacing / text-transform，
-   要那种系统标记感时，把 Latin/数字单独包进 .stamp。 */
 .stamp,
-.entry-meta time,
 .listing-item time {
   font-family: var(--mono);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
+  font-size: 0.82rem;
   font-variant-numeric: tabular-nums;
+}
+
+/* 文章页日期是完整写法 May 6, 2026，不需要逐行对齐，用正文字体 */
+.entry-meta time {
+  font-variant-numeric: proportional-nums;
 }
 
 .tag-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.35rem 0.7rem;
 }
 
 .tag {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.1rem 0.6rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: color-mix(in oklab, var(--surface) 65%, transparent);
   color: var(--ink-muted);
-  font-size: 0.78rem;
-  line-height: 1.7;
-}
-
-/* 首页最新一篇的"喜欢"计数由 like.lhzhang.com 注入，推到行尾 */
-.like-wrapper {
-  margin-left: auto;
+  font-size: 0.88rem;
 }
 
 a.tag:hover,
 a.tag:focus-visible {
-  color: var(--ink);
-  border-color: color-mix(in oklab, var(--accent) 40%, var(--line));
-  background: color-mix(in oklab, var(--accent) 12%, var(--surface));
+  color: var(--accent);
+}
+
+.like-wrapper {
+  margin-left: auto;
 }
 
 /* ==========================================================================
@@ -389,9 +453,17 @@ a.tag:focus-visible {
 
 .prose {
   margin-top: var(--content-gap);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  /* 全站默认等宽数字是给日期列表对齐用的；正文和标题里的数字用比例字宽，不然会被拉散 */
+  font-variant-numeric: proportional-nums;
 }
 
-/* 归档、标签这类 raw 页面没有 .prose 包裹，第一块内容自己补上同样的间距 */
+/* 文章页：标题区和正文之间多留一点，读者先看清题目和日期再进正文 */
+header + .prose {
+  margin-top: 1.75rem;
+}
+
 article > header + .listing-group,
 article > header + .tag-cloud,
 article > header + .listing {
@@ -399,16 +471,7 @@ article > header + .listing {
 }
 
 .prose > * + * {
-  margin-top: 1.35rem;
-}
-
-.prose p,
-.prose ul,
-.prose ol,
-.prose blockquote,
-.prose table {
-  font-size: 1.05rem;
-  line-height: 1.85;
+  margin-top: 0.9em;
 }
 
 .prose p {
@@ -416,34 +479,50 @@ article > header + .listing {
 }
 
 .prose a {
-  border-bottom: 1px solid color-mix(in oklab, var(--accent) 35%, transparent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in oklab, var(--accent) 45%, transparent);
   overflow-wrap: anywhere;
 }
 
 .prose a:hover {
-  border-bottom-color: var(--accent-hot);
+  text-decoration-color: var(--accent-hot);
 }
 
 .prose h1,
 .prose h2,
 .prose h3,
 .prose h4 {
-  margin-top: 2.75rem;
+  font-weight: 600;
   line-height: 1.4;
   letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 
+/* 标题上方留白远大于下方，让标题贴住它统领的那段 */
+.prose h1,
 .prose h2 {
-  font-size: 1.4rem;
+  margin-top: 2.4em;
+  font-size: var(--text-h2);
 }
 
 .prose h3 {
-  font-size: 1.18rem;
+  margin-top: 2em;
+  font-size: var(--text-h3);
 }
 
 .prose h4 {
-  font-size: 1.05rem;
+  margin-top: 1.8em;
+  font-size: var(--text-h4);
   color: var(--ink-muted);
+}
+
+.prose :is(h1, h2, h3, h4) + * {
+  margin-top: 0.6em;
+}
+
+.prose > :first-child {
+  margin-top: 0;
 }
 
 .prose ul,
@@ -452,7 +531,7 @@ article > header + .listing {
 }
 
 .prose li + li {
-  margin-top: 0.4rem;
+  margin-top: 0.35em;
 }
 
 .prose li::marker {
@@ -467,19 +546,15 @@ article > header + .listing {
 .prose img {
   display: block;
   margin-block: 2rem;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--line);
 }
 
 .prose blockquote {
-  padding: 1.1rem 1.35rem;
-  border-radius: var(--radius);
-  background: color-mix(in oklab, var(--surface) 62%, transparent);
+  padding-left: 1.15rem;
   color: var(--ink-muted);
 }
 
 .prose blockquote > * + * {
-  margin-top: 0.9rem;
+  margin-top: 0.9em;
 }
 
 .prose table {
@@ -490,7 +565,7 @@ article > header + .listing {
 
 .prose th,
 .prose td {
-  padding: 0.6rem 0.8rem;
+  padding: 0.55rem 0.7rem;
   border-bottom: 1px solid var(--line);
   text-align: left;
 }
@@ -500,7 +575,6 @@ article > header + .listing {
   font-weight: 600;
 }
 
-/* 容器由 site.js 补上：表格宽过正文栏时自己滚，不能把整页拖宽 */
 .table-scroll {
   overflow-x: auto;
 }
@@ -511,15 +585,15 @@ article > header + .listing {
 
 code {
   font-family: var(--mono);
-  font-size: 0.88em;
+  font-size: 0.86em;
   font-variant-ligatures: none;
 }
 
 :not(pre) > code {
-  padding: 0.12rem 0.4rem;
+  padding: 0.08rem 0.32rem;
   border: 1px solid var(--line);
-  border-radius: 0.4rem;
-  background: color-mix(in oklab, var(--surface) 70%, transparent);
+  border-radius: var(--radius);
+  background: var(--surface);
   color: var(--ink);
   overflow-wrap: anywhere;
 }
@@ -532,48 +606,43 @@ code {
 .prose pre code,
 .prose pre .hljs {
   display: block;
-  padding: 1.15rem 1.25rem;
+  padding: 1.05rem 1.15rem;
   border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  background: color-mix(in oklab, var(--surface) 80%, var(--bg));
+  border-radius: var(--radius);
+  background: var(--surface);
   color: var(--ink);
   font-size: 0.84rem;
-  line-height: 1.75;
+  line-height: 1.7;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
   tab-size: 2;
 }
 
-/* 首行右侧用浮动占位，让文字绕开复制按钮；只影响首行，不像 padding 那样整块让位 */
 .prose pre code::before {
   content: "";
   float: right;
-  width: 2.4rem;
-  height: 1.6rem;
+  width: 2.2rem;
+  height: 1.5rem;
 }
 
-/* 复制按钮常驻可见。悬停才出现的按钮在触屏上等于不存在 */
 .copy-button {
   position: absolute;
-  top: 0.6rem;
-  right: 0.6rem;
+  top: 0.55rem;
+  right: 0.55rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 1.7rem;
+  height: 1.7rem;
   padding: 0;
   border: 1px solid var(--line);
-  border-radius: 999px;
-  background: color-mix(in oklab, var(--surface-high) 88%, transparent);
+  border-radius: var(--radius);
+  background: var(--bg);
   color: var(--ink-faint);
   line-height: 1;
-  opacity: 0.7;
   transition:
-    opacity var(--fast),
     color var(--fast),
-    border-color var(--fast),
-    background-color var(--fast);
+    border-color var(--fast);
 }
 
 .copy-button svg {
@@ -584,18 +653,13 @@ code {
 .copy-button:hover,
 .copy-button:focus-visible,
 pre:hover .copy-button {
-  opacity: 1;
   color: var(--ink);
   border-color: var(--line-strong);
 }
 
-/* 选择器要压过上面的 pre:hover .copy-button（0,2,1），否则鼠标还停在代码块上时
-   看不到"已复制"的那一下反馈 */
 pre .copy-button[data-state="done"] {
-  opacity: 1;
   color: var(--accent);
-  border-color: color-mix(in oklab, var(--accent) 45%, var(--line));
-  background: color-mix(in oklab, var(--accent) 12%, var(--surface-high));
+  border-color: color-mix(in oklab, var(--accent) 40%, var(--line));
 }
 
 pre .copy-button[data-state="done"] svg path {
@@ -605,15 +669,13 @@ pre .copy-button[data-state="done"] svg path {
 }
 
 pre .copy-button[data-state="failed"] {
-  opacity: 1;
   color: var(--ink-muted);
   border-color: var(--line-strong);
 }
 
-/* highlight.js 配色从站点令牌里长出来，不用 GitHub 那套蓝 */
 .hljs-comment,
 .hljs-quote {
-  color: oklch(0.62 0.025 285);
+  color: var(--syn-comment);
   font-style: italic;
 }
 
@@ -622,27 +684,27 @@ pre .copy-button[data-state="failed"] {
 .hljs-literal,
 .hljs-doctag,
 .hljs-operator {
-  color: oklch(0.78 0.105 22);
+  color: var(--syn-keyword);
 }
 
 .hljs-string,
 .hljs-regexp,
 .hljs-addition {
-  color: oklch(0.79 0.085 158);
+  color: var(--syn-string);
 }
 
 .hljs-number,
 .hljs-symbol,
 .hljs-bullet,
 .hljs-meta {
-  color: oklch(0.83 0.09 82);
+  color: var(--syn-number);
 }
 
 .hljs-title,
 .hljs-title.function_,
 .hljs-section,
 .hljs-name {
-  color: oklch(0.81 0.075 262);
+  color: var(--syn-title);
   font-weight: 600;
 }
 
@@ -651,7 +713,7 @@ pre .copy-button[data-state="failed"] {
 .hljs-built_in,
 .hljs-selector-class,
 .hljs-selector-id {
-  color: oklch(0.85 0.06 68);
+  color: var(--syn-class);
 }
 
 .hljs-attr,
@@ -667,7 +729,7 @@ pre .copy-button[data-state="failed"] {
 }
 
 .hljs-deletion {
-  color: oklch(0.72 0.13 22);
+  color: var(--syn-deletion);
 }
 
 .hljs-link {
@@ -701,60 +763,43 @@ pre .copy-button[data-state="failed"] {
   display: flex;
   align-items: baseline;
   gap: 0.75rem;
-  padding-bottom: 0.7rem;
+  padding-bottom: 0.55rem;
   border-bottom: 1px solid var(--line);
   color: var(--ink-faint);
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   font-weight: 500;
 }
 
 .listing-label .stamp {
-  font-size: 0.85rem;
-  letter-spacing: 0.16em;
+  font-size: 0.88rem;
 }
 
 .listing-label .count {
   margin-left: auto;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 400;
 }
 
 .listing-label .count .stamp {
-  font-size: 0.76rem;
-  letter-spacing: 0.04em;
+  font-size: 0.8rem;
 }
 
 .listing-item {
-  border-bottom: 1px solid color-mix(in oklab, var(--line) 65%, transparent);
+  border-bottom: 1px solid var(--line);
 }
 
 .listing-item > a {
   display: grid;
   grid-template-columns: 6.5rem minmax(0, 1fr);
-  gap: 0.25rem 1.25rem;
+  gap: 0.2rem 1.15rem;
   align-items: baseline;
-  padding: 0.85rem 0.75rem 0.85rem 0;
-  color: var(--ink-muted);
-  border-radius: var(--radius);
-  transition:
-    color var(--fast),
-    background-color var(--fast);
-}
-
-/* 悬停时文字向右让一步：动 transform 而不是 padding，不触发重排 */
-.listing-item > a > * {
-  transition: translate var(--base);
+  padding: 0.8rem 0;
+  color: var(--ink);
 }
 
 .listing-item > a:hover,
 .listing-item > a:focus-visible {
   color: var(--ink);
-  background: linear-gradient(90deg, color-mix(in oklab, var(--accent) 9%, transparent), transparent 72%);
-}
-
-.listing-item > a:hover > *,
-.listing-item > a:focus-visible > * {
-  translate: 0.5rem 0;
 }
 
 .listing-item time {
@@ -766,28 +811,26 @@ pre .copy-button[data-state="failed"] {
   min-width: 0;
 }
 
-.listing-item > a:hover .listing-title {
+.listing-item > a:hover .listing-title,
+.listing-item > a:focus-visible .listing-title {
   color: var(--accent);
 }
 
 .listing-item .tag-list {
   grid-column: 2;
-  margin-top: 0.15rem;
+  margin-top: 0.1rem;
 }
 
 .listing-item .tag {
-  font-size: 0.72rem;
-  padding-inline: 0.5rem;
+  font-size: 0.8rem;
 }
 
-/* 归档里的年份贴顶，滚很长的列表时始终知道自己在哪一年 */
 .archive .listing-label {
   position: sticky;
   top: 0;
   z-index: var(--z-sticky);
-  background: color-mix(in oklab, var(--bg) 88%, transparent);
-  backdrop-filter: blur(10px);
-  padding-top: 0.9rem;
+  background: var(--bg);
+  padding-top: 0.75rem;
 }
 
 .listing-empty {
@@ -801,40 +844,30 @@ pre .copy-button[data-state="failed"] {
    ========================================================================== */
 
 .latest {
-  padding-bottom: clamp(2.5rem, 6vw, 3.5rem);
+  padding-bottom: clamp(2.25rem, 5vw, 3.25rem);
   border-bottom: 1px solid var(--line);
 }
 
-.latest .entry-title {
-  font-size: clamp(2.1rem, 1.4rem + 3vw, 3.25rem);
-  max-width: 16ch;
-}
-
 .recent {
-  padding-top: clamp(2.25rem, 5vw, 3rem);
+  padding-top: clamp(2rem, 5vw, 2.75rem);
 }
 
 .more-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-top: 1.75rem;
+  gap: 0.4rem;
+  margin-top: 1.5rem;
   color: var(--ink-muted);
-  font-size: 0.92rem;
+  font-size: 0.95rem;
 }
 
 .more-link svg {
   width: 0.85rem;
   height: 0.85rem;
-  transition: translate var(--base);
 }
 
 .more-link:hover {
   color: var(--accent);
-}
-
-.more-link:hover svg {
-  translate: 0.25rem 0;
 }
 
 /* ==========================================================================
@@ -842,59 +875,32 @@ pre .copy-button[data-state="failed"] {
    ========================================================================== */
 
 .post-nav {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: 1rem;
-  margin-top: clamp(3rem, 7vw, 4.5rem);
-  padding-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.25rem 2rem;
+  margin-top: clamp(2.75rem, 6vw, 4rem);
+  padding-top: 1.5rem;
   border-top: 1px solid var(--line);
 }
 
 .post-nav-link {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-  padding: 1rem 1.15rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  background: color-mix(in oklab, var(--surface) 45%, transparent);
+  gap: 0.25rem;
+  max-width: 18rem;
   color: var(--ink);
-  transition:
-    border-color var(--base),
-    background-color var(--base);
-}
-
-.post-nav-link:hover,
-.post-nav-link:focus-visible {
-  border-color: color-mix(in oklab, var(--accent) 38%, var(--line));
-  background: color-mix(in oklab, var(--accent) 7%, var(--surface));
 }
 
 .post-nav-link.is-next {
+  margin-left: auto;
   text-align: right;
   align-items: flex-end;
 }
 
 .post-nav-link .direction {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
   color: var(--ink-faint);
   font-size: 0.82rem;
-}
-
-.post-nav-link .direction svg {
-  width: 0.8rem;
-  height: 0.8rem;
-  transition: translate var(--base);
-}
-
-.post-nav-link.is-previous:hover .direction svg {
-  translate: -0.2rem 0;
-}
-
-.post-nav-link.is-next:hover .direction svg {
-  translate: 0.2rem 0;
 }
 
 .post-nav-link .headline {
@@ -903,7 +909,8 @@ pre .copy-button[data-state="failed"] {
   color: var(--ink);
 }
 
-.post-nav-link:hover .headline {
+.post-nav-link:hover .headline,
+.post-nav-link:focus-visible .headline {
   color: var(--accent);
 }
 
@@ -912,35 +919,24 @@ pre .copy-button[data-state="failed"] {
    ========================================================================== */
 
 .comments {
-  margin-top: 2.5rem;
+  margin-top: 2.25rem;
 }
 
 .comment-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.55rem 1.05rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: color-mix(in oklab, var(--surface) 60%, transparent);
   color: var(--ink-muted);
-  font-size: 0.88rem;
-  transition:
-    color var(--fast),
-    border-color var(--fast),
-    background-color var(--fast);
+  font-size: 0.95rem;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
 }
 
 .comment-toggle svg {
-  width: 0.9rem;
-  height: 0.9rem;
+  display: none;
 }
 
 .comment-toggle:hover,
 .comment-toggle:focus-visible {
-  color: var(--ink);
-  border-color: color-mix(in oklab, var(--accent) 38%, var(--line));
-  background: color-mix(in oklab, var(--accent) 8%, var(--surface));
+  color: var(--accent);
 }
 
 .comment-thread {
@@ -958,36 +954,39 @@ pre .copy-button[data-state="failed"] {
 .tag-cloud {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.35rem 1.15rem;
   margin-bottom: 2.25rem;
 }
 
 .tag-cloud .tag {
-  padding: 0.3rem 0.8rem;
-  font-size: 0.85rem;
+  padding: 0.2rem 0;
+  font-size: 0.95rem;
+  color: var(--ink-muted);
   cursor: pointer;
-  transition:
-    color var(--fast),
-    background-color var(--fast),
-    border-color var(--fast);
 }
 
 .tag-cloud .tag .count {
-  margin-left: 0.4rem;
+  margin-left: 0.3rem;
   color: var(--ink-faint);
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.78rem;
+}
+
+.tag-cloud .tag:hover,
+.tag-cloud .tag:focus-visible {
+  color: var(--ink);
 }
 
 .tag-cloud .tag[aria-pressed="true"] {
-  color: var(--bg);
-  border-color: var(--accent);
-  background: var(--accent);
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.28em;
   font-weight: 600;
 }
 
 .tag-cloud .tag[aria-pressed="true"] .count {
-  color: color-mix(in oklab, var(--bg) 65%, var(--accent));
+  color: var(--ink-muted);
 }
 
 .listing-item[hidden] {
@@ -998,120 +997,234 @@ pre .copy-button[data-state="failed"] {
    关于页
    ========================================================================== */
 
-.timeline {
+.about {
+  margin-top: 1.75rem;
+}
+
+.about-lead {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.about-note {
+  margin-top: 0.85rem;
+  color: var(--ink-muted);
+}
+
+.about-note a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: color-mix(in oklab, var(--accent) 45%, transparent);
+}
+
+.about-section {
+  margin-top: 2.75rem;
+}
+
+/* 经历：跟归档列表同一套细线分隔，年份等宽对齐 */
+.timeline > div {
   display: grid;
-  grid-template-columns: max-content minmax(0, 1fr);
-  gap: 0.55rem 1.5rem;
-  margin-top: 1.5rem;
+  grid-template-columns: 4rem minmax(0, 1fr);
+  gap: 1.15rem;
+  align-items: baseline;
+  padding-block: 0.7rem;
+  border-bottom: 1px solid var(--line);
 }
 
 .timeline dt {
   color: var(--ink-faint);
   font-family: var(--mono);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-variant-numeric: tabular-nums;
-  letter-spacing: 0.04em;
 }
 
 .timeline dd {
   color: var(--ink);
 }
 
+/* 社交：跟页眉同一套线性图标，同尺寸同颜色层级 */
 .social-links {
   display: flex;
   flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 2.25rem 0 0 -0.45rem;
+  padding: 0;
+  list-style: none;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  color: var(--ink-muted);
+}
+
+.social-links .icon {
+  display: block;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.social-links a:hover,
+.social-links a:focus-visible {
+  color: var(--ink);
+}
+
+/* ==========================================================================
+   Studio 页
+   ========================================================================== */
+
+.studio-intro {
+  margin: var(--content-gap) 0 1.5rem;
+  color: var(--ink-muted);
+}
+
+.app-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--line);
+}
+
+.app-item {
+  border-bottom: 1px solid var(--line);
+}
+
+.app-item > a {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  gap: 1.15rem;
+  align-items: center;
+  padding: 1rem 0;
+  color: var(--ink);
+}
+
+.app-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+/* iOS 图标是方形原图，补上系统那种圆角；Mac 图标自带形状和留白 */
+.app-icon.is-ios {
+  width: 3rem;
+  height: 3rem;
+  margin: 0.25rem;
+  border-radius: 22.5%;
+}
+
+.app-text {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.app-name {
+  display: flex;
+  align-items: baseline;
   gap: 0.6rem;
-  margin-top: 2.25rem;
+  font-weight: 600;
+}
+
+.app-platform {
+  color: var(--ink-faint);
+  font-size: 0.78rem;
+  font-weight: 400;
+}
+
+.app-summary {
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+}
+
+.app-item > a:hover .app-name,
+.app-item > a:focus-visible .app-name {
+  color: var(--accent);
 }
 
 /* ==========================================================================
    窄屏
    ========================================================================== */
 
-@media (max-width: 46rem) {
-  body {
-    font-size: 15px;
-  }
-
+@media (max-width: 40rem) {
   .masthead {
-    padding-block: 1.5rem 1.25rem;
+    padding-block: 1.35rem 1.1rem;
   }
 
-  /* 触屏上独立控件按 44px 起跳 */
-  .icon-button {
+  /* 触控区放宽到 44px，用负外边距抵掉多出来的部分，视觉间距和右边线不变 */
+  .nav {
+    gap: 0;
+    margin-right: -0.625rem;
+  }
+
+  .nav a,
+  .theme-toggle {
     width: 2.75rem;
     height: 2.75rem;
   }
 
+  .social-links a {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .social-links {
+    gap: 0.25rem;
+    margin-left: -0.75rem;
+  }
+
   .tag-cloud .tag {
     min-height: 2.75rem;
-    padding-inline: 0.95rem;
+    display: inline-flex;
+    align-items: center;
   }
 
-  .nav {
-    gap: 0.35rem;
-  }
-
-  .prose p,
-  .prose ul,
-  .prose ol,
-  .prose blockquote {
-    font-size: 1rem;
-    line-height: 1.8;
+  :root {
+    --text-title: 1.375rem;
+    --text-wordmark: 1.5rem;
+    --text-h2: 1.25rem;
   }
 
   .prose pre code,
   .prose pre .hljs {
-    padding: 1rem;
+    padding: 0.95rem;
     font-size: 0.78rem;
-    /* anywhere 会先在缩进空格后断行，留一行空白、下一行顶格；break-all 直接填满再断 */
     word-break: break-all;
   }
 
-  /* 日期换到标题上方，标题拿到整行宽度 */
   .listing-item > a {
     grid-template-columns: minmax(0, 1fr);
-    gap: 0.3rem;
-    padding-block: 0.9rem;
+    gap: 0.25rem;
+    padding-block: 0.85rem;
   }
 
   .listing-item .tag-list {
     grid-column: auto;
   }
 
-  .latest .entry-title {
-    max-width: none;
-  }
-
+  .post-nav-link,
   .post-nav-link.is-next {
+    max-width: none;
+    margin-left: 0;
     text-align: left;
     align-items: flex-start;
   }
 
   .copy-button {
-    top: 0.45rem;
-    right: 0.45rem;
-    opacity: 1;
+    top: 0.4rem;
+    right: 0.4rem;
   }
 }
 
 /* ==========================================================================
    动效
-   一处作者化的时刻：冷加载时页眉那条线从左往右画出来，标题和正文随后落定。
-   页面之间走跨文档 View Transitions，页眉页脚原地不动，只有正文区换。
-   其余全是反馈：悬停、筛选、复制。没有滚动触发的逐段入场。
+   唯一作者化的时刻是跨文档换页：页眉页脚原地不动，正文淡出淡入。
+   其余全是颜色反馈。没有进站画线，没有列表错落入场。
    ========================================================================== */
-
-@keyframes rule-draw {
-  from { scale: 0 1; }
-}
-
-@keyframes settle {
-  from {
-    opacity: 0;
-    translate: 0 0.5rem;
-  }
-}
 
 @keyframes fade-in {
   from { opacity: 0; }
@@ -1122,48 +1235,11 @@ pre .copy-button[data-state="failed"] {
 }
 
 @keyframes vt-leave {
-  to {
-    opacity: 0;
-    translate: 0 -0.35rem;
-  }
+  to { opacity: 0; }
 }
 
 @keyframes vt-enter {
-  from {
-    opacity: 0;
-    translate: 0 0.5rem;
-  }
-}
-
-/* 进站：线先走，标题跟上，正文最后。总时长 < 800ms，文字在淡入过程中就已可读 */
-.masthead::after {
-  animation: rule-draw 640ms var(--ease-arrive) both;
-}
-
-.shell > * > header {
-  animation: settle 480ms var(--ease-arrive) 80ms both;
-}
-
-.shell > * > :not(header) {
-  animation: fade-in 420ms var(--ease-arrive) 200ms both;
-}
-
-/* 列表按行错落，--i 来自模板；封顶 6 行，后面的一起出现 */
-.listing-item {
-  animation: settle 360ms var(--ease-arrive) both;
-  animation-delay: calc(200ms + min(var(--i, 0), 6) * 30ms);
-}
-
-/* 标签筛选后重新排列：同一套错落，但从 0 起算 */
-.listing-item.is-entering {
-  animation-delay: calc(min(var(--i, 0), 6) * 30ms);
-}
-
-/* 跨文档导航进来的页面：由 view transition 负责入场，页内动效不再重复跑 */
-html.vt .masthead::after,
-html.vt .shell > * > *,
-html.vt .listing-item:not(.is-entering) {
-  animation: none;
+  from { opacity: 0; }
 }
 
 @view-transition {
@@ -1178,21 +1254,9 @@ html.vt .listing-item:not(.is-entering) {
   view-transition-name: content;
 }
 
-.colophon {
-  view-transition-name: colophon;
-}
-
-/* 页眉页脚是舞台，不参与换场 */
 ::view-transition-group(masthead),
-::view-transition-group(colophon),
 ::view-transition-old(masthead),
 ::view-transition-new(masthead),
-::view-transition-old(colophon),
-::view-transition-new(colophon) {
-  animation-duration: 0s;
-}
-
-/* 正文区：尺寸直接跳到新页，旧内容快出、新内容慢进 */
 ::view-transition-group(content) {
   animation-duration: 0s;
 }
@@ -1207,39 +1271,12 @@ html.vt .listing-item:not(.is-entering) {
 }
 
 ::view-transition-new(content) {
-  animation: vt-enter 320ms var(--ease-arrive) both;
+  animation: vt-enter 280ms var(--ease-arrive) both;
 }
 
-/* 减弱动效：去掉一切位移，保留透明度和颜色反馈。
-   全局 0.01ms 会把"已复制"这种状态变化也抹平，那不是"减弱"，是"失明" */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-
-  .masthead::after {
-    animation: none;
-  }
-
-  .shell > * > header,
-  .listing-item {
-    animation-name: fade-in;
-  }
-
-  .listing-item > a > *,
-  .post-nav-link .direction svg,
-  .more-link svg {
-    transition: none;
-    translate: none;
-  }
-
-  /* 上下篇的选择器带 .is-previous/.is-next，这里要写全，否则优先级压不过 */
-  .listing-item > a:hover > *,
-  .listing-item > a:focus-visible > *,
-  .post-nav-link.is-previous:hover .direction svg,
-  .post-nav-link.is-next:hover .direction svg,
-  .more-link:hover svg {
-    translate: none;
   }
 
   .skip-link {
@@ -1254,16 +1291,11 @@ html.vt .listing-item:not(.is-entering) {
   ::view-transition-old(content),
   ::view-transition-new(content) {
     animation-name: fade-in;
-    animation-duration: 200ms;
+    animation-duration: 160ms;
   }
 
   ::view-transition-old(content) {
     animation-direction: reverse;
-  }
-
-  .archive .listing-label {
-    backdrop-filter: none;
-    background: var(--bg);
   }
 }
 
@@ -1277,7 +1309,8 @@ html.vt .listing-item:not(.is-entering) {
   .post-nav,
   .comments,
   .copy-button,
-  .skip-link {
+  .skip-link,
+  .theme-toggle {
     display: none;
   }
 }

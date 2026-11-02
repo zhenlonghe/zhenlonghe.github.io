@@ -1,0 +1,16 @@
+# 关于页底部的社交图标。icon 对应 _includes/icon.html 里的名字。
+- name: X
+  url: https://x.com/zhenlonghee
+  icon: x
+- name: YouTube
+  url: https://youtube.com/@zhenlong911
+  icon: youtube
+- name: Spotify
+  url: https://open.spotify.com/show/4EH2t6noNhFRHyFzrj3vEI
+  icon: spotify
+- name: Instagram
+  url: https://instagram.com/zhenlong911
+  icon: instagram
+- name: GitHub
+  url: https://github.com/zhenlonghe
+  icon: github

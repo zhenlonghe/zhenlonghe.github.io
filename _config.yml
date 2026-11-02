@@ -13,23 +13,22 @@ exclude:
   - Rakefile
   - README.md
   - PRODUCT.md
+  - DESIGN.md
   - todo
   - tools
   - vendor
   - reference_site.html
+  - .impeccable
 
-# icon 对应 _includes/icon.html 里的名字。原先这里写的是 FA4 类名，
-# 站上加载的却是 FA6，像 fa-comment-o 这种早就不存在，只会渲染成空白。
+# 页眉导航只放图标；title 用作无障碍名称和悬停提示。
+# 子页面在 front matter 里写 parent，导航会把父项标成当前页。
 navigations:
   - title: 归档
-    icon: archive
     href: /archive.html
-  - title: 标签
-    icon: tags
-    href: /tags.html
-  - title: RSS
-    icon: rss
-    href: /atom.xml
+    icon: archive
   - title: 关于
-    icon: user
     href: /about.html
+    icon: user
+  - title: RSS 订阅
+    href: /atom.xml
+    icon: rss

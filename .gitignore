@@ -13,3 +13,10 @@ Thumbs.db
 
 .rbenv-version
 .rvmrc
+
+# OPPO Sans 原档约 22 MB，构建时从开放平台拉取；只提交切好的 woff2
+tools/fonts-src/OPPO Sans 4.0.ttf
+tools/fonts-src/OPPO_Sans_4.0.zip
+
+# Impeccable 检测钩子的本地缓存
+.impeccable/hook.cache.json

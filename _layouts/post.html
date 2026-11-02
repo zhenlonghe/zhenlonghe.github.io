@@ -6,7 +6,7 @@ layout: default
   <header>
     <h1 class="entry-title">{{ page.title }}</h1>
     <div class="entry-meta">
-      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time>
       {%- if page.tags and page.tags != empty %}
       <span class="tag-list">
         {%- for tag in page.tags %}
@@ -29,13 +29,13 @@ layout: default
   <nav class="post-nav" aria-label="文章导航">
     {%- if page.previous %}
     <a class="post-nav-link is-previous" href="{{ page.previous.url }}" rel="prev">
-      <span class="direction">{% include icon.html name="arrow-left" %}上一篇</span>
+      <span class="direction">上一篇</span>
       <span class="headline">{{ page.previous.title }}</span>
     </a>
     {%- endif %}
     {%- if page.next %}
     <a class="post-nav-link is-next" href="{{ page.next.url }}" rel="next">
-      <span class="direction">下一篇{% include icon.html name="arrow-right" %}</span>
+      <span class="direction">下一篇</span>
       <span class="headline">{{ page.next.title }}</span>
     </a>
     {%- endif %}
@@ -46,7 +46,7 @@ layout: default
   <section class="comments">
     <button type="button" class="comment-toggle" data-comment-toggle
             data-shortname="{{ site.disqus }}" data-identifier="{{ page.guid }}">
-      {% include icon.html name="comment" %}留言
+      留言
     </button>
     <div class="comment-thread" id="disqus_thread"></div>
     <noscript><p>需要开启 JavaScript 才能看到 <a href="https://disqus.com/?ref_noscript">Disqus</a> 评论。</p></noscript>

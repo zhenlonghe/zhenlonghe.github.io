@@ -21,7 +21,8 @@
     <title>{{ page_title }}</title>
     <meta name="author" content="{{ site.author }}">
     <meta name="description" content="{{ page_description | strip_newlines | escape }}">
-    <meta name="theme-color" content="#101016">
+    <meta name="theme-color" content="#f8f5f1">
+    <meta name="theme-color" content="#2c2924" media="(prefers-color-scheme: dark)">
     <link rel="canonical" href="{{ canonical }}">
 
     <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
@@ -39,8 +40,7 @@
     <link rel="alternate icon" type="image/png" href="/media/favicon.png">
     <link rel="alternate" type="application/atom+xml" title="{{ site.name }}" href="/atom.xml">
 
-    <!-- 拉丁字体首屏就要用，先取；中文走系统字体，没有文件要下 -->
-    <link rel="preload" href="/media/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/media/fonts/oppo-sans.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/media/css/style.css">
     <!-- 两件事必须内联在 head、赶在首帧之前：
          1. Apple 平台打上 .apple，代码字体走 ui-monospace 拿 SF Mono（见 style.css 的 --mono）
@@ -50,6 +50,13 @@
       (function (h) {
         if (/Mac|iPhone|iPad|iPod/.test(navigator.platform)) h.classList.add('apple');
         addEventListener('pagereveal', function (e) { if (e.viewTransition) h.classList.add('vt'); });
+        var stored = null;
+        try { stored = localStorage.getItem('theme'); } catch (e) {}
+        var mode = (stored === 'light' || stored === 'dark') ? stored : 'system';
+        h.dataset.mode = mode;
+        h.dataset.theme = mode === 'system'
+          ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+          : mode;
       })(document.documentElement);
     </script>
   </head>
@@ -69,21 +76,31 @@
         <p class="wordmark"><a href="/">{{ site.name }}</a></p>
         {%- endif -%}
         <nav class="nav" aria-label="站点导航">
+          {%- comment -%}
+            page.url 对 .markdown 页面是 /archive 这种不带扩展名的形式，
+            跟 href 比较前两边都去掉 .html，否则当前页永远标不上。
+          {%- endcomment -%}
+          {%- assign here = page.url | remove: ".html" -%}
+          {%- assign here_parent = page.parent | remove: ".html" -%}
           {%- for item in site.navigations %}
-          <a class="icon-button" href="{{ item.href }}" title="{{ item.title }}" aria-label="{{ item.title }}"
-             {% if page.url == item.href %}aria-current="page"{% endif %}>{% include icon.html name=item.icon %}</a>
+          {%- assign target = item.href | remove: ".html" %}
+          <a href="{{ item.href }}" aria-label="{{ item.title }}" title="{{ item.title }}"{% if here == target or here_parent == target %} aria-current="page"{% endif %}>{% include icon.html name=item.icon %}</a>
           {%- endfor %}
+          {%- comment -%}
+            外观三态循环：跟随系统 → 浅色 → 深色。按钮图标显示当前模式，
+            标签和提示由 site.js 按模式改写。
+          {%- endcomment %}
+          <button type="button" class="theme-toggle" data-theme-toggle aria-label="外观：跟随系统" title="外观：跟随系统">
+            <span class="icon-system">{% include icon.html name="contrast" %}</span>
+            <span class="icon-light">{% include icon.html name="sun" %}</span>
+            <span class="icon-dark">{% include icon.html name="moon" %}</span>
+          </button>
         </nav>
       </header>
 
       <main class="shell" id="content">
         {{ content }}
       </main>
-
-      <footer class="colophon">
-        {%- assign first_post = site.posts | last -%}
-        <p>&copy; {{ first_post.date | date: "%Y" }} – {{ site.time | date: "%Y" }} {{ site.author }}</p>
-      </footer>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>

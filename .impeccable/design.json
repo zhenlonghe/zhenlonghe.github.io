@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-02T07:16:00Z",
+  "title": "Design System: Zhenlong",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "米纸",
+        "canonical": "oklch(0.972 0.006 82)",
+        "tonalRamp": [
+          "oklch(0.26 0.02 82)",
+          "oklch(0.38 0.018 82)",
+          "oklch(0.5 0.016 82)",
+          "oklch(0.62 0.014 82)",
+          "oklch(0.74 0.012 82)",
+          "oklch(0.86 0.01 82)",
+          "oklch(0.945 0.008 82)",
+          "oklch(0.972 0.006 82)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "浅一层",
+        "canonical": "oklch(0.945 0.008 82)",
+        "tonalRamp": [
+          "oklch(0.26 0.02 82)",
+          "oklch(0.38 0.018 82)",
+          "oklch(0.5 0.016 82)",
+          "oklch(0.62 0.014 82)",
+          "oklch(0.74 0.012 82)",
+          "oklch(0.86 0.01 82)",
+          "oklch(0.925 0.01 82)",
+          "oklch(0.945 0.008 82)"
+        ]
+      },
+      "surface-high": {
+        "role": "neutral",
+        "displayName": "再浅一层",
+        "canonical": "oklch(0.925 0.01 82)",
+        "tonalRamp": [
+          "oklch(0.26 0.02 82)",
+          "oklch(0.38 0.018 82)",
+          "oklch(0.5 0.016 82)",
+          "oklch(0.62 0.014 82)",
+          "oklch(0.74 0.012 82)",
+          "oklch(0.86 0.01 82)",
+          "oklch(0.9 0.01 82)",
+          "oklch(0.925 0.01 82)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "细线",
+        "canonical": "oklch(0.88 0.01 82)",
+        "tonalRamp": [
+          "oklch(0.26 0.014 82)",
+          "oklch(0.38 0.014 82)",
+          "oklch(0.5 0.014 82)",
+          "oklch(0.62 0.012 82)",
+          "oklch(0.74 0.012 82)",
+          "oklch(0.82 0.012 82)",
+          "oklch(0.88 0.01 82)",
+          "oklch(0.94 0.008 82)"
+        ]
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "稍重的线",
+        "canonical": "oklch(0.78 0.014 82)",
+        "tonalRamp": [
+          "oklch(0.26 0.014 82)",
+          "oklch(0.38 0.014 82)",
+          "oklch(0.5 0.014 82)",
+          "oklch(0.62 0.014 82)",
+          "oklch(0.7 0.014 82)",
+          "oklch(0.78 0.014 82)",
+          "oklch(0.88 0.01 82)",
+          "oklch(0.94 0.008 82)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "暖墨",
+        "canonical": "oklch(0.26 0.02 50)",
+        "tonalRamp": [
+          "oklch(0.18 0.022 50)",
+          "oklch(0.26 0.02 50)",
+          "oklch(0.34 0.018 50)",
+          "oklch(0.4 0.016 50)",
+          "oklch(0.46 0.014 50)",
+          "oklch(0.62 0.012 50)",
+          "oklch(0.78 0.01 50)",
+          "oklch(0.94 0.008 50)"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "次墨",
+        "canonical": "oklch(0.4 0.016 50)",
+        "tonalRamp": [
+          "oklch(0.18 0.02 50)",
+          "oklch(0.26 0.02 50)",
+          "oklch(0.34 0.018 50)",
+          "oklch(0.4 0.016 50)",
+          "oklch(0.46 0.014 50)",
+          "oklch(0.62 0.012 50)",
+          "oklch(0.78 0.01 50)",
+          "oklch(0.94 0.008 50)"
+        ]
+      },
+      "ink-faint": {
+        "role": "neutral",
+        "displayName": "淡墨",
+        "canonical": "oklch(0.46 0.014 50)",
+        "tonalRamp": [
+          "oklch(0.18 0.02 50)",
+          "oklch(0.26 0.02 50)",
+          "oklch(0.34 0.018 50)",
+          "oklch(0.4 0.016 50)",
+          "oklch(0.46 0.014 50)",
+          "oklch(0.62 0.012 50)",
+          "oklch(0.78 0.01 50)",
+          "oklch(0.94 0.008 50)"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "墨蓝",
+        "canonical": "oklch(0.38 0.06 248)",
+        "tonalRamp": [
+          "oklch(0.22 0.07 248)",
+          "oklch(0.32 0.07 248)",
+          "oklch(0.38 0.06 248)",
+          "oklch(0.48 0.055 248)",
+          "oklch(0.58 0.045 248)",
+          "oklch(0.7 0.03 248)",
+          "oklch(0.84 0.018 248)",
+          "oklch(0.94 0.01 248)"
+        ]
+      },
+      "accent-hot": {
+        "role": "primary",
+        "displayName": "更深的墨蓝",
+        "canonical": "oklch(0.32 0.07 248)",
+        "tonalRamp": [
+          "oklch(0.18 0.07 248)",
+          "oklch(0.26 0.07 248)",
+          "oklch(0.32 0.07 248)",
+          "oklch(0.38 0.06 248)",
+          "oklch(0.48 0.055 248)",
+          "oklch(0.62 0.04 248)",
+          "oklch(0.78 0.02 248)",
+          "oklch(0.92 0.01 248)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "文章标题和页面标题。" },
+      "headline": { "displayName": "Headline", "purpose": "正文里的 h2。" },
+      "body": { "displayName": "Body", "purpose": "散文正文、导航、社交链。" },
+      "label": { "displayName": "Label", "purpose": "日期、计数、代码。" }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "颜色反馈的默认缓动。"
+      },
+      {
+        "name": "page-fade",
+        "value": "opacity 160–280ms",
+        "purpose": "跨文档换页时正文淡出淡入；页眉页脚不动。"
+      }
+    ],
+    "breakpoints": [
+      { "name": "narrow", "value": "46rem" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "页眉文字导航。当前页用下划线，不用图标圈。",
+      "html": "<nav class=\"ds-nav\" aria-label=\"站点导航\"><a href=\"#\">归档</a><a href=\"#\" aria-current=\"page\">标签</a><a href=\"#\">关于</a><a href=\"#\">RSS</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 1.15rem; font-family: \"OPPO Sans\", \"PingFang SC\", sans-serif; font-size: 0.95rem; } .ds-nav a { color: oklch(0.4 0.016 50); text-decoration: none; } .ds-nav a:hover { color: oklch(0.26 0.02 50); } .ds-nav a[aria-current=\"page\"] { color: oklch(0.26 0.02 50); text-decoration: underline; text-underline-offset: 0.28em; }"
+    },
+    {
+      "name": "Listing Link",
+      "kind": "custom",
+      "refersTo": "listing-link",
+      "description": "归档和近期列表的一行：日期加标题。",
+      "html": "<a class=\"ds-listing\" href=\"#\"><time>05-07</time><span>中年幻灭</span></a>",
+      "css": ".ds-listing { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1.15rem; padding: 0.8rem 0; border-bottom: 1px solid oklch(0.88 0.01 82); color: oklch(0.26 0.02 50); text-decoration: none; font-family: \"OPPO Sans\", \"PingFang SC\", sans-serif; } .ds-listing time { font-family: \"Commit Mono\", ui-monospace, monospace; font-size: 0.82rem; color: oklch(0.46 0.014 50); } .ds-listing:hover span { color: oklch(0.38 0.06 248); }"
+    },
+    {
+      "name": "Tag",
+      "kind": "chip",
+      "refersTo": "nav-link",
+      "description": "纯文字标签。选中用下划线，不用填色胶囊。",
+      "html": "<button class=\"ds-tag\" type=\"button\" aria-pressed=\"true\">记事<span>3</span></button>",
+      "css": ".ds-tag { background: none; border: 0; padding: 0.2rem 0; color: oklch(0.26 0.02 50); font: 600 0.95rem \"OPPO Sans\", \"PingFang SC\", sans-serif; text-decoration: underline; text-underline-offset: 0.28em; cursor: pointer; } .ds-tag span { margin-left: 0.3rem; color: oklch(0.4 0.016 50); font-family: \"Commit Mono\", ui-monospace, monospace; font-size: 0.78rem; font-weight: 400; }"
+    },
+    {
+      "name": "Copy Button",
+      "kind": "button",
+      "refersTo": "copy-button",
+      "description": "代码块右上角的小方复制按钮，常驻可见。",
+      "html": "<button class=\"ds-copy\" type=\"button\" aria-label=\"复制这段代码\"><svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><rect x=\"9\" y=\"9\" width=\"11\" height=\"11\" rx=\"2\"/><path d=\"M5 15V6a2 2 0 0 1 2-2h9\"/></svg></button>",
+      "css": ".ds-copy { width: 1.7rem; height: 1.7rem; display: inline-flex; align-items: center; justify-content: center; border: 1px solid oklch(0.88 0.01 82); border-radius: 0.2rem; background: oklch(0.972 0.006 82); color: oklch(0.46 0.014 50); cursor: pointer; } .ds-copy:hover, .ds-copy:focus-visible { color: oklch(0.26 0.02 50); border-color: oklch(0.78 0.014 82); outline: 2px solid oklch(0.38 0.06 248); outline-offset: 3px; }"
+    },
+    {
+      "name": "Post Nav Link",
+      "kind": "custom",
+      "refersTo": "listing-link",
+      "description": "文末上一篇 / 下一篇，纯文字，不要卡片。",
+      "html": "<a class=\"ds-post-nav\" href=\"#\"><span class=\"dir\">上一篇</span><span class=\"title\">疲惫的周末</span></a>",
+      "css": ".ds-post-nav { display: flex; flex-direction: column; gap: 0.25rem; color: oklch(0.26 0.02 50); text-decoration: none; font-family: \"OPPO Sans\", \"PingFang SC\", sans-serif; } .ds-post-nav .dir { color: oklch(0.46 0.014 50); font-size: 0.82rem; } .ds-post-nav .title { font-size: 1rem; line-height: 1.5; } .ds-post-nav:hover .title { color: oklch(0.38 0.06 248); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "未涂布的纸页",
+    "overview": "这是一个给中文读者夜间或通勤阅读的个人档案。页面像一张未涂布的纸摊在桌上：淡底、近黑墨、一栏正文、几乎没有装饰。气质来自字号、行距和空白，不来自渐变、卡片或图标按钮。页框（站名、文字导航、底色、标题、代码块）承担身份；阅读栏保持安静。链接用安静的墨蓝，从不用高饱和强调色撑场。",
+    "keyCharacteristics": [
+      "浅色纸面，不是纯白，也不是奶油底配陶土红",
+      "一栏排版，量度线页眉、正文、页脚共用",
+      "导航、标签、社交、上下篇全是文字，不是胶囊或圆形按钮",
+      "正文中英文共用自托管 OPPO Sans；缺字落到系统黑体；代码才用等宽"
+    ],
+    "rules": [
+      { "name": "The Quiet Link Rule", "body": "颜色只用来标出可点的东西。不要用强调色做大色块、渐变或悬停底。", "section": "colors" },
+      { "name": "The One Family Rule", "body": "站名、导航、正文、标题同一无衬线家族。等宽只给代码、日期、计数。", "section": "typography" },
+      { "name": "The Flat Paper Rule", "body": "不要投影、不要玻璃、不要悬停渐变。", "section": "elevation" }
+    ],
+    "dos": [
+      "Do 让读者进页就能读正文。页眉只保留站名和四个字。",
+      "Do 用段距、行高和量度线表达「书」，而不是用衬线 webfont 或纸纹贴图。",
+      "Do 给所有正文和元信息留出至少 AA 的对比；淡墨也不能掉下去。",
+      "Do 尊重 prefers-reduced-motion。换页可以淡入淡出，不要进站画线或列表错落入场。"
+    ],
+    "donts": [
+      "Don't 回到暗色紫底、径向渐变、圆形描边按钮或胶囊标签。",
+      "Don't 用奶油底 + 衬线大标题 + 陶土红那套默认「文艺博客」配方。",
+      "Don't 把列表项、上下篇、引用做成卡片。",
+      "Don't 给站名或页脚加全大写宽字距。",
+      "Don't 给中文标题设以 ch 为单位的窄宽度。"
+    ]
+  }
+}

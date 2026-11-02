@@ -21,7 +21,7 @@ raw: true
   {%- for post in year.items %}
     <li class="listing-item" style="--i: {{ forloop.index0 }}">
       <a href="{{ post.url }}">
-        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%m-%d" }}</time>
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d" }}</time>
         <span class="listing-title">{{ post.title }}</span>
       </a>
     </li>

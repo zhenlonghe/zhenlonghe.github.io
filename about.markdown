@@ -4,26 +4,30 @@ layout: page
 raw: true
 ---
 
-<div class="prose">
-  <p>A lifelong learner, creator, dreamer, minimalist, and artist from mainland China.</p>
+{%- comment -%}
+  三段：一句自我介绍做导语；经历按年份列成细线分隔的行，年份走等宽数字；
+  最后一行社交图标，每个都带 aria-label。
+{%- endcomment -%}
 
-  {%- comment -%}
-    年份原本是 markdown 里靠行尾双空格换行的一段。改成 dl，年份自己占一列、
-    走等宽数字，读的时候不用再横着找对齐。
-  {%- endcomment -%}
-  <dl class="timeline">
-    <dt>2024</dt><dd>Freelancer</dd>
-    <dt>2021</dt><dd>BMW Brilliance</dd>
-    <dt>2014</dt><dd>SJ Bank</dd>
-    <dt>2010</dt><dd>SIM</dd>
-    <dt>2006</dt><dd>NEU</dd>
-    <dt>1987</dt><dd>Born in Shenyang, China</dd>
-  </dl>
-</div>
+<div class="about">
+  <p class="about-lead">A lifelong learner, creator, dreamer, minimalist, and artist from mainland China.</p>
+  <p class="about-note">我做的应用都在 <a href="/studio">Studio</a>。</p>
 
-<div class="social-links">
-  <a class="icon-button" href="https://youtube.com/@zhenlong911" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">{% include icon.html name="youtube" %}</a>
-  <a class="icon-button" href="https://open.spotify.com/show/4EH2t6noNhFRHyFzrj3vEI" target="_blank" rel="noopener noreferrer" title="Spotify" aria-label="Spotify">{% include icon.html name="spotify" %}</a>
-  <a class="icon-button" href="https://instagram.com/zhenlong911" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">{% include icon.html name="instagram" %}</a>
-  <a class="icon-button" href="https://github.com/zhenlonghe" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">{% include icon.html name="github" %}</a>
+  <section class="about-section" aria-labelledby="timeline-heading">
+    <h2 class="listing-label" id="timeline-heading">经历</h2>
+    <dl class="timeline">
+      <div><dt>2024</dt><dd>Freelancer</dd></div>
+      <div><dt>2021</dt><dd>BMW Brilliance</dd></div>
+      <div><dt>2014</dt><dd>SJ Bank</dd></div>
+      <div><dt>2010</dt><dd>SIM</dd></div>
+      <div><dt>2006</dt><dd>NEU</dd></div>
+      <div><dt>1987</dt><dd>Born in Shenyang, China</dd></div>
+    </dl>
+  </section>
+
+  <ul class="social-links" aria-label="社交账号">
+    {%- for social in site.data.socials %}
+    <li><a href="{{ social.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ social.name }}" title="{{ social.name }}">{% include icon.html name=social.icon %}</a></li>
+    {%- endfor %}
+  </ul>
 </div>

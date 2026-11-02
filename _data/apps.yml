@@ -1,0 +1,37 @@
+# Studio 页的应用列表，按上架时间倒序。icon 放在 media/apps/，128px。
+# platform: mac / ios —— iOS 图标是方形原图，页面上会补圆角；Mac 图标自带形状。
+- name: Marka
+  icon: marka.png
+  platform: mac
+  url: https://apps.apple.com/app/id6815102056
+  summary: 小而快的 Markdown 编辑器，边写边渲染，打开约 0.1 秒。
+
+- name: Cleaning Mode
+  icon: cleaning-mode.png
+  platform: mac
+  url: https://apps.apple.com/app/id6752313999
+  summary: 擦屏幕时锁住所有显示器与键盘，顺带做坏点和显示检查。
+
+- name: Final Caption Pro
+  icon: final-caption-pro.png
+  platform: mac
+  url: https://apps.apple.com/app/id6743959267
+  summary: 本地 Whisper 转录音视频为字幕，一键送进 Final Cut Pro。
+
+- name: Metronara
+  icon: metronara.png
+  platform: ios
+  url: https://apps.apple.com/app/id6742404832
+  summary: 为跑步设计的节拍器，用稳定节拍守住步频和配速。
+
+- name: Dayora
+  icon: dayora.png
+  platform: ios
+  url: https://apps.apple.com/app/id6742139901
+  summary: 主屏与锁屏倒数日小组件，记住每个重要的日子。
+
+- name: 年度进度
+  icon: year-progress.png
+  platform: ios
+  url: https://apps.apple.com/app/id6740609838
+  summary: 年度进度与倒计时小组件，支持锁屏、待机模式和 Apple Watch。

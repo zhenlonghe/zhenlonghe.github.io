@@ -5,6 +5,7 @@
  * 1. 代码高亮 + 复制按钮
  * 2. 标签页的筛选
  * 3. Disqus 按需加载
+ * 4. 明暗主题：默认跟系统，点一下记住选择，再点回系统值就继续跟随
  */
 (function () {
   'use strict';
@@ -162,12 +163,69 @@
     }, { once: true });
   }
 
+  function themeToggle() {
+    var button = document.querySelector('[data-theme-toggle]');
+    if (!button) return;
+
+    var root = document.documentElement;
+    var lightMeta = document.querySelector('meta[name="theme-color"]:not([media])');
+    var darkMeta = document.querySelector('meta[name="theme-color"][media]');
+
+    function systemTheme() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function readStored() {
+      try { return localStorage.getItem('theme'); } catch (e) { return null; }
+    }
+
+    function writeStored(value) {
+      try {
+        if (value) localStorage.setItem('theme', value);
+        else localStorage.removeItem('theme');
+      } catch (e) {}
+    }
+
+    // 三态：system 跟随系统（默认，不写存储）、light、dark。点击按此顺序循环。
+    var ORDER = ['system', 'light', 'dark'];
+    var LABEL = { system: '跟随系统', light: '浅色', dark: '深色' };
+
+    function storedMode() {
+      var v = readStored();
+      return v === 'light' || v === 'dark' ? v : 'system';
+    }
+
+    function apply(mode) {
+      var theme = mode === 'system' ? systemTheme() : mode;
+      root.dataset.mode = mode;
+      root.dataset.theme = theme;
+      if (lightMeta) lightMeta.setAttribute('content', theme === 'dark' ? '#2c2924' : '#f8f5f1');
+      if (darkMeta) darkMeta.disabled = true;
+      var next = ORDER[(ORDER.indexOf(mode) + 1) % ORDER.length];
+      button.setAttribute('aria-label', '外观：' + LABEL[mode] + '，点按切换为' + LABEL[next]);
+      button.title = '外观：' + LABEL[mode];
+    }
+
+    apply(storedMode());
+
+    button.addEventListener('click', function () {
+      var next = ORDER[(ORDER.indexOf(storedMode()) + 1) % ORDER.length];
+      writeStored(next === 'system' ? '' : next);
+      apply(next);
+    });
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
+      if (storedMode() === 'system') apply('system');
+    });
+  }
+
   function init() {
     highlight();
     addCopyButtons();
     wrapTables();
     tagFilter();
     comments();
+    themeToggle();
   }
 
   if (document.readyState === 'loading') {

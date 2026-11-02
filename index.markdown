@@ -17,7 +17,7 @@ layout: default
   <header>
     <h2 class="entry-title"><a href="{{ latest.url }}">{{ latest.title }}</a></h2>
     <div class="entry-meta">
-      <time datetime="{{ latest.date | date_to_xmlschema }}">{{ latest.date | date: "%Y-%m-%d" }}</time>
+      <time datetime="{{ latest.date | date_to_xmlschema }}">{{ latest.date | date: "%b %-d, %Y" }}</time>
       {%- if latest.tags and latest.tags != empty %}
       <span class="tag-list">
         {%- for tag in latest.tags %}
@@ -52,7 +52,7 @@ layout: default
   {%- for post in recent %}
     <li class="listing-item" style="--i: {{ forloop.index0 }}">
       <a href="{{ post.url }}">
-        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
         <span class="listing-title">{{ post.title }}</span>
       </a>
     </li>
@@ -61,5 +61,5 @@ layout: default
   {%- endfor %}
   </ul>
 
-  <a class="more-link" href="/archive.html">全部归档，共 <span class="stamp">{{ site.posts.size }}</span> 篇{% include icon.html name="arrow-right" %}</a>
+  <a class="more-link" href="/archive.html">全部归档，共 <span class="stamp">{{ site.posts.size }}</span> 篇</a>
 </section>

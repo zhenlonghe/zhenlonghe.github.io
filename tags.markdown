@@ -22,7 +22,7 @@ raw: true
 {%- for post in site.posts %}
   <li class="listing-item" data-tags="{{ post.tags | join: ',' }}" style="--i: {{ forloop.index0 }}">
     <a href="{{ post.url }}">
-      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
       <span class="listing-title">{{ post.title }}</span>
       {%- if post.tags and post.tags != empty %}
       <span class="tag-list">

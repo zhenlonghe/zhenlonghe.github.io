@@ -21,9 +21,8 @@ task :server do
   sh 'bundle exec jekyll serve'
 end
 
-# 中文走系统字体，不发文件；只有拉丁（Archivo、Commit Mono）切子集自托管。
-# 换字体版本时把新原档放进 tools/fonts-src 再跑一次。
-desc 'Rebuild the self-hosted Latin webfonts from tools/fonts-src'
+# 正文（中英文）切 OPPO Sans 子集；代码切 Commit Mono。新文章加了未见过的汉字就重跑一次。
+desc 'Rebuild the self-hosted webfonts from tools/fonts-src'
 task :fonts do
   sh "uvx --from 'fonttools==4.64.0' --with brotli python3 tools/build_fonts.py"
 end
