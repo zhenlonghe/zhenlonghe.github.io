@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tapir · Mac 录屏与轻量剪辑</title>
+<meta name="description" content="Tapir 是 macOS 原生的录屏与轻量剪辑工具：录得清楚，剪得轻松，运镜自然。所有内容只在你的 Mac 上处理。">
+<meta name="theme-color" content="#16181F">
+<meta property="og:title" content="Tapir · Mac 录屏与轻量剪辑">
+<meta property="og:description" content="按下红键，剩下的交给 Tapir。macOS 原生的录屏与轻量剪辑工具。">
+<meta property="og:image" content="https://zhenlonghe.github.io/tapir/assets/img/editor.webp">
+<link rel="icon" href="assets/img/icon-128.png">
+<link rel="preload" href="/media/fonts/oppo-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<a class="skip" href="#take-02" data-i18n="skip">跳到正文</a>
+
+<header class="top">
+  <a class="brand" href="#take-01" aria-label="Tapir">
+    <img src="assets/tapir-mark.svg" alt="" width="44" height="30">
+    <span>Tapir</span>
+  </a>
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" data-lang="zh" aria-pressed="true">中</button>
+    <span aria-hidden="true">/</span>
+    <button type="button" data-lang="en" aria-pressed="false">EN</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- TAKE 01 -->
+  <section class="take take--hero" id="take-01" data-source="display" aria-labelledby="hero-title">
+    <div class="finder" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <p class="slate"><span class="dot"></span>TAKE 01 · <span class="tc" id="hero-tc">00:00:12</span></p>
+
+    <div class="hero-copy">
+      <h1 id="hero-title" data-i18n="hero.title">按下红键，剩下的交给 Tapir。</h1>
+      <div class="actions">
+        <button type="button" class="cta" data-store aria-describedby="store-note">
+          <span data-i18n="cta">即将登陆 Mac App Store</span>
+        </button>
+        <a class="gh" href="https://github.com/zhenlonghe/tapir/releases/latest"><span data-i18n="gh">在 GitHub 下载</span>
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9.5M8.5 4l4 4-4 4"/></svg></a>
+      </div>
+      <p class="store-note" id="store-note" role="status" data-i18n="store.note" hidden>还没上架。上架后这个按钮会直接打开 App Store，现在可以先从 GitHub 下载。</p>
+    </div>
+
+    <div class="island" role="group" aria-label="Tapir 录制条" data-i18n-aria="island.label">
+      <span class="grip" aria-hidden="true"></span>
+      <button type="button" class="rec" aria-pressed="false" data-i18n-aria="rec.label" aria-label="试一下录制">
+        <span class="rec-core"></span>
+      </button>
+      <span class="glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M9 21h6"/></svg></span>
+      <span class="glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2.5" y="6.5" width="13" height="11" rx="2.5"/><path d="M15.5 10.5l6-3.5v10l-6-3.5z"/></svg></span>
+      <span class="glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4.5 4.5 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"/></svg></span>
+      <span class="glyph glyph--more" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></span>
+      <span class="sep" aria-hidden="true"></span>
+      <div class="source">
+        <button type="button" class="source-btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="source-list">
+          <svg class="src-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-display"/></svg>
+          <span class="src-name" data-i18n="src.display">显示器</span>
+          <svg class="chev" viewBox="0 0 12 16" aria-hidden="true"><path d="M3 6l3-3 3 3M3 10l3 3 3-3"/></svg>
+        </button>
+        <ul class="source-list" id="source-list" role="listbox" aria-label="录制内容" data-i18n-aria="src.label" hidden>
+          <li role="option" data-value="display" aria-selected="true"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-display"/></svg><span data-i18n="src.display">显示器</span></li>
+          <li role="option" data-value="window" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-window"/></svg><span data-i18n="src.window">窗口</span></li>
+          <li role="option" data-value="area" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-area"/></svg><span data-i18n="src.area">区域</span></li>
+          <li role="option" data-value="device" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-device"/></svg><span data-i18n="src.device">设备</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="source-caption" aria-live="polite" data-i18n="cap.display">录整块屏幕。摄像头、麦克风和系统声音可以一起录。</p>
+  </section>
+
+  <!-- TAKE 02 -->
+  <section class="take" id="take-02" aria-labelledby="t2">
+    <div class="finder" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <p class="slate"><span class="dot"></span>TAKE 02 · <span data-i18n="t2.slate">剪辑</span></p>
+    <figure class="shot">
+      <img src="assets/img/editor.webp" width="2000" height="1028" loading="lazy" decoding="async"
+           alt="Tapir 编辑器：画面预览、背景设置与多轨时间线" data-i18n-alt="t2.alt">
+    </figure>
+    <div class="take-body">
+      <h2 id="t2" data-i18n="t2.title">剪辑，不用学。</h2>
+      <div class="take-text">
+        <p data-i18n="t2.p">分割、裁剪、重排、变速，剪掉的部分随时可以还原。缩略图和波形一键切换，片段边界自动吸附。</p>
+        <ul class="keys" aria-label="快捷键" data-i18n-aria="keys.label">
+          <li><kbd>S</kbd><span data-i18n="k.s">在播放头分割</span></li>
+          <li><kbd>B</kbd><span data-i18n="k.b">刀片工具</span></li>
+          <li><kbd>Q</kbd><kbd>W</kbd><span data-i18n="k.qw">删掉播放头之前 / 之后</span></li>
+          <li><kbd>J</kbd><kbd>K</kbd><kbd>L</kbd><span data-i18n="k.jkl">倒放 · 暂停 · 播放</span></li>
+          <li><kbd>⌃</kbd><kbd>⌥</kbd><kbd>M</kbd><span data-i18n="k.m">录制时留标记，剪辑时直接跳回</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAKE 03 -->
+  <section class="take take--flip" id="take-03" aria-labelledby="t3">
+    <div class="finder" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <p class="slate"><span class="dot"></span>TAKE 03 · <span data-i18n="t3.slate">运镜</span></p>
+    <div class="split">
+      <div class="take-body take-body--stack">
+        <h2 id="t3" data-i18n="t3.title">运镜自然。</h2>
+        <p data-i18n="t3.p">镜头自动跟着光标推近、拉远，也可以手动定一个焦点。屏幕 3D 给画面加上倾斜、透视和聚焦虚化。每一次缩放都是时间线上的一段，拖一拖就能改时长和曲线。</p>
+        <ul class="tags">
+          <li data-i18n="t3.a">自动跟随光标</li>
+          <li data-i18n="t3.b">手动定位</li>
+          <li data-i18n="t3.c">屏幕 3D</li>
+          <li data-i18n="t3.d">开场动效</li>
+        </ul>
+      </div>
+      <figure class="shot shot--tilt">
+        <img src="assets/img/motion.webp" width="2000" height="1028" loading="lazy" decoding="async"
+             alt="Tapir 运镜面板：缩放焦点、缩放曲线与时间线上的缩放片段" data-i18n-alt="t3.alt">
+      </figure>
+    </div>
+  </section>
+
+  <!-- TAKE 04 -->
+  <section class="take" id="take-04" aria-labelledby="t4">
+    <div class="finder" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <p class="slate"><span class="dot"></span>TAKE 04 · <span data-i18n="t4.slate">画面</span></p>
+    <div class="split split--frame">
+      <div class="stage" data-bg="wall" data-pad="m" data-radius="m">
+        <div class="stage-shot">
+          <img src="assets/img/canvas.webp" width="1400" height="787" loading="lazy" decoding="async"
+               alt="一段录屏画面：海岸照片" data-i18n-alt="t4.alt">
+        </div>
+      </div>
+      <div class="take-body take-body--stack">
+        <h2 id="t4" data-i18n="t4.title">画面，一眼就好看。</h2>
+        <p data-i18n="t4.p">比例、裁切、留白、圆角、阴影、背景和样机外框，还有贴图、柔化与突出。调好的样子存成场景预设，下次一键套用。</p>
+        <div class="knobs">
+          <div class="knob" role="group" aria-labelledby="kb-bg">
+            <span id="kb-bg" data-i18n="kn.bg">背景</span>
+            <div class="seg" data-target="bg">
+              <button type="button" data-v="wall" aria-pressed="true" data-i18n="kn.wall">壁纸</button>
+              <button type="button" data-v="ink" aria-pressed="false" data-i18n="kn.ink">石墨</button>
+              <button type="button" data-v="blue" aria-pressed="false" data-i18n="kn.blue">蓝</button>
+            </div>
+          </div>
+          <div class="knob" role="group" aria-labelledby="kb-pad">
+            <span id="kb-pad" data-i18n="kn.pad">留白</span>
+            <div class="seg" data-target="pad">
+              <button type="button" data-v="s" aria-pressed="false" data-i18n="kn.s">小</button>
+              <button type="button" data-v="m" aria-pressed="true" data-i18n="kn.m">中</button>
+              <button type="button" data-v="l" aria-pressed="false" data-i18n="kn.l">大</button>
+            </div>
+          </div>
+          <div class="knob" role="group" aria-labelledby="kb-r">
+            <span id="kb-r" data-i18n="kn.radius">圆角</span>
+            <div class="seg" data-target="radius">
+              <button type="button" data-v="s" aria-pressed="false" data-i18n="kn.none">无</button>
+              <button type="button" data-v="m" aria-pressed="true" data-i18n="kn.m">中</button>
+              <button type="button" data-v="l" aria-pressed="false" data-i18n="kn.l">大</button>
+            </div>
+          </div>
+        </div>
+        <p class="aside" data-i18n="t4.aside">光标和摄像头也一样：光标样式、点击反馈、静止时自动隐藏；摄像头的位置、形状和出场动画。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAKE 05 -->
+  <section class="take take--spec" id="take-05" aria-labelledby="t5">
+    <div class="finder" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <p class="slate"><span class="dot"></span>TAKE 05 · <span data-i18n="t5.slate">导出</span></p>
+    <h2 id="t5" class="spec-title" data-i18n="t5.title">导出之后，项目还在。</h2>
+    <dl class="spec">
+      <div><dt data-i18n="t5.fmt">格式</dt><dd>MP4 <em>·</em> M4A</dd></div>
+      <div><dt data-i18n="t5.res">分辨率</dt><dd><span data-i18n="t5.src">原始</span> <em>·</em> 1080p <em>·</em> 1440p <em>·</em> 4K</dd></div>
+      <div><dt data-i18n="t5.fps">帧率</dt><dd>30 <em>·</em> 60 FPS</dd></div>
+    </dl>
+    <p class="spec-note" data-i18n="t5.p">预览和导出用的是同一个渲染器，看到什么就导出什么。成片导出后，项目仍可随时打开接着改。</p>
+  </section>
+
+  <!-- TAKE 06 -->
+  <section class="take take--quiet" id="take-06" aria-labelledby="t6">
+    <div class="finder" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <p class="slate"><span class="dot"></span>TAKE 06 · <span data-i18n="t6.slate">本地</span></p>
+    <h2 id="t6" class="quiet-title" data-i18n="t6.title">录的东西，只在你的 Mac 上。</h2>
+    <p class="quiet-p" data-i18n="t6.p">不用注册账号，不上传，不含广告、分析 SDK 或追踪。项目、素材和鼠标轨迹都存在本机的项目文件里，删掉项目就一并删掉。</p>
+  </section>
+
+  <!-- END -->
+  <section class="take take--end" id="take-end" aria-labelledby="tend">
+    <div class="finder" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <p class="slate"><span class="dot dot--off"></span>CUT · <span data-i18n="end.slate">收工</span></p>
+    <h2 id="tend" data-i18n="end.title">下一条，用 Tapir 录。</h2>
+    <div class="actions">
+      <button type="button" class="cta" data-store aria-describedby="store-note-2"><span data-i18n="cta">即将登陆 Mac App Store</span></button>
+      <a class="gh" href="https://github.com/zhenlonghe/tapir/releases/latest"><span data-i18n="gh">在 GitHub 下载</span>
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9.5M8.5 4l4 4-4 4"/></svg></a>
+    </div>
+    <p class="store-note" id="store-note-2" role="status" data-i18n="store.note" hidden>还没上架。上架后这个按钮会直接打开 App Store，现在可以先从 GitHub 下载。</p>
+    <ul class="reqs">
+      <li data-i18n="req.os">macOS 14 及以上</li>
+      <li>Apple Silicon</li>
+      <li>简体中文 · English</li>
+      <li data-i18n="req.oss">开源 · MIT</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <span>© 2026 Tapir</span>
+  <a href="https://github.com/zhenlonghe/tapir">GitHub</a>
+  <a href="https://github.com/zhenlonghe/tapir/issues" data-i18n="foot.issue">反馈问题</a>
+  <a href="#take-06" data-i18n="foot.privacy">隐私</a>
+</footer>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ico-display" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="13" rx="2.5"/><path d="M8.5 20.5h7"/></symbol>
+  <symbol id="ico-window" viewBox="0 0 24 24"><rect x="2.5" y="4.5" width="19" height="15" rx="3"/><path d="M6.5 8.5h3"/></symbol>
+  <symbol id="ico-area" viewBox="0 0 24 24"><path d="M3 8V5.5A2.5 2.5 0 0 1 5.5 3H8M16 3h2.5A2.5 2.5 0 0 1 21 5.5V8M21 16v2.5a2.5 2.5 0 0 1-2.5 2.5H16M8 21H5.5A2.5 2.5 0 0 1 3 18.5V16"/></symbol>
+  <symbol id="ico-device" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="3"/><path d="M10.5 18.5h3"/></symbol>
+</svg>
+
+<script src="assets/main.js" defer></script>
+</body>
+</html>

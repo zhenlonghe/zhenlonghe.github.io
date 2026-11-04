@@ -4,7 +4,8 @@
   oppo-sans.woff2        OPPO Sans 4.0 变量字体，wght 400–700。中文、英文、数字共用。
                          字集来自当前站点文稿 + 拉丁/标点兜底，约 200 KB。
                          新文章若出现未见过的汉字，会暂时落到 --sans 的系统黑体；
-                         重跑本脚本就会收进子集。
+                         重跑本脚本就会收进子集。Tapir 落地页 tapir/ 的文字也收在内，
+                         改了落地页文案同样要重跑。
   commit-mono.woff2      Commit Mono 400
   commit-mono-bold.woff2 Commit Mono 700
                          代码块的兜底；Apple 设备走 ui-monospace 拿到 SF Mono
@@ -87,6 +88,9 @@ def site_text():
         os.path.join(ROOT, '_includes', '**', '*.html'),
         os.path.join(ROOT, '*.markdown'),
         os.path.join(ROOT, '_config.yml'),
+        # Tapir 落地页（/tapir/）是静态页，同样用这份字体
+        os.path.join(ROOT, 'tapir', 'index.html'),
+        os.path.join(ROOT, 'tapir', 'assets', '*.js'),
     ]
     for pattern in patterns:
         for path in glob.glob(pattern, recursive=True):
